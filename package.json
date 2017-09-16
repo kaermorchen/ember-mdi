@@ -18,7 +18,9 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.3.0"
+    "broccoli-svgstore": "^0.4.2",
+    "ember-cli-babel": "^6.3.0",
+    "mdi-svg": "2.0.46"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
