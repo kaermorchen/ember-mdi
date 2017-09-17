@@ -1,0 +1,10 @@
+@import 'ember-mdi/variables';
+@import 'ember-mdi/extras';
+@import 'ember-mdi/animated';
+
+.#{$ember-mdi-css-class} {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  max-width: 100%;
+}

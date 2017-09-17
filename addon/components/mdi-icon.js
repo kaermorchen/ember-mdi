@@ -5,10 +5,12 @@ const mdiIcon = Ember.Component.extend({
   layout,
   tagName: 'svg',
   classNames: ['mdi-icon'],
+  classNameBindings: ['spin:mdi-icon-spin'],
   attributeBindings: ['role'],
 
   role: 'img',
-  icon: null
+  icon: null,
+  spin: false
 });
 
 mdiIcon.reopenClass({
