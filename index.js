@@ -17,10 +17,10 @@ module.exports = {
     var svgsPath = path.join('node_modules', 'mdi-svg', 'svg');
 
     var publicTree = new Funnel(svgsPath, {
-      include: [
-        'access-point.svg',
-        'access-point-network.svg'
-      ]
+      // include: [
+      //   'access-point.svg',
+      //   'access-point-network.svg'
+      // ]
     });
 
     var svgstoreTree = svgstore(publicTree, {
