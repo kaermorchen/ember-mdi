@@ -1,18 +1,18 @@
 <div class="container">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col">
       <h1>Ember Material Design Icons (ember-mdi)</h1>
       <h2 class="h4 "><em>Powered by <a href="https://materialdesignicons.com/" title="materialdesignicons.com">materialdesignicons.com</a></em></h2>
 
     </div>
     <div class="col-auto">
-      <a href="https://github.com/kaermorchen/ember-mdi" ttile="Ember Loaders" class="btn btn-primary btn-lg">{{mdi-icon "github-circle"}} View on Github</a>
+      <a href="https://github.com/kaermorchen/ember-mdi" ttile="Ember Loaders" class="btn btn-primary btn-lg">View on Github</a>
     </div>
   </div>
 
   <div class="row">
     {{#each icons as |icon|}}
-      <div class="col-sm-4 col-md-3 col-lg-2">
+      <div class="col-auto p-3 m-1 border">
         {{mdi-icon icon}}
       </div>
     {{/each}}

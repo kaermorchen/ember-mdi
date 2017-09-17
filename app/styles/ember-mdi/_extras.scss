@@ -1,47 +1,17 @@
-// $sizes: 18 24 36 48;
-// @each $size in $sizes {
-//     .#{$ember-mdi-css-class}-#{$size}px {
-//         width: $size * 1px;
-//         height: $size * 1px;
-//     }
-// }
+@each $degree in $ember-mdi-degrees {
+  .#{$ember-mdi-css-class}-rotate-#{$degree}{
+    transform: rotate(#{$degree}deg);
+  }
+}
 
-// .#{$ember-mdi-css-class}-dark {
-//     &:before {
-//         color: rgba(0, 0, 0, 0.54);
-//     }
-//     &.mdi-inactive:before {
-//         color: rgba(0, 0, 0, 0.26);
-//     }
-// }
-// .#{$ember-mdi-css-class}-light {
-//     &:before {
-//         color: rgba(255, 255, 255, 1);
-//     }
-//     &.mdi-inactive:before {
-//         color: rgba(255, 255, 255, 0.3);
-//     }
-// }
+.#{$ember-mdi-css-class}-flip-h {
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
 
-// $degrees: 45 90 135 180 225 270 315;
-// @each $degree in $degrees {
-//     .#{$ember-mdi-css-class}-rotate-#{$degree}{
-//         &:before {
-//             -webkit-transform: rotate(#{$degree}deg);
-//             -ms-transform: rotate(#{$degree}deg);
-//             transform: rotate(#{$degree}deg);
-//         }
-//     }
-// }
-// .#{$ember-mdi-css-class}-flip-h:before {
-//     -webkit-transform: scaleX(-1);
-//     transform: scaleX(-1);
-//     filter: FlipH;
-//     -ms-filter: "FlipH";
-// }
-// .#{$ember-mdi-css-class}-flip-v:before {
-//     -webkit-transform: scaleY(-1);
-//     transform: scaleY(-1);
-//     filter: FlipV;
-//     -ms-filter: "FlipV";
-// }
+.#{$ember-mdi-css-class}-flip-v {
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+}
