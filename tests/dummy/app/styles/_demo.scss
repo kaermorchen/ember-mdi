@@ -11,3 +11,19 @@ pre {
 code {
   background-color: $gray-100;
 }
+
+.demo-icon {
+  padding: $spacer;
+  margin: 0 map-get($spacers, 1) map-get($spacers, 2) map-get($spacers, 1);
+  border: solid 1px $border-color;
+  cursor: pointer;
+}
+
+.demo-icon-preview {
+  border: solid 1px $border-color;
+
+  .demo-icon-preview-name {
+    text-align: center;
+    font-size: $font-size-lg;
+  }
+}

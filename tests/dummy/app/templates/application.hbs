@@ -11,10 +11,36 @@
   </div>
 
   <div class="row">
-    {{#each icons as |icon|}}
-      <div class="col-auto p-3 m-1 border">
-        {{mdi-icon icon}}
+    <div class={{if selectedIcon "col-8" "col-12"}}>
+      <div class="row">
+        {{#each icons as |icon|}}
+          <div class="col-auto demo-icon" onclick={{action (mut selectedIcon) icon}}>
+            {{mdi-icon icon}}
+          </div>
+        {{/each}}
       </div>
-    {{/each}}
+    </div>
+    {{#if selectedIcon}}
+      <div class="col-4">
+        <div class="demo-icon-preview sticky-top">
+          <div class="demo-icon-preview-name mb-5">
+            {{concat '{{mdi-icon "' selectedIcon '"}}'}}
+          </div>
+
+          <div class="text-center mb-5">
+            {{mdi-icon selectedIcon size=120 spin=spin flipH=flipH flipV=flipV}}
+          </div>
+
+          <div class="px-3">
+            <label class="d-block">{{input type="checkbox" checked=spin}} Spin</label>
+            <label class="d-block">{{input type="checkbox" checked=flipH}} Horizontal flip</label>
+            <label class="d-block">{{input type="checkbox" checked=flipV}} Vertical flip</label>
+          </div>
+        </div>
+
+      </div>
+    {{/if}}
   </div>
+
+
 </div>
