@@ -2,6 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   selectedIcon: null,
+  size: 120,
+
+  spin: false,
+  flipH: false,
+  flipV: false,
 
   icons: [
     "access-point",
