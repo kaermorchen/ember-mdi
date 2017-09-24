@@ -3,10 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   selectedIcon: null,
   size: 120,
-
   spin: false,
   flipH: false,
   flipV: false,
+  rotate: 0,
+  rotates: [0, 45, 90, 135, 180, 225, 270, 315],
 
   icons: [
     "access-point",

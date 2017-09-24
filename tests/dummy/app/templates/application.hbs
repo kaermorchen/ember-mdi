@@ -2,7 +2,7 @@
   <div class="row mb-5">
     <div class="col">
       <h1>Ember Material Design Icons (ember-mdi)</h1>
-      <h2 class="h4 "><em>Powered by <a href="https://materialdesignicons.com/" title="materialdesignicons.com">materialdesignicons.com</a></em></h2>
+      <h2 class="h4 "><em>Based by <a href="https://materialdesignicons.com/" title="materialdesignicons.com">materialdesignicons.com</a></em></h2>
 
     </div>
     <div class="col-auto">
@@ -28,11 +28,18 @@
           </div>
 
           <div class="demo-icon-preview-icon">
-            {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV}}
+            {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV rotate=rotate}}
           </div>
 
           <div class="px-3">
             <label class="d-block">{{input type="range" value=size min=1 max=120}} Size: {{size}}</label>
+            <label class="d-block">
+              <select onchange={{action (mut rotate) value="target.value"}}>
+                {{#each rotates as |item|}}
+                  <option value={{item}} selected={{eq item rotate}}>{{item}}</option>
+                {{/each}}
+              </select>
+            </label>
             <label class="d-block">{{input type="checkbox" checked=spin}} Spin</label>
             <label class="d-block">{{input type="checkbox" checked=flipH}} Horizontal flip</label>
             <label class="d-block">{{input type="checkbox" checked=flipV}} Vertical flip</label>
