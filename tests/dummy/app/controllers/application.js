@@ -1,13 +1,50 @@
 import Ember from 'ember';
 
+const { computed } = Ember;
+
 export default Ember.Controller.extend({
   selectedIcon: null,
-  size: 120,
+  size: '120',
   spin: false,
   flipH: false,
   flipV: false,
-  rotate: 0,
-  rotates: [0, 45, 90, 135, 180, 225, 270, 315],
+  rotate: '0',
+  rotates: ['0', '45', '90', '135', '180', '225', '270', '315'],
+
+  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', function () {
+    const selectedIcon = this.get('selectedIcon');
+    const size = this.get('size');
+    const spin = this.get('spin');
+    const flipH = this.get('flipH');
+    const flipV = this.get('flipV');
+    const rotate = this.get('rotate');
+
+    let iconHbsCode = `{{mdi-icon "${selectedIcon}"`;
+
+    if (size !== '120') {
+      iconHbsCode += ` size=${size}`;
+    }
+
+    if (spin) {
+      iconHbsCode += ` spin=${spin}`;
+    }
+
+    if (flipH) {
+      iconHbsCode += ` flipH=${flipH}`;
+    }
+
+    if (flipV) {
+      iconHbsCode += ` flipH=${flipV}`;
+    }
+
+    if (rotate !== '0') {
+      iconHbsCode += ` rotate=${rotate}`;
+    }
+
+    iconHbsCode += '}}';
+
+    return iconHbsCode;
+  }),
 
   icons: [
     "access-point",

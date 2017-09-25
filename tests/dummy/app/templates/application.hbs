@@ -23,7 +23,7 @@
     <div class="col-4">
       <div class="demo-icon-preview sticky-top">
         <div class="demo-icon-preview-name mb-5">
-          {{concat '{{mdi-icon "' selectedIcon '"}}'}}
+          {{if selectedIcon iconHbsCode "Select an icon"}}
         </div>
 
         <div class="demo-icon-preview-icon">
