@@ -2,7 +2,7 @@
   <div class="row mb-5">
     <div class="col">
       <h1>Ember Material Design Icons (ember-mdi)</h1>
-      <h2 class="h4 "><em>Based by <a href="https://materialdesignicons.com/" title="materialdesignicons.com">materialdesignicons.com</a></em></h2>
+      <h2 class="h4 "><em>Based by <a href="https://materialdesignicons.com/" title="materialdesignicons.com">materialdesignicons.com</a></em> - {{icons.length}} icons.</h2>
 
     </div>
     <div class="col-auto">
@@ -11,7 +11,7 @@
   </div>
 
   <div class="row">
-    <div class={{if selectedIcon "col-8" "col-12"}}>
+    <div class="col-8">
       <div class="row">
         {{#each icons as |icon|}}
           <div class="col-auto demo-icon" onclick={{action (mut selectedIcon) icon}}>
@@ -20,32 +20,53 @@
         {{/each}}
       </div>
     </div>
-    {{#if selectedIcon}}
-      <div class="col-4">
-        <div class="demo-icon-preview sticky-top">
-          <div class="demo-icon-preview-name mb-5">
-            {{concat '{{mdi-icon "' selectedIcon '"}}'}}
+    <div class="col-4">
+      <div class="demo-icon-preview sticky-top">
+        <div class="demo-icon-preview-name mb-5">
+          {{concat '{{mdi-icon "' selectedIcon '"}}'}}
+        </div>
+
+        <div class="demo-icon-preview-icon">
+          {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV rotate=rotate}}
+        </div>
+
+        <div class="px-3">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Size:</label>
+            <div class="col-sm-10 d-flex align-items-center">
+              {{input type="range" class="mr-3" value=size min=1 max=120}} {{size}}
+            </div>
           </div>
 
-          <div class="demo-icon-preview-icon">
-            {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV rotate=rotate}}
-          </div>
-
-          <div class="px-3">
-            <label class="d-block">{{input type="range" value=size min=1 max=120}} Size: {{size}}</label>
-            <label class="d-block">
-              <select onchange={{action (mut rotate) value="target.value"}}>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Rotate:</label>
+            <div class="col-sm-10">
+              <select class="form-control" onchange={{action (mut rotate) value="target.value"}}>
                 {{#each rotates as |item|}}
                   <option value={{item}} selected={{eq item rotate}}>{{item}}</option>
                 {{/each}}
               </select>
+            </div>
+          </div>
+
+          <div class="form-group row justify-content-end">
+            <label class="col-sm-10 mb-0">
+              {{input type="checkbox" checked=spin}} Spin
             </label>
-            <label class="d-block">{{input type="checkbox" checked=spin}} Spin</label>
-            <label class="d-block">{{input type="checkbox" checked=flipH}} Horizontal flip</label>
-            <label class="d-block">{{input type="checkbox" checked=flipV}} Vertical flip</label>
+          </div>
+
+          <div class="form-group row justify-content-end">
+            <label class="col-sm-10 mb-0">
+              {{input type="checkbox" checked=flipH}} Horizontal flip
+            </label>
+          </div>
+          <div class="form-group row justify-content-end">
+            <label class="col-sm-10 mb-0">
+              {{input type="checkbox" checked=flipV}} Vertical flip
+            </label>
           </div>
         </div>
       </div>
-    {{/if}}
+    </div>
   </div>
 </div>
