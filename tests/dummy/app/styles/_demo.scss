@@ -13,8 +13,10 @@ code {
 }
 
 .demo-icon {
+  display: inline-block;
   padding: $spacer;
-  margin: 0 map-get($spacers, 1) map-get($spacers, 2) map-get($spacers, 1);
+  margin-right: 2px;
+  margin-bottom: 2px;
   border: solid 1px $border-color;
   cursor: pointer;
 }
