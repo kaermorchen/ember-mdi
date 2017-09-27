@@ -1,28 +1,42 @@
-[WIP]
+# Ember Material Design Icons
 
-# ember-mdi
+An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons are added into project as single SVG file (/assets/icons.svg).
 
-This README outlines the details of collaborating on this Ember addon.
+## Getting Started
 
-## Installation
+Install in ember-cli application
 
-* `git clone <repository-url>` this repository
-* `cd ember-mdi`
-* `npm install`
+```
+ember install ember-mdi
+```
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+```
+{{mdi-icon "bug"}}
+```
 
-## Running Tests
+We get follow html:
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+```
+<svg viewBox="0 0 24 24" width="24" height="24" role="img" class="mdi-icon ember-view">
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons.svg#bug"></use>
+</svg>
+```
 
-## Building
+Component mdi-icon has some options with default values: 
 
-* `ember build`
+```
+{{mdi-icon "alert" 
+  size=24
+  spin=false 
+  flipH=false 
+  flipH=false 
+  rotate=0}}
+```
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+## Configuration
+In progress
+
+## License
+ember-mdi is released under the MIT License. See the bundled [LICENSE](LICENSE.md) file for details.
