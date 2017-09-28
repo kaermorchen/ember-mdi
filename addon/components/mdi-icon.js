@@ -7,8 +7,8 @@ const mdiIcon = Ember.Component.extend({
   layout,
   tagName: 'svg',
   classNames: ['mdi-icon'],
-  classNameBindings: ['spin:mdi-icon-spin', 'rotateClass', 'flipH:mdi-icon-flip-h', 'flipV:mdi-icon-flip-v'],
-  attributeBindings: ['role', 'size:height', 'size:width', 'viewBox'],
+  classNameBindings: ['spin:mdi-icon-spin', 'flipH:mdi-icon-flip-h', 'flipV:mdi-icon-flip-v'],
+  attributeBindings: ['role', 'size:height', 'size:width', 'viewBox', 'transform'],
 
   size: 24,
   role: 'img',
@@ -24,11 +24,11 @@ const mdiIcon = Ember.Component.extend({
     return `0 0 ${size} ${size}`;
   }),
 
-  rotateClass: computed('rotate', function() {
+  transform: computed('rotate', function() {
     const rotate = this.get('rotate');
 
-    return isPresent(rotate) ? `mdi-icon-rotate-${rotate}` : null;
-  })
+    return isPresent(rotate) ? `rotate(${rotate})` : null;
+  }),
 });
 
 mdiIcon.reopenClass({

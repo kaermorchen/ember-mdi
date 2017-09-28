@@ -26,12 +26,8 @@
 
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Rotate:</label>
-            <div class="col-sm-10">
-              <select class="form-control" onchange={{action (mut rotate) value="target.value"}}>
-                {{#each rotates as |item|}}
-                  <option value={{item}} selected={{eq item rotate}}>{{item}}</option>
-                {{/each}}
-              </select>
+            <div class="col-sm-10 d-flex align-items-center">
+              {{input type="range" class="mr-3" value=rotate min=0 max=360}} {{rotate}}
             </div>
           </div>
 

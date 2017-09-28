@@ -8,8 +8,7 @@ export default Ember.Controller.extend({
   spin: false,
   flipH: false,
   flipV: false,
-  rotate: '0',
-  rotates: ['0', '45', '90', '135', '180', '225', '270', '315'],
+  rotate: 0,
 
   iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', function () {
     const selectedIcon = this.get('selectedIcon');

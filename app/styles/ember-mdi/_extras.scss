@@ -1,9 +1,3 @@
-@each $degree in $ember-mdi-degrees {
-  .#{$ember-mdi-css-class}-rotate-#{$degree}{
-    transform: rotate(#{$degree}deg);
-  }
-}
-
 .#{$ember-mdi-css-class}-flip-h {
   transform: scaleX(-1);
   filter: FlipH;
