@@ -1,6 +1,6 @@
 # Ember Material Design Icons
 
-An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons are added into project as single SVG file (/assets/icons.svg).
+An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons are added into project as single SVG file `/assets/icons.svg`.
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ Component mdi-icon has some options with default values:
   size=24
   spin=false 
   flipH=false 
-  flipH=false 
+  flipV=false 
   rotate=0}}
 ```
 
