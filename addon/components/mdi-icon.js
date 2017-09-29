@@ -1,13 +1,13 @@
 import Ember from 'ember';
 import layout from '../templates/components/mdi-icon';
 
-const { isPresent, computed } = Ember;
+const { computed } = Ember;
 
 const mdiIcon = Ember.Component.extend({
   layout,
   tagName: 'svg',
   classNames: ['mdi-icon'],
-  classNameBindings: ['spin:mdi-icon-spin', 'flipH:mdi-icon-flip-h', 'flipV:mdi-icon-flip-v'],
+  classNameBindings: ['spin:mdi-icon-spin'],
   attributeBindings: ['role', 'size:height', 'size:width', 'viewBox', 'transform'],
 
   size: 24,
@@ -24,10 +24,25 @@ const mdiIcon = Ember.Component.extend({
     return `0 0 ${size} ${size}`;
   }),
 
-  transform: computed('rotate', function() {
+  transform: computed('rotate', 'flipH', 'flipV', function() {
     const rotate = this.get('rotate');
+    const flipH = this.get('flipH');
+    const flipV = this.get('flipV');
+    let transform = '';
 
-    return isPresent(rotate) ? `rotate(${rotate})` : null;
+    if (rotate) {
+      transform += `rotate(${rotate})`;
+    }
+
+    if (flipH && flipV) {
+      transform += `scale(-1,-1)`;
+    } else if (flipH) {
+      transform += `scale(-1,1)`;
+    } else if (flipV) {
+      transform += `scale(1,-1)`;
+    }
+
+    return transform;
   }),
 });
 

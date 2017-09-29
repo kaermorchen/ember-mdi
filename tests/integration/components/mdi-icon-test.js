@@ -29,10 +29,10 @@ test('it renders', function(assert) {
   assert.equal(this.$('svg').attr('transform'), `rotate(${rotate})`, 'Rotate is correct');
 
   this.render(hbs`{{mdi-icon "bug" flipH=true}}`);
-  assert.ok(this.$('svg').hasClass('mdi-icon-flip-h'), 'Horizontal flip class');
+  assert.ok(this.$('svg').attr('transform').indexOf('scale(-1,1)') >= 0, 'Horizontal flip is correct');
 
   this.render(hbs`{{mdi-icon "bug" flipV=true}}`);
-  assert.ok(this.$('svg').hasClass('mdi-icon-flip-v'), 'Vertical flip class');
+  assert.ok(this.$('svg').attr('transform').indexOf('scale(1,-1)') >= 0, 'Vertical flip is correct');
 
   this.render(hbs`{{mdi-icon "bug" role="icon"}}`);
   assert.equal(this.$('svg').attr('role'), 'icon', 'Role is correct');
