@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/mdi-icon';
 
-const { computed } = Ember;
+const { assert, computed, on, isPresent } = Ember;
 
 const mdiIcon = Ember.Component.extend({
   layout,
@@ -17,6 +17,11 @@ const mdiIcon = Ember.Component.extend({
   rotate: null,
   flipH: false,
   flipV: false,
+
+  setupComponent: on('init', function() {
+    // Require that users pass an icon
+    assert('{{mdi-icon}} requires an `icon` to be passed as the value.', isPresent(this.get('icon')));
+  }),
 
   viewBox: computed('size', function() {
     const size = this.get('size');
