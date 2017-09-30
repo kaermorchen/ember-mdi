@@ -1,18 +1,28 @@
 <h1><a id="Ember_Material_Design_Icons_0"></a>Ember Material Design Icons</h1>
+
 <p>An <a href="http://www.ember-cli.com">ember-cli</a> addon for using <a href="https://materialdesignicons.com/">Material Design Icons</a>  in Ember applications. All icons (about 2000) are added into project as single <strong>SVG</strong> file <code>/assets/icons.svg</code>.</p>
+
 <h2><a id="Getting_Started_4"></a>Getting Started</h2>
+
 <p>Install in ember-cli application</p>
+
 <pre><code>ember install ember-mdi
 </code></pre>
+
 <h2><a id="Usage_12"></a>Usage</h2>
+
 <pre><code>\{{mdi-icon "bug"}}
 </code></pre>
+
 <p>We get follow html:</p>
+
 <pre><code>&lt;svg viewBox="0 0 24 24" width="24" height="24" role="img" class="mdi-icon ember-view"&gt;
    &lt;use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons.svg#bug"&gt;&lt;/use&gt;
 &lt;/svg&gt;
 </code></pre>
+
 <p>Component mdi-icon has some options with default values:</p>
+
 <pre><code>\{{mdi-icon "alert"
   size=24
   spin=false
@@ -20,10 +30,13 @@
   flipV=false
   rotate=0}}
 </code></pre>
+
 <h2><a id="Configuration_37"></a>Configuration</h2>
+
 <p>By default ember-mdi store all icon in <code>icons.svg</code>. And it is has the size about 750KB. If you don’t need all
   icons, use the option <code>icons</code> for limit their. And ember-mdi will store only your specific icons. Don’t forget
   restart <code>ember serve</code>.</p>
+
 <pre><code>// ember-cli-build.js
 
 module.exports = function(defaults) {
@@ -36,5 +49,7 @@ module.exports = function(defaults) {
   ...
 };
 </code></pre>
+
 <h2><a id="License_54"></a>License</h2>
+
 <p>ember-mdi is released under the MIT License. See the bundled <a href="LICENSE.md">LICENSE</a> file for details.</p>
