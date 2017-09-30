@@ -4,11 +4,11 @@ const { computed } = Ember;
 
 export default Ember.Controller.extend({
   selectedIcon: 'access-point',
-  size: '120',
+  size: '24',
   spin: false,
   flipH: false,
   flipV: false,
-  rotate: 0,
+  rotate: '0',
 
   iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', function () {
     const selectedIcon = this.get('selectedIcon');
@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 
     let iconHbsCode = `{{mdi-icon "${selectedIcon}"`;
 
-    if (size !== '120') {
+    if (size !== '24') {
       iconHbsCode += ` size=${size}`;
     }
 
