@@ -13,10 +13,17 @@
         </div>
 
         <div class="demo-icon-preview-icon">
-          {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV rotate=rotate}}
+          {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV rotate=rotate fill=fill}}
         </div>
 
         <div class="px-3">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Fill:</label>
+            <div class="col-sm-10 d-flex align-items-center">
+              {{spectrum-color-picker color=fill preferredFormat="hex" onChange=(action (mut fill))}}
+            </div>
+          </div>
+
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Size:</label>
             <div class="col-sm-10 d-flex align-items-center">

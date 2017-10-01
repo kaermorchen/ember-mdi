@@ -9,14 +9,16 @@ export default Ember.Controller.extend({
   flipH: false,
   flipV: false,
   rotate: '0',
+  fill: null,
 
-  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', function () {
+  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', function () {
     const selectedIcon = this.get('selectedIcon');
     const size = this.get('size');
     const spin = this.get('spin');
     const flipH = this.get('flipH');
     const flipV = this.get('flipV');
     const rotate = this.get('rotate');
+    const fill = this.get('fill');
 
     let iconHbsCode = `{{mdi-icon "${selectedIcon}"`;
 
@@ -38,6 +40,10 @@ export default Ember.Controller.extend({
 
     if (rotate !== '0') {
       iconHbsCode += ` rotate=${rotate}`;
+    }
+
+    if (fill) {
+      iconHbsCode += ` fill="${fill}"`;
     }
 
     iconHbsCode += '}}';
