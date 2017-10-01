@@ -13,10 +13,6 @@ const defaultOptions = {
 module.exports = {
   name: 'ember-mdi',
 
-  isDevelopingAddon: function () {
-    return true;
-  },
-
   treeForPublic: function () {
     var svgsPath = path.join('node_modules', 'mdi-svg', 'svg');
     var options = Object.assign({}, defaultOptions, this.app.options[this.name]);

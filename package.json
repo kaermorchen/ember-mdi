@@ -1,17 +1,28 @@
 {
   "name": "ember-mdi",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "An ember-cli addon for using Material Design Icons in Ember applications.",
   "keywords": [
+    "material design icons",
+    "mdi",
+    "icons",
+    "svg",
     "ember-addon"
   ],
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Stanislav Romanov",
+    "email": "kaermorchen@gmail.com",
+    "url": "https://stanislavromanov.ru"
+  },
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kaermorchen/ember-mdi.git"
+  },
   "scripts": {
     "build": "ember build",
     "start": "ember server",
@@ -52,6 +63,7 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "defaultBlueprint": "ember-mdi"
   }
 }

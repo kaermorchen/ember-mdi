@@ -10,6 +10,12 @@ Install in ember-cli application
 ember install ember-mdi
 ```
 
+Then include the following in your app.scss file:
+
+```
+@import "ember-mdi";
+```
+
 ## Usage
 
 ```
@@ -37,7 +43,7 @@ Component mdi-icon has some options with default values:
 ```
 
 ## Configuration
-By default ember-mdi store all icon in `icons.svg`. And it is has the size about 750KB. If you don't need all icons, use the option `icons` for limit their. And ember-mdi will store only your specific icons. Don't forget restart `ember serve`.
+By default ember-mdi store all icon in `icons.svg`. And it has the size about 750KB. If you don't need all icons, use the option `icons` for limit their. And ember-mdi will store only your specific icons. Don't forget restart `ember serve`.
 
 ```
 // ember-cli-build.js
