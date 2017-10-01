@@ -29,6 +29,7 @@ Component mdi-icon has some options with default values:
 ```
 {{mdi-icon "alert" 
   size=24
+  fill="black"
   spin=false 
   flipH=false 
   flipV=false 

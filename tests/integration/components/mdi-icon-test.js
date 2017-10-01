@@ -36,4 +36,9 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{mdi-icon "bug" role="icon"}}`);
   assert.equal(this.$('svg').attr('role'), 'icon', 'Role is correct');
+
+  const fill = 'green';
+  this.set('fill', fill);
+  this.render(hbs`{{mdi-icon "bug" fill=fill}}`);
+  assert.equal(this.$('use').attr('fill'), fill, 'Fill is correct');
 });

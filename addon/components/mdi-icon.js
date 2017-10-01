@@ -17,6 +17,7 @@ const mdiIcon = Ember.Component.extend({
   rotate: null,
   flipH: false,
   flipV: false,
+  fill: null,
 
   setupComponent: on('init', function() {
     // Require that users pass an icon
