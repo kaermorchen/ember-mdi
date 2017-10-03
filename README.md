@@ -2,6 +2,8 @@
 
 An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons (about 2000) are added into project as single **SVG** file `/assets/icons.svg`.
 
+### [Demo](https://kaermorchen.github.io/ember-mdi/)
+
 ## Getting Started
 
 Install in ember-cli application
