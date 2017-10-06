@@ -1,6 +1,6 @@
 <h1><a id="Ember_Material_Design_Icons_0"></a>Ember Material Design Icons</h1>
 
-<p>An <a href="http://www.ember-cli.com">ember-cli</a> addon for using <a href="https://materialdesignicons.com/">Material Design Icons</a>  in Ember applications. All icons (about 2000) are added into project as single <strong>SVG</strong> file <code>/assets/icons.svg</code>.</p>
+<p>An <a href="http://www.ember-cli.com">ember-cli</a> addon for using <a href="https://materialdesignicons.com/">Material Design Icons</a>  in Ember applications. All icons (about 2000) are added into project as single <strong>SVG</strong> file <code>/assets/icons&#x2024;svg</code>.</p>
 
 <h2><a id="Getting_Started_4"></a>Getting Started</h2>
 
@@ -12,6 +12,22 @@
 <p>Then include the following in your app.scss file:</p>
 
 <pre><code>@import "ember-mdi";
+</code></pre>
+
+<p>And configure fingerprinting for work with svg files.</p>
+
+<pre><code>// ember-cli-build.js
+const broccoliAssetRevDefaults = require('broccoli-asset-rev/lib/default-options');
+
+module.exports = function(defaults) {
+  let app = new EmberApp(defaults, {
+    fingerprint: {
+      extensions: broccoliAssetRevDefaults.extensions.concat(['svg']), //add svg extension
+      prepend: '/ember-mdi/' //if do you have rootURL use `prepend` option
+    }
+  });
+
+  ...
 </code></pre>
 
 <h2><a id="Usage_12"></a>Usage</h2>
@@ -39,7 +55,7 @@
 
 <h2><a id="Configuration_37"></a>Configuration</h2>
 
-<p>By default ember-mdi store all icon in <code>icons.svg</code>. And it has the size about 750KB. If you don’t need all
+<p>By default ember-mdi store all icon in <code>icons&#x2024;svg</code>. And it has the size about 750KB. If you don’t need all
   icons, use the option <code>icons</code> for limit their. And ember-mdi will store only your specific icons. Don’t forget
   restart <code>ember serve</code>.</p>
 

@@ -18,6 +18,23 @@ Then include the following in your app.scss file:
 @import "ember-mdi";
 ```
 
+And configure fingerprinting for work with svg files.
+
+```
+// ember-cli-build.js
+const broccoliAssetRevDefaults = require('broccoli-asset-rev/lib/default-options');
+
+module.exports = function(defaults) {
+  let app = new EmberApp(defaults, {
+    fingerprint: {
+      extensions: broccoliAssetRevDefaults.extensions.concat(['svg']), //add svg extension
+      prepend: '/ember-mdi/' //if do you have rootURL use `prepend` option
+    }
+  });
+  
+  ...
+```
+
 ## Usage
 
 ```
