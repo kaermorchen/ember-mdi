@@ -1,5 +1,11 @@
 # Ember Material Design Icons
 
+[![npm version](https://badge.fury.io/js/ember-mdi.svg)](https://www.npmjs.com/package/ember-mdi)
+[![npm monthly downloads](https://img.shields.io/npm/dm/ember-mdi.svg)](https://www.npmjs.com/package/ember-mdi)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-mdi.svg)](https://emberobserver.com/addons/ember-mdi)
+[![Build Status](https://travis-ci.org/kaermorchen/ember-mdi.svg?branch=master)](https://travis-ci.org/kaermorchen/ember-mdi)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons (about 2000) are added into project as single **SVG** file `/assets/icons.svg`.
 
 ### [Demo](https://kaermorchen.github.io/ember-mdi/)
