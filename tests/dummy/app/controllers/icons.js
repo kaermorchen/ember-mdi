@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
   flipV: false,
   rotate: '0',
   fill: null,
+  searchText: null,
 
   iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', function () {
     const selectedIcon = this.get('selectedIcon');

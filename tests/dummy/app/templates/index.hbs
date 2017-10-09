@@ -1,83 +1,61 @@
-<p>
-  <a href="https://www.npmjs.com/package/ember-mdi"><img src="https://badge.fury.io/js/ember-mdi.svg" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/ember-mdi"><img src="https://img.shields.io/npm/dm/ember-mdi.svg" alt="npm monthly downloads"></a>
-  <a href="https://emberobserver.com/addons/ember-mdi"><img src="https://emberobserver.com/badges/ember-mdi.svg" alt="Ember Observer Score"></a>
-  <a href="https://travis-ci.org/kaermorchen/ember-mdi"><img src="https://travis-ci.org/kaermorchen/ember-mdi.svg?branch=master" alt="Build Status"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a>
-</p>
+<div class="row">
+  <div class="col-8 d-flex flex-wrap">
+    {{#each model as |icon|}}
+      <div class="demo-icon" onclick={{action (mut selectedIcon) icon.name}}>
+        {{mdi-icon icon.name}}
+      </div>
+    {{/each}}
+  </div>
 
-<p>An <a href="http://www.ember-cli.com">ember-cli</a> addon for using <a href="https://materialdesignicons.com/">Material Design Icons</a>  in Ember applications. All icons (about 2000) are added into project as single <strong>SVG</strong> file <code>/assets/icons&#x2024;svg</code>.</p>
+  <div class="col-4">
+    <div class="demo-icon-preview sticky-top">
+      <div class="demo-icon-preview-name mb-5">
+        {{iconHbsCode}}
+      </div>
 
-<h2><a id="Getting_Started_4"></a>Getting Started</h2>
+      <div class="demo-icon-preview-icon">
+        {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV rotate=rotate fill=fill}}
+      </div>
 
-<p>Install in ember-cli application</p>
+      <div class="px-3">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Fill:</label>
+          <div class="col-sm-10 d-flex align-items-center">
+            {{spectrum-color-picker color=fill preferredFormat="hex" onChange=(action (mut fill))}}
+          </div>
+        </div>
 
-<pre><code>ember install ember-mdi
-</code></pre>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Size:</label>
+          <div class="col-sm-10 d-flex align-items-center">
+            {{input type="range" class="mr-3" value=size min=1 max=120}} {{size}}
+          </div>
+        </div>
 
-<p>Then include the following in your app.scss file:</p>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Rotate:</label>
+          <div class="col-sm-10 d-flex align-items-center">
+            {{input type="range" class="mr-3" value=rotate min=0 max=360}} {{rotate}}
+          </div>
+        </div>
 
-<pre><code>@import "ember-mdi";
-</code></pre>
+        <div class="form-group row justify-content-end">
+          <label class="col-sm-10 mb-0">
+            {{input type="checkbox" checked=spin}} Spin
+          </label>
+        </div>
 
-<p>And configure fingerprinting for work with svg files.</p>
-
-<pre><code>// ember-cli-build.js
-const broccoliAssetRevDefaults = require('broccoli-asset-rev/lib/default-options');
-
-module.exports = function(defaults) {
-  let app = new EmberApp(defaults, {
-    fingerprint: {
-      extensions: broccoliAssetRevDefaults.extensions.concat(['svg']), //add svg extension
-      prepend: '/ember-mdi/' //if do you have rootURL use `prepend` option
-    }
-  });
-
-  ...
-</code></pre>
-
-<h2><a id="Usage_12"></a>Usage</h2>
-
-<pre><code>\{{mdi-icon "bug"}}
-</code></pre>
-
-<p>We get follow html:</p>
-
-<pre><code>&lt;svg viewBox="0 0 24 24" width="24" height="24" role="img" class="mdi-icon ember-view"&gt;
-   &lt;use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons.svg#bug"&gt;&lt;/use&gt;
-&lt;/svg&gt;
-</code></pre>
-
-<p>Component mdi-icon has some options with default values:</p>
-
-<pre><code>\{{mdi-icon "alert"
-  size=24
-  fill="black"
-  spin=false
-  flipH=false
-  flipV=false
-  rotate=0}}
-</code></pre>
-
-<h2><a id="Configuration_37"></a>Configuration</h2>
-
-<p>By default ember-mdi store all icon in <code>icons&#x2024;svg</code>. And it has the size about 750KB. If you don’t need all
-  icons, use the option <code>icons</code> for limit their. And ember-mdi will store only your specific icons. Don’t forget
-  restart <code>ember serve</code>.</p>
-
-<pre><code>// ember-cli-build.js
-
-module.exports = function(defaults) {
-  let app = new EmberApp(defaults, {
-    'ember-mdi': {
-      icons: ['face', 'bug'],
-    }
-  });
-
-  ...
-};
-</code></pre>
-
-<h2><a id="License_54"></a>License</h2>
-
-<p>ember-mdi is released under the MIT License. See the bundled <a href="LICENSE.md">LICENSE</a> file for details.</p>
+        <div class="form-group row justify-content-end">
+          <label class="col-sm-10 mb-0">
+            {{input type="checkbox" checked=flipH}} Horizontal flip
+          </label>
+        </div>
+        <div class="form-group row justify-content-end">
+          <label class="col-sm-10 mb-0">
+            {{input type="checkbox" checked=flipV}} Vertical flip
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
