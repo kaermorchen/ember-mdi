@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
-const { inject: { service } } = Ember;
+const { A, inject: { service } } = Ember;
 
 export default Ember.Route.extend({
   ajax: service(),
 
   model() {
-    return this.get('ajax').request('/ember-mdi/meta.json');
+    return this.get('ajax').request('/ember-mdi/meta.json').then(arr => A(arr));
   }
 });

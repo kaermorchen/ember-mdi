@@ -1,10 +1,16 @@
 <div class="row">
-  <div class="col-8 d-flex flex-wrap">
-    {{#each model as |icon|}}
-      <div class="demo-icon" onclick={{action (mut selectedIcon) icon.name}}>
-        {{mdi-icon icon.name}}
-      </div>
-    {{/each}}
+  <div class="col-8">
+    <div class="form-group">
+      {{input value=searchText class="form-control" placeholder="Search"}}
+    </div>
+
+    <div class="d-flex flex-wrap">
+      {{#each filteredIcons as |icon|}}
+        <div class="demo-icon" onclick={{action (mut selectedIcon) icon}}>
+          {{mdi-icon icon}}
+        </div>
+      {{/each}}
+    </div>
   </div>
 
   <div class="col-4">
