@@ -1,15 +1,13 @@
 <div class="row">
   <div class="col-8">
     <div class="form-group">
-      {{input value=searchText class="form-control" placeholder="Search"}}
+      {{input value=searchText class="form-control" placeholder="Search" autofocus=true}}
     </div>
 
     <div class="d-flex flex-wrap">
-      {{#each filteredIcons as |icon|}}
-        <div class="demo-icon" onclick={{action (mut selectedIcon) icon}}>
-          {{mdi-icon icon}}
-        </div>
-      {{/each}}
+      {{#each-in model as |icon value|}}
+        {{demo-icon icon=icon searchText=searchText meta=value onClick=(action (mut selectedIcon) icon)}}
+      {{/each-in}}
     </div>
   </div>
 
