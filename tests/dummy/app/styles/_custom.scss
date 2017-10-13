@@ -9,6 +9,8 @@ $spacers: (
   5: ($spacer * 3)
 );
 
+$grid-gutter-width: 40px;
+
 $blue: #2196F3;
 $form-group-margin-bottom: map-get($spacers, 2);
 
