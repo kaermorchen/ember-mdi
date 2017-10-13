@@ -1,9 +1,11 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { assert } from '@ember/debug';
+import { computed } from '@ember/object';
+import { on } from '@ember/object/evented';
+import { isPresent } from '@ember/utils';
 import layout from '../templates/components/mdi-icon';
 
-const { assert, computed, on, isPresent } = Ember;
-
-const mdiIcon = Ember.Component.extend({
+const mdiIcon = Component.extend({
   layout,
   tagName: 'svg',
   classNames: ['mdi-icon'],

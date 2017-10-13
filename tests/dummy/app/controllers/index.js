@@ -1,8 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
 
-const { computed } = Ember;
-
-export default Ember.Controller.extend({
+export default Controller.extend({
   selectedIcon: 'access-point',
   size: '24',
   spin: false,
