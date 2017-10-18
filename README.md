@@ -84,5 +84,18 @@ module.exports = function(defaults) {
 };
 ```
 
+## System-wide config
+If you want to apply some options to all your icons, you need create the `mdi-icon` component and apply they inside it:
+
+```
+import mdiIcon from 'ember-mdi/components/mdi-icon';
+
+export default mdiIcon.extend({
+  // Place here your preferences
+  size: 28,
+  fill: 'blue'
+});
+```
+
 ## License
 ember-mdi is released under the MIT License. See the bundled [LICENSE](LICENSE.md) file for details.
