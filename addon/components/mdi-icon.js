@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { assert } from '@ember/debug';
 import { computed } from '@ember/object';
-import { on } from '@ember/object/evented';
 import { isPresent } from '@ember/utils';
 import layout from '../templates/components/mdi-icon';
 
@@ -21,10 +20,12 @@ const mdiIcon = Component.extend({
   flipV: false,
   fill: null,
 
-  setupComponent: on('init', function() {
+  init() {
+    this._super(...arguments);
+
     // Require that users pass an icon
     assert('{{mdi-icon}} requires an `icon` to be passed as the value.', isPresent(this.get('icon')));
-  }),
+  },
 
   viewBox: computed('size', function() {
     const size = this.get('size');
@@ -56,6 +57,6 @@ const mdiIcon = Component.extend({
 
 mdiIcon.reopenClass({
   positionalParams: ['icon'],
-})
+});
 
 export default mdiIcon;
