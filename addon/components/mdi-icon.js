@@ -8,7 +8,7 @@ const mdiIcon = Component.extend({
   layout,
   tagName: 'svg',
   classNames: ['mdi-icon'],
-  classNameBindings: ['spin:mdi-icon-spin'],
+  classNameBindings: ['iconClass', 'spin:mdi-icon-spin'],
   attributeBindings: ['role', 'size:height', 'size:width', 'viewBox', 'transform'],
 
   size: 24,
@@ -26,6 +26,10 @@ const mdiIcon = Component.extend({
     // Require that users pass an icon
     assert('{{mdi-icon}} requires an `icon` to be passed as the value.', isPresent(this.get('icon')));
   },
+
+  iconClass: computed('icon', function() {
+    return `mdi-icon-${this.get('icon')}`;
+  }),
 
   viewBox: computed('size', function() {
     const size = this.get('size');
