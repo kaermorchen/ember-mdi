@@ -11,9 +11,14 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{mdi-icon "bug"}}`);
   assert.equal(this.$('svg').html().trim(), '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons.svg#bug"></use>', 'Icon bug is correct');
+});
 
+test('properties work', function(assert) {
   this.render(hbs`{{mdi-icon "bug"}}`);
-  assert.ok(this.$('svg').hasClass('mdi-icon'), 'Has class mdi-icon');
+  assert.ok(this.$('svg').hasClass('mdi-icon'), 'Has the class mdi-icon');
+
+  this.render(hbs`{{mdi-icon "alert"}}`);
+  assert.ok(this.$('svg').hasClass('mdi-icon-alert'), 'Has the class mdi-icon-alert');
 
   this.render(hbs`{{mdi-icon "bug" size=42}}`);
   assert.equal(this.$('svg').attr('viewBox'), '0 0 42 42', 'viewBox is correct');
