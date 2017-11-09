@@ -18,7 +18,15 @@ const mdiIcon = Component.extend({
   rotate: null,
   flipH: false,
   flipV: false,
+
   fill: null,
+  stroke: null,
+  strokeWidth: null,
+  strokeLinecap: null,
+  strokeLinejoin: null,
+  strokeDasharray: null,
+  strokeDashoffset: null,
+  strokeOpacity: null,
 
   init() {
     this._super(...arguments);
