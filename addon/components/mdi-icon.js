@@ -56,11 +56,11 @@ const mdiIcon = Component.extend({
     }
 
     if (flipH && flipV) {
-      transform += `scale(-1,-1)`;
+      transform += 'scale(-1,-1)';
     } else if (flipH) {
-      transform += `scale(-1,1)`;
+      transform += 'scale(-1,1)';
     } else if (flipV) {
-      transform += `scale(1,-1)`;
+      transform += 'scale(1,-1)';
     }
 
     return transform;

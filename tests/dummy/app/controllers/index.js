@@ -10,6 +10,8 @@ export default Controller.extend({
   rotate: '0',
   fill: null,
   searchText: '',
+  stroke: null,
+  strokeWidth: 0,
 
   iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', function () {
     const selectedIcon = this.get('selectedIcon');
