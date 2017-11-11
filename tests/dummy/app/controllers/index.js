@@ -13,7 +13,7 @@ export default Controller.extend({
   stroke: null,
   strokeWidth: 0,
 
-  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', function () {
+  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', 'stroke', 'strokeWidth', function () {
     const selectedIcon = this.get('selectedIcon');
     const size = this.get('size');
     const spin = this.get('spin');
@@ -21,6 +21,8 @@ export default Controller.extend({
     const flipV = this.get('flipV');
     const rotate = this.get('rotate');
     const fill = this.get('fill');
+    const stroke = this.get('stroke');
+    const strokeWidth = this.get('strokeWidth');
 
     let iconHbsCode = `{{mdi-icon "${selectedIcon}"`;
 
@@ -46,6 +48,14 @@ export default Controller.extend({
 
     if (fill) {
       iconHbsCode += ` fill="${fill}"`;
+    }
+
+    if (stroke) {
+      iconHbsCode += ` stroke="${stroke}"`;
+    }
+
+    if (strokeWidth) {
+      iconHbsCode += ` stroke="${strokeWidth}"`;
     }
 
     iconHbsCode += '}}';
