@@ -4,7 +4,7 @@ $ember-mdi-css-class: "mdi-icon";
 // Main
 .#{$ember-mdi-css-class} {
   display: inline-block;
-  vertical-align: middle;
+  fill: currentColor;
 }
 
 // Animation
