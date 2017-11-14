@@ -1,5 +1,8 @@
 // Variables
 $ember-mdi-css-class: "mdi-icon";
+$ember-mdi-spin-delay: 0.65s;
+$ember-mdi-spin-iteration-count: infinite;
+$ember-mdi-spin-timing-function: linear;
 
 // Main
 .#{$ember-mdi-css-class} {
@@ -9,7 +12,7 @@ $ember-mdi-css-class: "mdi-icon";
 
 // Animation
 .#{$ember-mdi-css-class}-spin {
-  animation: #{$ember-mdi-css-class}-spin 2s infinite linear;
+  animation: #{$ember-mdi-css-class}-spin $ember-mdi-spin-delay $ember-mdi-spin-iteration-count $ember-mdi-spin-timing-function;
 }
 
 @keyframes #{$ember-mdi-css-class}-spin {
