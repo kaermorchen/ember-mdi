@@ -18,46 +18,102 @@
       </div>
 
       <div class="demo-icon-preview-icon">
-        {{mdi-icon selectedIcon size=size spin=spin flipH=flipH flipV=flipV rotate=rotate fill=fill}}
+        {{mdi-icon selectedIcon
+          size=size
+          spin=spin
+          flipH=flipH
+          flipV=flipV
+          rotate=rotate
+          fill=fill
+          stroke=stroke
+          strokeWidth=strokeWidth
+          strokeLinecap=strokeLinecap
+          strokeLinejoin=strokeLinejoin
+        }}
       </div>
 
       <div class="px-3">
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Fill:</label>
-          <div class="col-sm-10 d-flex align-items-center">
-            {{spectrum-color-picker color=fill preferredFormat="hex" onChange=(action (mut fill))}}
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Size:</label>
-          <div class="col-sm-10 d-flex align-items-center">
+          <label class="col-sm-5 col-form-label">Size:</label>
+          <div class="col-sm-7 d-flex align-items-center">
             {{input type="range" class="mr-3" value=size min=1 max=120}} {{size}}
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Rotate:</label>
-          <div class="col-sm-10 d-flex align-items-center">
+          <label class="col-sm-5 col-form-label">Rotate:</label>
+          <div class="col-sm-7 d-flex align-items-center">
             {{input type="range" class="mr-3" value=rotate min=0 max=360}} {{rotate}}
           </div>
         </div>
 
         <div class="form-group row justify-content-end">
-          <label class="col-sm-10 mb-0">
+          <label class="col-sm-7 mb-0">
             {{input type="checkbox" checked=spin}} Spin
           </label>
         </div>
 
         <div class="form-group row justify-content-end">
-          <label class="col-sm-10 mb-0">
+          <label class="col-sm-7 mb-0">
             {{input type="checkbox" checked=flipH}} Horizontal flip
           </label>
         </div>
+
         <div class="form-group row justify-content-end">
-          <label class="col-sm-10 mb-0">
+          <label class="col-sm-7 mb-0">
             {{input type="checkbox" checked=flipV}} Vertical flip
           </label>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">Fill:</label>
+          <div class="col-sm-7 d-flex align-items-center">
+            {{spectrum-color-picker color=fill preferredFormat="hex" onChange=(action (mut fill))}}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label">Stroke:</label>
+          <div class="col-sm-7 d-flex align-items-center">
+            {{spectrum-color-picker color=stroke preferredFormat="hex" onChange=(action (mut stroke))}}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-5 col-form-label pr-0">Stroke width:</label>
+          <div class="col-sm-7 d-flex align-items-center">
+            {{input type="range" class="mr-3" value=strokeWidth min=0 max=10}} {{strokeWidth}}
+          </div>
+        </div>
+
+        <div class="form-group row justify-content-end">
+          <label class="col-sm-5 col-form-label pr-0">Stroke linecap:</label>
+          <div class="col-sm-7 d-flex align-items-center">
+            {{#power-select
+              selected=strokeLinecap
+              options=strokeLinecapOptions
+              onchange=(action (mut strokeLinecap))
+              searchEnabled=false
+              triggerClass="form-control"
+              as |item|}}
+              {{item}}
+            {{/power-select}}
+          </div>
+        </div>
+
+        <div class="form-group row justify-content-end">
+          <label class="col-sm-5 col-form-label pr-0">Stroke linejoin:</label>
+          <div class="col-sm-7 d-flex align-items-center">
+            {{#power-select
+              selected=strokeLinejoin
+              options=strokeLinejoinOptions
+              onchange=(action (mut strokeLinejoin))
+              searchEnabled=false
+              triggerClass="form-control"
+              as |item|}}
+              {{item}}
+            {{/power-select}}
+          </div>
         </div>
       </div>
     </div>

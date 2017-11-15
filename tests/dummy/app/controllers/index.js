@@ -10,8 +10,14 @@ export default Controller.extend({
   rotate: '0',
   fill: null,
   searchText: '',
+  stroke: null,
+  strokeWidth: '0',
+  strokeLinecap: 'butt',
+  strokeLinecapOptions: ['butt', 'round', 'square'],
+  strokeLinejoin: 'miter',
+  strokeLinejoinOptions: ['miter', 'round', 'bevel'],
 
-  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', function () {
+  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', 'stroke', 'strokeWidth', 'strokeLinecap', 'strokeLinejoin', function () {
     const selectedIcon = this.get('selectedIcon');
     const size = this.get('size');
     const spin = this.get('spin');
@@ -19,6 +25,10 @@ export default Controller.extend({
     const flipV = this.get('flipV');
     const rotate = this.get('rotate');
     const fill = this.get('fill');
+    const stroke = this.get('stroke');
+    const strokeWidth = this.get('strokeWidth');
+    const strokeLinecap = this.get('strokeLinecap');
+    const strokeLinejoin = this.get('strokeLinejoin');
 
     let iconHbsCode = `{{mdi-icon "${selectedIcon}"`;
 
@@ -44,6 +54,22 @@ export default Controller.extend({
 
     if (fill) {
       iconHbsCode += ` fill="${fill}"`;
+    }
+
+    if (stroke) {
+      iconHbsCode += ` stroke="${stroke}"`;
+    }
+
+    if (strokeWidth !== '0') {
+      iconHbsCode += ` strokeWidth="${strokeWidth}"`;
+    }
+
+    if (strokeLinecap !== 'butt') {
+      iconHbsCode += ` strokeLinecap="${strokeLinecap}"`;
+    }
+
+    if (strokeLinejoin !== 'miter') {
+      iconHbsCode += ` strokeLinejoin="${strokeLinejoin}"`;
     }
 
     iconHbsCode += '}}';

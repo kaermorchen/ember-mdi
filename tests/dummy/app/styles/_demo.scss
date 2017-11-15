@@ -50,3 +50,7 @@ code {
     margin-bottom: map-get($spacers, 5);
   }
 }
+
+.sticky-top {
+  z-index: 1;
+}
