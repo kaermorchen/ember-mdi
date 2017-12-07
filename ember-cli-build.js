@@ -6,6 +6,10 @@ const broccoliAssetRevDefaults = require('broccoli-asset-rev/lib/default-options
 
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
+    'ember-cli-bootstrap-4': {
+      js: null
+    },
+
     fingerprint: {
       enabled: true,
       extensions: broccoliAssetRevDefaults.extensions.concat(['svg']),
