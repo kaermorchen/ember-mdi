@@ -69,6 +69,7 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "defaultBlueprint": "ember-mdi"
+    "defaultBlueprint": "ember-mdi",
+    "demoURL": "https://kaermorchen.github.io/ember-mdi/"
   }
 }
