@@ -1,4 +1,3 @@
-/* eslint-env node */
 'use strict';
 
 var svgstore = require('broccoli-svgstore');
