@@ -20,7 +20,7 @@ export default Route.extend({
     });
   },
 
-  icons: [
+  icons: Object.freeze([
     "access-point",
     "access-point-network",
     "account",
@@ -2067,5 +2067,5 @@ export default Route.extend({
     "yin-yang",
     "youtube-play",
     "zip-box",
-  ]
+  ])
 });

@@ -14,7 +14,11 @@ export default Component.extend({
   searchText: '',
 
   click() {
-    this.sendAction('onClick', this.get('icon'));
+    const onClick = this.get('onClick');
+
+    if (onClick) {
+      onClick(this.get('icon'));
+    }
   },
 
   isShown: computed('icon', 'meta', 'searchText', function() {
