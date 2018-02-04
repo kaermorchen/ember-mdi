@@ -1,7 +1,6 @@
 'use strict';
 
 var svgstore = require('broccoli-svgstore');
-var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 var path = require('path');
 

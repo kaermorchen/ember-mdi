@@ -31,10 +31,11 @@
     "deploy": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -"
   },
   "dependencies": {
-    "ember-cli-htmlbars": "^2.0.1",
-    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
+    "broccoli-funnel": "^2.0.1",
     "broccoli-svgstore": "^0.4.2",
     "ember-cli-babel": "^6.8.2",
+    "ember-cli-htmlbars": "^2.0.1",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "mdi-svg": "2.1.19"
   },
   "devDependencies": {
