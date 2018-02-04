@@ -5,9 +5,9 @@
     </div>
 
     <div class="d-flex flex-wrap">
-      {{#each-in model as |icon value|}}
-        {{demo-icon icon=icon searchText=searchText meta=value onClick=(action (mut selectedIcon) icon)}}
-      {{/each-in}}
+      {{#each model as |item|}}
+        {{demo-icon searchText=searchText meta=item onClick=(action (mut selectedIcon))}}
+      {{/each}}
     </div>
   </div>
 

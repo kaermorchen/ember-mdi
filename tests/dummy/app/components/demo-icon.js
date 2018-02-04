@@ -9,7 +9,6 @@ export default Component.extend({
   classNames: ['demo-icon'],
   classNameBindings: ['isShown::d-none'],
 
-  icon: null,
   meta: null,
   searchText: '',
 
@@ -17,14 +16,14 @@ export default Component.extend({
     const onClick = this.get('onClick');
 
     if (onClick) {
-      onClick(this.get('icon'));
+      onClick(this.get('meta.name'));
     }
   },
 
-  isShown: computed('icon', 'meta', 'searchText', function() {
+  isShown: computed('meta', 'searchText', function() {
     const searchText = this.get('searchText').toLowerCase();
-    const icon = this.get('icon');
     const meta = this.get('meta');
+    const icon = meta.name;
 
     if (isEmpty(searchText)) {
       return true;
