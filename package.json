@@ -35,7 +35,7 @@
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "broccoli-svgstore": "^0.4.2",
     "ember-cli-babel": "^6.8.2",
-    "mdi-svg": "2.0.46"
+    "mdi-svg": "2.1.19"
   },
   "devDependencies": {
     "bootstrap": "^4.0.0-beta",
