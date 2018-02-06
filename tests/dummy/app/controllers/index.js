@@ -13,9 +13,9 @@ export default Controller.extend({
   stroke: null,
   strokeWidth: '0',
   strokeLinecap: 'butt',
-  strokeLinecapOptions: ['butt', 'round', 'square'],
+  strokeLinecapOptions: Object.freeze(['butt', 'round', 'square']),
   strokeLinejoin: 'miter',
-  strokeLinejoinOptions: ['miter', 'round', 'bevel'],
+  strokeLinejoinOptions: Object.freeze(['miter', 'round', 'bevel']),
 
   iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', 'stroke', 'strokeWidth', 'strokeLinecap', 'strokeLinejoin', function () {
     const selectedIcon = this.get('selectedIcon');
