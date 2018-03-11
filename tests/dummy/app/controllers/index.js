@@ -1,20 +1,26 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 
+const defaultSize = '24';
+const defaultRotate = '0';
+const defaultStrokeWidth = '0';
+const defaultStrokeLinecap = 'butt';
+const defaultStrokeLinejoin = 'miter';
+
 export default Controller.extend({
   selectedIcon: 'access-point',
-  size: '24',
+  size: '60',
   spin: false,
   flipH: false,
   flipV: false,
-  rotate: '0',
+  rotate: defaultRotate,
   fill: null,
   searchText: '',
   stroke: null,
-  strokeWidth: '0',
-  strokeLinecap: 'butt',
+  strokeWidth: defaultStrokeWidth,
+  strokeLinecap: defaultStrokeLinecap,
   strokeLinecapOptions: Object.freeze(['butt', 'round', 'square']),
-  strokeLinejoin: 'miter',
+  strokeLinejoin: defaultStrokeLinejoin,
   strokeLinejoinOptions: Object.freeze(['miter', 'round', 'bevel']),
 
   iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', 'stroke', 'strokeWidth', 'strokeLinecap', 'strokeLinejoin', function () {
@@ -32,7 +38,7 @@ export default Controller.extend({
 
     let iconHbsCode = `{{mdi-icon "${selectedIcon}"`;
 
-    if (size !== '24') {
+    if (size !== defaultSize) {
       iconHbsCode += ` size=${size}`;
     }
 
@@ -48,7 +54,7 @@ export default Controller.extend({
       iconHbsCode += ` flipH=${flipV}`;
     }
 
-    if (rotate !== '0') {
+    if (rotate !== defaultRotate) {
       iconHbsCode += ` rotate=${rotate}`;
     }
 
@@ -60,15 +66,15 @@ export default Controller.extend({
       iconHbsCode += ` stroke="${stroke}"`;
     }
 
-    if (strokeWidth !== '0') {
+    if (strokeWidth !== defaultStrokeWidth) {
       iconHbsCode += ` strokeWidth="${strokeWidth}"`;
     }
 
-    if (strokeLinecap !== 'butt') {
+    if (strokeLinecap !== defaultStrokeLinecap) {
       iconHbsCode += ` strokeLinecap="${strokeLinecap}"`;
     }
 
-    if (strokeLinejoin !== 'miter') {
+    if (strokeLinejoin !== defaultStrokeLinejoin) {
       iconHbsCode += ` strokeLinejoin="${strokeLinejoin}"`;
     }
 
