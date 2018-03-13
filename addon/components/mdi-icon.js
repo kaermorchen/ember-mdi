@@ -10,7 +10,7 @@ const mdiIcon = Component.extend({
   tagName: 'svg',
   classNames: ['mdi-icon'],
   classNameBindings: ['iconClass', 'spin:mdi-icon-spin'],
-  attributeBindings: ['role', 'size:height', 'size:width', 'viewBox', 'transform'],
+  attributeBindings: ['role', 'size:height', 'size:width', 'viewbox', 'transform'],
 
   size: 24,
   role: 'img',
@@ -43,7 +43,7 @@ const mdiIcon = Component.extend({
     return `mdi-icon-${this.get('icon')}`;
   }),
 
-  viewBox: computed('size', function() {
+  viewbox: computed('size', function() {
     const size = this.get('size');
 
     return `0 0 ${size} ${size}`;

@@ -21,7 +21,7 @@ test('properties work', function(assert) {
   assert.ok(this.$('svg').hasClass('mdi-icon-alert'), 'Has the class mdi-icon-alert');
 
   this.render(hbs`{{mdi-icon "bug" size=42}}`);
-  assert.equal(this.$('svg').attr('viewBox'), '0 0 42 42', 'viewBox is correct');
+  assert.equal(this.$('svg').attr('viewbox'), '0 0 42 42', 'viewbox is correct');
   assert.equal(this.$('svg').attr('height'), '42', 'height is correct');
   assert.equal(this.$('svg').attr('width'), '42', 'width is correct');
 
