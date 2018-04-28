@@ -16,7 +16,7 @@ module.exports = function(defaults) {
     }
   });
 
-  app.import('node_modules/mdi-svg/meta.json', {destDir: ''});
+  app.import('node_modules/@mdi/svg/meta.json', {destDir: ''});
 
   return app.toTree();
 };

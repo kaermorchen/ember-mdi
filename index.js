@@ -12,7 +12,7 @@ module.exports = {
   name: 'ember-mdi',
 
   treeForPublic: function () {
-    var svgsPath = path.join('node_modules', 'mdi-svg', 'svg');
+    var svgsPath = path.join('node_modules', '@mdi', 'svg', 'svg');
     var options = Object.assign({}, defaultOptions, this.app.options[this.name]);
     var include = Array.isArray(options.icons) ? options.icons.map(item => item + '.svg') : null;
 
