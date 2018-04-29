@@ -1,49 +1,70 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('mdi-icon', 'Integration | Component | mdi icon', {
-  integration: true
-});
+module('Integration | Component | mdi icon', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{mdi-icon icon="face"}}`);
-  assert.equal(this.$('svg').html().trim(), '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons.svg#face"></use>', 'Icon face is correct');
+  test('it renders', async function(assert) {
+    this.set('icon', 'face');
 
-  this.render(hbs`{{mdi-icon "bug"}}`);
-  assert.equal(this.$('svg').html().trim(), '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons.svg#bug"></use>', 'Icon bug is correct');
-});
+    await render(hbs`{{mdi-icon icon=icon}}`);
 
-test('properties work', function(assert) {
-  this.render(hbs`{{mdi-icon "bug"}}`);
-  assert.ok(this.$('svg').hasClass('mdi-icon'), 'Has the class mdi-icon');
+    assert.dom('svg').hasClass('mdi-icon');
+    assert.dom('use').hasAttribute('xlink:href', /#face$/);
 
-  this.render(hbs`{{mdi-icon "alert"}}`);
-  assert.ok(this.$('svg').hasClass('mdi-icon-alert'), 'Has the class mdi-icon-alert');
+    this.set('icon', 'bug');
+    assert.dom('use').hasAttribute('xlink:href', /#bug$/);
+  });
 
-  this.render(hbs`{{mdi-icon "bug" size=42}}`);
-  assert.equal(this.$('svg').attr('viewbox'), '0 0 42 42', 'viewbox is correct');
-  assert.equal(this.$('svg').attr('height'), '42', 'height is correct');
-  assert.equal(this.$('svg').attr('width'), '42', 'width is correct');
+  test('should has icon class', async function(assert) {
+    await render(hbs`{{mdi-icon "alert"}}`);
 
-  this.render(hbs`{{mdi-icon "bug" spin=true}}`);
-  assert.ok(this.$('svg').hasClass('mdi-icon-spin'), 'Spin class');
+    assert.dom('svg').hasClass('mdi-icon-alert');
+  });
 
-  const rotate = 90;
-  this.set('rotate', rotate);
-  this.render(hbs`{{mdi-icon "bug" rotate=rotate }}`);
-  assert.equal(this.$('svg').attr('transform'), `rotate(${rotate})`, 'Rotate is correct');
+  test('should change size', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" size=42}}`);
 
-  this.render(hbs`{{mdi-icon "bug" flipH=true}}`);
-  assert.ok(this.$('svg').attr('transform').indexOf('scale(-1,1)') >= 0, 'Horizontal flip is correct');
+    assert.dom('svg').hasAttribute('viewbox', '0 0 42 42');
+    assert.dom('svg').hasAttribute('height', '42');
+    assert.dom('svg').hasAttribute('width', '42');
+  });
 
-  this.render(hbs`{{mdi-icon "bug" flipV=true}}`);
-  assert.ok(this.$('svg').attr('transform').indexOf('scale(1,-1)') >= 0, 'Vertical flip is correct');
+  test('should has spin class', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" spin=true}}`);
 
-  this.render(hbs`{{mdi-icon "bug" role="icon"}}`);
-  assert.equal(this.$('svg').attr('role'), 'icon', 'Role is correct');
+    assert.dom('svg').hasClass('mdi-icon-spin');
+  });
 
-  const fill = 'green';
-  this.set('fill', fill);
-  this.render(hbs`{{mdi-icon "bug" fill=fill}}`);
-  assert.equal(this.$('use').attr('fill'), fill, 'Fill is correct');
+  test('should has rotate attribute', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" rotate=90}}`);
+
+    assert.dom('svg').hasAttribute('transform', 'rotate(90)');
+  });
+
+  test('should has horizontal scale', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" flipH=true}}`);
+
+    assert.dom('svg').hasAttribute('transform', 'scale(-1,1)');
+  });
+
+  test('should has vertical scale', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" flipV=true}}`);
+
+    assert.dom('svg').hasAttribute('transform', 'scale(1,-1)');
+  });
+
+  test('should has role attribute', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" role="icon"}}`);
+
+    assert.dom('svg').hasAttribute('role', 'icon');
+  });
+
+  test('should has fill attribute', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" fill="green"}}`);
+
+    assert.dom('use').hasAttribute('fill', 'green');
+  });
 });
