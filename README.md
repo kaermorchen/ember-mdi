@@ -52,8 +52,8 @@ module.exports = function(defaults) {
 We get follow html:
 
 ```html
-<svg viewbox="0 0 24 24" width="24" height="24" role="img" class="mdi-icon ember-view">
-   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons.svg#bug"></use>
+<svg viewbox="0 0 24 24" width="24" height="24" role="img" class="mdi-icon mdi-icon-bug ember-view">
+   <use xlink:href="/assets/icons.svg#bug"></use>
 </svg>
 ```
 
