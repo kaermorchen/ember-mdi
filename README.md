@@ -8,7 +8,7 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"></a>
 </p>
 
-An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons (about 2000) are added into project as single **SVG** file `/assets/icons.svg`.
+An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons are added into project as single **SVG** file `/assets/icons.svg`.
 
 ### [Demo](https://kaermorchen.github.io/ember-mdi/)
 
