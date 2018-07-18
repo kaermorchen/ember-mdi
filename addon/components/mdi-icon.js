@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { assert } from '@ember/debug';
 import { computed } from '@ember/object';
-import { oneWay } from '@ember/object/computed';
 import { isPresent } from '@ember/utils';
 import layout from '../templates/components/mdi-icon';
 
@@ -35,9 +34,6 @@ const mdiIcon = Component.extend({
     // Require that users pass an icon
     assert('{{mdi-icon}} requires an `icon` to be passed as the value.', isPresent(this.get('icon')));
   },
-
-  // FIX: We use iconValue in template because `icon` property has conflict with helper `icon` (ember-leaflet)
-  iconValue: oneWay('icon'),
 
   iconClass: computed('icon', function() {
     return `mdi-icon-${this.get('icon')}`;
