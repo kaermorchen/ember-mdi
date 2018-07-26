@@ -8,7 +8,7 @@ module.exports = {
 
   afterInstall: function () {
     return this.addPackagesToProject([
-      { name: '@mdi/svg', target: '2.4.85' }
+      { name: '@mdi/svg', target: '2.5.94' }
     ]);
   }
 };
