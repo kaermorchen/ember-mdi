@@ -1,10 +1,8 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+import fetch from 'fetch';
 
 export default Route.extend({
-  ajax: service(),
-
   model() {
-    return this.get('ajax').request('/ember-mdi/meta.json');
+    return fetch('/ember-mdi/meta.json').then(response => response.json());
   }
 });
