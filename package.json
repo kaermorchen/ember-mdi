@@ -33,7 +33,7 @@
     "test:all": "ember try:each"
   },
   "dependencies": {
-    "@mdi/svg": "2.6.95",
+    "@mdi/svg": "^3.0.0",
     "broccoli-funnel": "^2.0.1",
     "broccoli-svgstore": "^0.4.2",
     "ember-cli-babel": "^7.4.0",
