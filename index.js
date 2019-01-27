@@ -9,7 +9,7 @@ const defaultOptions = {
 };
 
 module.exports = {
-  name: 'ember-mdi',
+  name: require('./package').name,
 
   treeForPublic: function () {
     var svgsPath = path.join('node_modules', '@mdi', 'svg', 'svg');

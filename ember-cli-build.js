@@ -12,7 +12,11 @@ module.exports = function(defaults) {
     fingerprint: {
       enabled: true,
       extensions: broccoliAssetRevDefaults.extensions.concat(['svg']),
-      prepend: '/ember-mdi/'
+      prepend: '/ember-mdi/',
+      // FIX: an error: Browser failed to connect within 30s. testem.js not loaded?
+      exclude: [
+        'testem'
+      ]
     }
   });
 
