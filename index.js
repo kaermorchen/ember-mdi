@@ -1,9 +1,8 @@
 'use strict';
 
-var svgstore = require('broccoli-svgstore');
-var Funnel = require('broccoli-funnel');
-var path = require('path');
-
+const svgstore = require('broccoli-svgstore');
+const Funnel = require('broccoli-funnel');
+const path = require('path');
 const defaultOptions = {
   icons: null
 };
@@ -11,16 +10,16 @@ const defaultOptions = {
 module.exports = {
   name: require('./package').name,
 
-  treeForPublic: function () {
-    var svgsPath = path.join('node_modules', '@mdi', 'svg', 'svg');
-    var options = Object.assign({}, defaultOptions, this.app.options[this.name]);
-    var include = Array.isArray(options.icons) ? options.icons.map(item => item + '.svg') : null;
+  treeForPublic() {
+    const svgsPath = path.join('node_modules', '@mdi', 'svg', 'svg');
+    const options = Object.assign({}, defaultOptions, this.app.options[this.name]);
+    const include = Array.isArray(options.icons) ? options.icons.map(item => item + '.svg') : null;
 
-    var publicTree = new Funnel(svgsPath, {
+    const publicTree = new Funnel(svgsPath, {
       include
     });
 
-    var svgstoreTree = svgstore(publicTree, {
+    const svgstoreTree = svgstore(publicTree, {
       outputFile: '/assets/icons.svg'
     });
 
