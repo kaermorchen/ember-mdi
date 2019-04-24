@@ -108,5 +108,8 @@ export default mdiIcon.extend({
 });
 ```
 
+## Contributing
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
 ## License
 ember-mdi is released under the MIT License. See the bundled [LICENSE](LICENSE.md) file for details.
