@@ -89,30 +89,22 @@
         <div class="form-group row justify-content-end">
           <label class="col-sm-5 col-form-label pr-0">Stroke linecap:</label>
           <div class="col-sm-7 d-flex align-items-center">
-            {{#power-select
-              selected=strokeLinecap
-              options=strokeLinecapOptions
-              onchange=(action (mut strokeLinecap))
-              searchEnabled=false
-              triggerClass="form-control"
-              as |item|}}
-              {{item}}
-            {{/power-select}}
+            <select onchange={{action (mut strokeLinecap) value="target.value"}} class="form-control">
+              {{#each strokeLinecapOptions as |item|}}
+                <option value={{item}} selected={{eq item strokeLinecap}}>{{item}}</option>
+              {{/each}}
+            </select>
           </div>
         </div>
 
         <div class="form-group row justify-content-end">
           <label class="col-sm-5 col-form-label pr-0">Stroke linejoin:</label>
           <div class="col-sm-7 d-flex align-items-center">
-            {{#power-select
-              selected=strokeLinejoin
-              options=strokeLinejoinOptions
-              onchange=(action (mut strokeLinejoin))
-              searchEnabled=false
-              triggerClass="form-control"
-              as |item|}}
-              {{item}}
-            {{/power-select}}
+            <select onchange={{action (mut strokeLinejoin) value="target.value"}} class="form-control">
+              {{#each strokeLinejoinOptions as |item|}}
+                <option value={{item}} selected={{eq item strokeLinejoin}}>{{item}}</option>
+              {{/each}}
+            </select>
           </div>
         </div>
       </div>
