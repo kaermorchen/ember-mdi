@@ -3,6 +3,7 @@ import { assert } from '@ember/debug';
 import { computed } from '@ember/object';
 import { isPresent } from '@ember/utils';
 import layout from '../templates/components/mdi-icon';
+import icons from 'ember-mdi/icons';
 
 const mdiIcon = Component.extend({
   layout,

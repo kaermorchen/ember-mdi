@@ -2,11 +2,11 @@
 module.exports = {
   description: '',
 
-  normalizeEntityName: function (entityName) {
+  normalizeEntityName(entityName) {
     return entityName || "ember-mdi";
   },
 
-  afterInstall: function () {
+  afterInstall() {
     return this.addPackagesToProject([
       { name: '@mdi/svg', target: '^3.0.0' }
     ]);

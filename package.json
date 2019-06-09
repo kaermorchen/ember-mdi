@@ -34,12 +34,15 @@
   },
   "dependencies": {
     "@mdi/svg": "^3.0.0",
+    "broccoli-file-creator": "^2.1.1",
     "broccoli-funnel": "^2.0.2",
+    "broccoli-merge-trees": "^3.0.2",
     "broccoli-svgstore": "^0.4.2",
     "ember-cli-babel": "^7.7.3",
     "ember-cli-htmlbars": "^3.0.1",
     "ember-cli-htmlbars-inline-precompile": "^2.1.0",
     "ember-cli-sass": "^10.0.0",
+    "resolve": "^1.11.1",
     "sass": "^1.19.0"
   },
   "devDependencies": {
