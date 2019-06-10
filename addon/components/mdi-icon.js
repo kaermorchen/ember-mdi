@@ -36,6 +36,10 @@ const mdiIcon = Component.extend({
     assert('{{mdi-icon}} requires an `icon` to be passed as the value.', isPresent(this.get('icon')));
   },
 
+  d: computed('icon', function() {
+    return icons[this.get('icon')] || "";
+  }),
+
   iconClass: computed('icon', function() {
     return `mdi-icon-${this.get('icon')}`;
   }),
@@ -43,7 +47,7 @@ const mdiIcon = Component.extend({
   viewbox: computed('size', function() {
     const size = this.get('size');
 
-    return `0 0 ${size} ${size}`;
+    return `0 0 24 24`;
   }),
 
   transform: computed('rotate', 'flipH', 'flipV', function() {

@@ -5,6 +5,7 @@
 const mergeTrees = require('broccoli-merge-trees');
 const writeFile = require('broccoli-file-creator');
 const path = require('path');
+const fs = require('fs');
 const resolve = require('resolve');
 const defaultOptions = {
   icons: null
@@ -35,17 +36,29 @@ module.exports = {
 
     // let vendorPath = `vendor/${this.name}`;
     // let options = Object.assign({}, defaultOptions, app.options[this.name]);
-    let host = this._findHost();
+    const host = this._findHost();
 
     host.import('vendor/ember-mdi/icons.js');
   },
 
   treeForVendor(vendorTree) {
-    const icons = 'export default {hello:123}';
-    const babelAddon = this.addons.find(addon => addon.name === 'ember-cli-babel');
-    const iconsFile = writeFile('ember-mdi/icons.js', icons);
+    const svgsPath = path.join('node_modules', '@mdi', 'svg', 'svg');
+    const host = this._findHost();
+    const options = Object.assign({}, defaultOptions, host.options[this.name]);
+    const list = Array.isArray(options.icons) ? options.icons : fs.readdirSync(svgsPath).map(item => item.slice(0, -4));
+    const icons = {};
 
-    return mergeTrees([vendorTree, babelAddon.transpileTree(iconsFile)]);
+    list.forEach(function (item) {
+      const data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
+
+      icons[item] = /(?<=<path d=")(.+)(?=" \/\>)/.exec(data)[0];
+    });
+
+    const babelAddon = this.addons.find(addon => addon.name === 'ember-cli-babel');
+    const iconsTree = writeFile('ember-mdi/icons.js', `export default ${JSON.stringify(icons)}`);
+    const transpiledIconsTree = babelAddon.transpileTree(iconsTree);
+
+    return mergeTrees([vendorTree, transpiledIconsTree]);
   },
 
   resolvePackagePath(packageName) {
