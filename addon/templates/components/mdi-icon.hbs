@@ -1,1 +1,20 @@
-<path d={{this.d}} fill={{this.fill}} stroke={{this.stroke}} stroke-width={{this.strokeWidth}} stroke-linecap={{this.strokeLinecap}} stroke-linejoin={{this.strokeLinejoin}} stroke-dasharray={{this.strokeDasharray}} stroke-dashoffset={{this.strokeDashoffset}} stroke-opacity={{this.strokeOpacity}} />
+<svg
+  class="mdi-icon mdi-icon-{{this.icon}} {{if this.spin "mdi-icon-spin"}}"
+  width={{this.size}}
+  height={{this.size}}
+  transform={{this.transform}}
+  viewBox="0 0 24 24"
+  role="img"
+  >
+  <path
+    d={{this.d}}
+    fill={{this.fill}}
+    stroke={{this.stroke}}
+    stroke-width={{this.strokeWidth}}
+    stroke-linecap={{this.strokeLinecap}}
+    stroke-linejoin={{this.strokeLinejoin}}
+    stroke-dasharray={{this.strokeDasharray}}
+    stroke-dashoffset={{this.strokeDashoffset}}
+    stroke-opacity={{this.strokeOpacity}}
+  />
+</svg>

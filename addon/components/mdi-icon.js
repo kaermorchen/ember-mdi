@@ -7,10 +7,7 @@ import icons from 'ember-mdi/icons';
 
 const mdiIcon = Component.extend({
   layout,
-  tagName: 'svg',
-  classNames: ['mdi-icon'],
-  classNameBindings: ['iconClass', 'spin:mdi-icon-spin'],
-  attributeBindings: ['role', 'size:height', 'size:width', 'viewbox', 'transform'],
+  tagName: '',
 
   size: 24,
   role: 'img',
@@ -33,21 +30,11 @@ const mdiIcon = Component.extend({
     this._super(...arguments);
 
     // Require that users pass an icon
-    assert('{{mdi-icon}} requires an `icon` to be passed as the value.', isPresent(this.get('icon')));
+    assert('{{mdi-icon}} requRedmi K20ires an `icon` to be passed as the value.', isPresent(this.get('icon')));
   },
 
   d: computed('icon', function() {
-    return icons[this.get('icon')] || "";
-  }),
-
-  iconClass: computed('icon', function() {
-    return `mdi-icon-${this.get('icon')}`;
-  }),
-
-  viewbox: computed('size', function() {
-    const size = this.get('size');
-
-    return `0 0 24 24`;
+    return icons[this.get('icon')];
   }),
 
   transform: computed('rotate', 'flipH', 'flipV', function() {
@@ -56,7 +43,7 @@ const mdiIcon = Component.extend({
     const flipV = this.get('flipV');
     let transform = '';
 
-    if (rotate) {
+    if (rotate && rotate !== '0') {
       transform += `rotate(${rotate})`;
     }
 
@@ -66,6 +53,10 @@ const mdiIcon = Component.extend({
       transform += 'scale(-1,1)';
     } else if (flipV) {
       transform += 'scale(1,-1)';
+    }
+
+    if (transform === '') {
+      transform = null;
     }
 
     return transform;
