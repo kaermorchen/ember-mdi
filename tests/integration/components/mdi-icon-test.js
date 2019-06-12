@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import icons from 'ember-mdi/icons';
 
 module('Integration | Component | mdi icon', function(hooks) {
   setupRenderingTest(hooks);
@@ -12,10 +13,10 @@ module('Integration | Component | mdi icon', function(hooks) {
     await render(hbs`{{mdi-icon icon=icon}}`);
 
     assert.dom('svg').hasClass('mdi-icon');
-    assert.dom('use').hasAttribute('xlink:href', /#face$/);
+    assert.dom('path').hasAttribute('d', icons['face']);
 
     this.set('icon', 'bug');
-    assert.dom('use').hasAttribute('xlink:href', /#bug$/);
+    assert.dom('path').hasAttribute('d', icons['bug']);
   });
 
   test('should has icon class', async function(assert) {
@@ -27,7 +28,6 @@ module('Integration | Component | mdi icon', function(hooks) {
   test('should change size', async function(assert) {
     await render(hbs`{{mdi-icon "bug" size=42}}`);
 
-    assert.dom('svg').hasAttribute('viewbox', '0 0 42 42');
     assert.dom('svg').hasAttribute('height', '42');
     assert.dom('svg').hasAttribute('width', '42');
   });
@@ -65,6 +65,6 @@ module('Integration | Component | mdi icon', function(hooks) {
   test('should has fill attribute', async function(assert) {
     await render(hbs`{{mdi-icon "bug" fill="green"}}`);
 
-    assert.dom('use').hasAttribute('fill', 'green');
+    assert.dom('path').hasAttribute('fill', 'green');
   });
 });
