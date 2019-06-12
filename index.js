@@ -12,13 +12,10 @@ const defaultOptions = {
 module.exports = {
   name: require('./package').name,
 
-  included() {
+  included(app) {
     this._super.included.apply(this, arguments);
-    this._ensureFindHost();
 
-    const host = this._findHost();
-
-    host.import('vendor/ember-mdi/icons.js');
+    app.import('vendor/ember-mdi/icons.js');
   },
 
   treeForVendor(vendorTree) {
@@ -39,24 +36,4 @@ module.exports = {
 
     return new BroccoliMergeTrees([vendorTree, iconsTree]);
   },
-
-  resolvePackagePath(packageName) {
-    let host = this._findHost();
-    return path.dirname(resolve.sync(`${packageName}/package.json`, { basedir: host.project.root }));
-  },
-
-  _ensureFindHost() {
-    if (!this._findHost) {
-      this._findHost = function findHostShim() {
-        let current = this;
-        let app;
-
-        do {
-          app = current.app || app;
-        } while (current.parent.parent && (current = current.parent));
-
-        return app;
-      };
-    }
-  }
 };
