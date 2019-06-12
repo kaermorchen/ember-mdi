@@ -67,4 +67,10 @@ module('Integration | Component | mdi icon', function(hooks) {
 
     assert.dom('path').hasAttribute('fill', 'green');
   });
+
+  test('should has argument class', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" class="test-class"}}`);
+
+    assert.dom('svg').hasAttribute('class', /test-class$/);
+  });
 });
