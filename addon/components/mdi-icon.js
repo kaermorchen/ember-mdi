@@ -30,7 +30,7 @@ const mdiIcon = Component.extend({
     this._super(...arguments);
 
     // Require that users pass an icon
-    assert('{{mdi-icon}} requRedmi K20ires an `icon` to be passed as the value.', isPresent(this.get('icon')));
+    assert('{{mdi-icon}} requires an `icon` to be passed as the value.', isPresent(this.get('icon')));
   },
 
   d: computed('icon', function() {

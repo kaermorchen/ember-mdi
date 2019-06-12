@@ -17,7 +17,7 @@ module.exports = function(defaults) {
       exclude: [
         'testem'
       ]
-    }
+    },
   });
 
   app.import('node_modules/@mdi/svg/meta.json', {destDir: ''});
