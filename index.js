@@ -4,7 +4,6 @@ const BroccoliMergeTrees = require('broccoli-merge-trees');
 const writeFile = require('broccoli-file-creator');
 const path = require('path');
 const fs = require('fs');
-const resolve = require('resolve');
 const defaultOptions = {
   icons: null
 };
@@ -19,6 +18,12 @@ module.exports = {
   },
 
   treeForVendor(vendorTree) {
+    let trees = [];
+
+    if (vendorTree) {
+      trees.push(vendorTree);
+    }
+
     const svgsPath = path.join('node_modules', '@mdi', 'svg', 'svg');
     const host = this._findHost();
     const options = Object.assign({}, defaultOptions, host.options[this.name]);
@@ -34,6 +39,8 @@ module.exports = {
     const babelAddon = this.addons.find(addon => addon.name === 'ember-cli-babel');
     const iconsTree = babelAddon.transpileTree(writeFile('ember-mdi/icons.js', `export default ${JSON.stringify(icons)}`));
 
-    return new BroccoliMergeTrees([vendorTree, iconsTree]);
+    trees.push(iconsTree);
+
+    return new BroccoliMergeTrees(trees);
   },
 };
