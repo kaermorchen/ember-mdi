@@ -8,7 +8,7 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"></a>
 </p>
 
-An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons are added into project as single **SVG** file `/assets/icons.svg`.
+An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons are stored in the file `vendor.js`.
 
 Compatibility
 ------------------------------------------------------------------------------
@@ -35,34 +35,17 @@ Then include the following in your app.scss file:
 @import "ember-mdi";
 ```
 
-And configure fingerprinting for work with svg files.
-
-```js
-// ember-cli-build.js
-const broccoliAssetRevDefaults = require('broccoli-asset-rev/lib/default-options');
-
-module.exports = function(defaults) {
-  let app = new EmberApp(defaults, {
-    fingerprint: {
-      extensions: broccoliAssetRevDefaults.extensions.concat(['svg']), //add svg extension
-      prepend: '/ember-mdi/' //if do you have rootURL use `prepend` option
-    }
-  });
-  
-  ...
-```
-
 ## Usage
 
 ```mustache
-{{mdi-icon "bug"}}
+{{mdi-icon "alert"}}
 ```
 
 We get follow html:
 
 ```html
-<svg viewbox="0 0 24 24" width="24" height="24" role="img" class="mdi-icon mdi-icon-bug ember-view">
-   <use xlink:href="/assets/icons.svg#bug"></use>
+<svg class="mdi-icon mdi-icon-alert" width="24" height="24" viewBox="0 0 24 24" role="img">
+  <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
 </svg>
 ```
 
@@ -79,7 +62,7 @@ Component mdi-icon has some options with default values:
 ```
 
 ## Configuration
-By default ember-mdi store all icon in `icons.svg`. And it has the size about 750KB. If you don't need all icons, use the option `icons` for limit their. And ember-mdi will store only your specific icons. Don't forget restart `ember serve`.
+By default ember-mdi stores **all** icons. And it has the size about 750KB. If you don't need all icons, use the option `icons` for limit their. And ember-mdi will store only your specific icons. Don't forget restart `ember serve`.
 
 ```js
 // ember-cli-build.js
