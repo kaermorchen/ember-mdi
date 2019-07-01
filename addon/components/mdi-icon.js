@@ -9,6 +9,7 @@ const mdiIcon = Component.extend({
   layout,
   tagName: '',
 
+  title: null,
   size: 24,
   role: 'img',
   icon: null,

@@ -73,4 +73,10 @@ module('Integration | Component | mdi icon', function(hooks) {
 
     assert.dom('svg').hasAttribute('class', /test-class$/);
   });
+
+  test('should has title', async function(assert) {
+    await render(hbs`{{mdi-icon "bug" title="I am a bug"}}`);
+
+    assert.equal(this.element.querySelector('title').textContent, 'I am a bug');
+  });
 });

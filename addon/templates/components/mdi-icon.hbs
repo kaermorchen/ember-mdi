@@ -6,6 +6,9 @@
   viewBox="0 0 24 24"
   role={{this.role}}
   >
+  {{#if this.title}}
+    <title>{{this.title}}</title>
+  {{/if}}
   <path
     d={{this.d}}
     fill={{this.fill}}
