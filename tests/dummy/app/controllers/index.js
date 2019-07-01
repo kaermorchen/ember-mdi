@@ -81,5 +81,11 @@ export default Controller.extend({
     iconHbsCode += '}}';
 
     return iconHbsCode;
-  })
+  }),
+
+  actions: {
+    updateSearchText(text) {
+      this.set('searchText', text.toLowerCase());
+    }
+  }
 });

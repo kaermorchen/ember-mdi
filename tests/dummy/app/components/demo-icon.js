@@ -1,6 +1,4 @@
 import { computed } from '@ember/object';
-import { isEmpty } from '@ember/utils';
-import { A } from '@ember/array';
 import Component from '@ember/component';
 import layout from '../templates/components/demo-icon';
 
@@ -21,30 +19,39 @@ export default Component.extend({
   },
 
   isShown: computed('meta', 'searchText', function() {
-    const searchText = this.get('searchText').toLowerCase();
-    const meta = this.get('meta');
-    const icon = meta.name;
-
-    if (isEmpty(searchText)) {
-      return true;
-    }
-
-    if (icon.indexOf(searchText) !== -1) {
-      return true;
-    }
+    const searchText = this.searchText;
+    const meta = this.meta;
 
     if (!meta) {
       return false;
     }
 
-    const hasTag = A(meta.tags).any(function(item) {
-      return item.indexOf(searchText) !== -1;
-    });
+    if (searchText === '') {
+      return true;
+    }
 
-    const hasAlias = A(meta.aliases).any(function(item) {
-      return item.indexOf(searchText) !== -1;
-    });
+    if (meta.name.indexOf(searchText) !== -1) {
+      return true;
+    }
 
-    return hasTag || hasAlias;
+    let hasTag = false;
+    for (let i = 0; i < meta.tags.length; i++) {
+      if (meta.tags[i].indexOf(searchText) !== -1) {
+        hasTag = true;
+        break;
+      }
+    }
+    if (hasTag) {
+      return true;
+    }
+
+    let hasAlias = false;
+    for (let i = 0; i < meta.aliases.length; i++) {
+      if (meta.aliases[i].indexOf(searchText) !== -1) {
+        hasAlias = true;
+        break;
+      }
+    }
+    return hasAlias;
   }),
 });
