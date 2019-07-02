@@ -37,7 +37,7 @@ module.exports = {
     list.forEach(function (item) {
       const data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
 
-      icons[item] = /(?<=<path d=")(.+)(?=" \/\>)/.exec(data)[0]; //TODO: find a more simple way
+      icons[item] = /<path d="(.+)" \/>/.exec(data)[1]; //TODO: find a more simple way
     });
 
     const babelAddon = this.addons.find(addon => addon.name === 'ember-cli-babel');
