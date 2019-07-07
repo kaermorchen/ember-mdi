@@ -4,16 +4,7 @@
 }
 
 body {
-  background-color: $blue;
-  background-image: url("images/pattern.svg");
-  background-attachment: fixed;
-}
-
-.container {
-  padding-top: 3em;
-  padding-bottom: 3em;
   background-color: $white;
-  box-shadow: 0px 0px 6px rgba(0,0,0,0.5);
 }
 
 pre {
@@ -27,11 +18,15 @@ code {
 
 .demo-icon {
   display: inline-flex;
-  padding: $spacer;
-  margin-right: 2px;
-  margin-bottom: 2px;
-  border: solid 1px $border-color;
   cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+
+  &-name {
+    text-align: center;
+    margin-top: map-get($spacers, 1);
+    font-size: $font-size-sm;
+  }
 }
 
 .demo-icon-preview {

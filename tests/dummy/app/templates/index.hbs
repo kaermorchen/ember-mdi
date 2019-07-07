@@ -4,9 +4,13 @@
       {{input class="form-control" placeholder="Search" autofocus=true key-up=(action "updateSearchText")}}
     </div>
 
-    <div class="d-flex flex-wrap">
-      {{#each model as |item|}}
-        {{demo-icon searchText=searchText meta=item onClick=(action (mut selectedIcon))}}
+    <div class="row">
+      {{#each model as |meta|}}
+        <div class="col-2 demo-icon {{if meta.isHidden "d-none"}}" onclick={{action (mut selectedIcon) meta.name}}>
+          {{mdi-icon meta.name title=meta.name size=48}}
+
+          <div class="demo-icon-name">{{meta.name}}</div>
+        </div>
       {{/each}}
     </div>
   </div>
