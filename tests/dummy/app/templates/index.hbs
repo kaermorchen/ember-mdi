@@ -6,7 +6,7 @@
 
     <div class="row">
       {{#each model as |meta|}}
-        <div class="col-2 demo-icon {{if meta.isHidden "d-none"}}" onclick={{action (mut selectedIcon) meta.name}}>
+        <div class="col-2 demo-icon {{if meta.isHidden "d-none"}}" onclick={{action (mut selectedIcon) meta.name}} role="button">
           {{mdi-icon meta.name title=meta.name size=48}}
 
           <div class="demo-icon-name">{{meta.name}}</div>
