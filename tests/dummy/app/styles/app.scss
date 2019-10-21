@@ -3,4 +3,52 @@
 // @import "ember-mdi";
 // @import "demo";
 
-@import "modern-normalize.css";
+@import "modern-normalize";
+
+body {
+  height: 100vh;
+  color: #4c4962;
+
+  display: grid;
+  grid-template-columns: 300px 1fr;
+
+  & > aside {
+    background-color: #f2f2f2;
+
+    header {
+      padding: 0.5rem;
+    }
+  }
+
+  & > main {
+    padding: 1rem;
+  }
+}
+
+a {
+  color: #bf6c35;
+}
+
+.d-none {
+  display: none;
+}
+
+.mdi-icon {
+  fill: #4c4962;
+}
+
+.demo-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
+  grid-gap: 2vw;
+}
+
+textarea, select, input[type] {
+  font-size: 1.6rem;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  // background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+  display: block;
+  width: 100%;
+}

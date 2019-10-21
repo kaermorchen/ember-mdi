@@ -1,14 +1,24 @@
-<div class="container-fluid">
-  <div class="row mb-5">
-    <div class="col">
-      <h1>Ember Material Design Icons (ember-mdi)</h1>
-      <h2 class="h4 "><em>Based by <a href="https://materialdesignicons.com/" title="materialdesignicons.com">materialdesignicons.com</a></em> — {{model.length}} icons.</h2>
-    </div>
+<aside>
+  <header>
+    <h1>Ember Material Design Icons</h1>
+    <p>Based by <a href="https://materialdesignicons.com/" title="Material Design Icons" target="_blank" rel="noopener">Material Design Icons</a></p>
+  </header>
 
-    <div class="col-auto">
-      <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Loaders" class="btn btn-primary btn-lg d-flex align-items-center">{{mdi-icon "github-circle" class="mr-1" fill="white"}}View on Github</a>
-    </div>
+  {{!-- <div class="col-auto">
+    <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Loaders" class="btn btn-primary btn-lg d-flex align-items-center">{{mdi-icon "github-circle" class="mr-1" fill="white"}}View on Github</a>
+  </div> --}}
+</aside>
+
+<main>
+  {{input placeholder="Search" autofocus=true key-up=(action "updateSearchText")}}
+
+  <div class="demo-icons">
+    {{#each model as |meta|}}
+      <div class="demo-icon {{if meta.isHidden "d-none"}}" onclick={{action (mut selectedIcon) meta.name}} role="button">
+        {{mdi-icon meta.name title=meta.name size=34}}
+
+        {{!-- <div class="demo-icon-name">{{meta.name}}</div> --}}
+      </div>
+    {{/each}}
   </div>
-
-  {{outlet}}
-</div>
+</main>
