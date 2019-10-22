@@ -1,9 +1,5 @@
-// @import "custom";
-// @import "bootstrap";
-// @import "ember-mdi";
-// @import "demo";
-
 @import "modern-normalize";
+@import "ember-mdi";
 
 body {
   height: 100vh;
@@ -14,14 +10,15 @@ body {
 
   & > aside {
     background-color: #f2f2f2;
-
-    header {
-      padding: 0.5rem;
-    }
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   & > main {
     padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 
@@ -41,14 +38,56 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
   grid-gap: 2vw;
+  margin-bottom: 1rem;
 }
 
-textarea, select, input[type] {
-  font-size: 1.6rem;
+.search-field {
+  font-size: 1rem;
   padding: 8px 12px;
   margin-bottom: 1rem;
-  // background-color: #f2f2f2;
   border: 1px solid #f2f2f2;
   display: block;
   width: 100%;
+}
+
+input[type="checkbox"] {
+  display: inline;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.demo-icon-code {
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.demo-icon-preview {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+.demo-icon-settings {
+  display: grid;
+  grid-template-columns: [labels] auto [controls] 1fr;
+  grid-auto-flow: row;
+  grid-gap: 0.5rem;
+
+  & > .label {
+    grid-column: labels;
+    grid-row: auto;
+    margin-bottom: 0.5rem;
+  }
+
+  & > .control {
+    grid-column: controls;
+    grid-row: auto;
+    margin-bottom: 0.5rem;
+  }
 }

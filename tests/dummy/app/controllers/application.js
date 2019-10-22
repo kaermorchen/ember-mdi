@@ -37,8 +37,8 @@ const checkIsShown = function(searchText, meta) {
 }
 
 export default Controller.extend({
-  selectedIcon: 'access-point',
-  size: '60',
+  selectedIcon: 'heart',
+  size: '120',
   spin: false,
   flipH: false,
   flipV: false,
