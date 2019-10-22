@@ -26,6 +26,22 @@ a {
   color: #bf6c35;
 }
 
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4c4962;
+  border: none;
+  text-align: center;
+  color: white;
+  padding: 0.5rem;
+  text-decoration: none;
+
+  .mdi-icon {
+    margin-right: 0.5rem;
+  }
+}
+
 .d-none {
   display: none;
 }
