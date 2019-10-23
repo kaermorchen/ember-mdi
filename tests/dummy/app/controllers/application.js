@@ -15,25 +15,20 @@ const checkIsShown = function(searchText, meta) {
     return true;
   }
 
-  let hasTag = false;
+
   for (let i = 0; i < meta.tags.length; i++) {
     if (meta.tags[i].indexOf(searchText) !== -1) {
-      hasTag = true;
-      break;
+      return true;
     }
-  }
-  if (hasTag) {
-    return true;
   }
 
-  let hasAlias = false;
   for (let i = 0; i < meta.aliases.length; i++) {
     if (meta.aliases[i].indexOf(searchText) !== -1) {
-      hasAlias = true;
-      break;
+      return true;
     }
   }
-  return hasAlias;
+
+  return false;
 }
 
 export default Controller.extend({
