@@ -55,6 +55,10 @@ a {
   grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
   grid-gap: 2vw;
   margin-bottom: 1rem;
+
+  .demo-icon {
+    cursor: pointer;
+  }
 }
 
 .search-field {

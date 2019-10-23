@@ -116,6 +116,15 @@ export default Controller.extend({
 
         set(item, 'isHidden', !checkIsShown(searchText, item));
       }
+    },
+
+    updateSelectedItem(event) {
+      const iconWrapper = event.target.closest('.demo-icon');
+
+      if (iconWrapper && iconWrapper.dataset.name) {
+        this.set('selectedIcon', iconWrapper.dataset.name);
+      }
+      // console.log(event.target.closest('.demo-icon').dataset.name);
     }
   }
 });

@@ -73,11 +73,13 @@
 <main>
   {{input placeholder="Search" autofocus=true key-up=(action "updateSearchText") class="search-field"}}
 
-  <div class="demo-icons">
+  {{! template-lint-disable no-invalid-interactive }}
+  <div class="demo-icons" onclick={{action "updateSelectedItem"}}>
     {{#each model as |meta|}}
-      <div class="demo-icon {{if meta.isHidden "d-none"}}" onclick={{action (mut selectedIcon) meta.name}} role="button">
+      <div class="demo-icon {{if meta.isHidden "d-none"}}" data-name={{meta.name}}>
         {{mdi-icon meta.name title=meta.name size=34}}
       </div>
     {{/each}}
   </div>
+  {{! template-lint-enable no-invalid-interactive }}
 </main>
