@@ -6,13 +6,15 @@ body {
   color: #4c4962;
 
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 320px 1fr;
 
   & > aside {
     background-color: #f2f2f2;
     padding: 1rem;
     overflow-y: auto;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   & > main {
@@ -22,11 +24,15 @@ body {
   }
 }
 
+h1 {
+  margin: 0;
+}
+
 a {
   color: #bf6c35;
 }
 
-.btn {
+.github-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +42,7 @@ a {
   color: white;
   padding: 0.5rem;
   text-decoration: none;
+  margin-top: auto;
 
   .mdi-icon {
     margin-right: 0.5rem;
@@ -74,13 +81,20 @@ input[type="checkbox"] {
   display: inline;
 }
 
+select,
+input[type="range"] {
+  width: 100%;
+  display: block;
+}
+
 .mb-1 {
   margin-bottom: 1rem;
 }
 
 .demo-icon-code {
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
+  background-color: wheat;
 }
 
 .demo-icon-preview {

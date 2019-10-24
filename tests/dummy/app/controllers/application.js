@@ -124,7 +124,6 @@ export default Controller.extend({
       if (iconWrapper && iconWrapper.dataset.name) {
         this.set('selectedIcon', iconWrapper.dataset.name);
       }
-      // console.log(event.target.closest('.demo-icon').dataset.name);
     }
   }
 });
