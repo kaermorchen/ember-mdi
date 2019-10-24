@@ -8,16 +8,15 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"></a>
 </p>
 
-An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. All icons are stored in the file `vendor.js`.
+An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. 
+
+All icons are stored in the file `vendor.js`.
 
 Compatibility
 ------------------------------------------------------------------------------
 
 * Ember.js v2.18 or above
 * Ember CLI v2.13 or above
-
-Installation
-------------------------------------------------------------------------------
 
 ### [Demo](https://kaermorchen.github.io/ember-mdi/)
 
@@ -54,10 +53,20 @@ Component mdi-icon has some options with default values:
 ```mustache
 {{mdi-icon "alert" 
   size=24
+  title=null
+  fill=null
+  role="img"
   spin=false 
   flipH=false 
   flipV=false 
-  rotate=0}}
+  rotate=null
+  stroke=null,
+  strokeWidth=null,
+  strokeLinecap=null,
+  strokeLinejoin=null,
+  strokeDasharray=null,
+  strokeDashoffset=null,
+  strokeOpacity=null}}
 ```
 
 ## Configuration
