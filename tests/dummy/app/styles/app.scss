@@ -1,12 +1,14 @@
 @import "modern-normalize";
 @import "ember-mdi";
 
+.loading-indicator {
+  margin: auto;
+}
+
 body {
   height: 100vh;
   color: #4c4962;
-
-  display: grid;
-  grid-template-columns: 320px 1fr;
+  display: flex;
 
   & > aside {
     background-color: #f2f2f2;
@@ -15,9 +17,11 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    width: 320px;
   }
 
   & > main {
+    flex: 1;
     padding: 1rem;
     overflow-y: auto;
     overflow-x: hidden;
