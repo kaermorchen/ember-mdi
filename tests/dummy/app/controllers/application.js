@@ -1,15 +1,39 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
+import { computed, set } from '@ember/object';
 
 const defaultSize = '24';
 const defaultRotate = '0';
 const defaultStrokeWidth = '0';
 const defaultStrokeLinecap = 'butt';
 const defaultStrokeLinejoin = 'miter';
+const checkIsShown = function(searchText, meta) {
+  if (searchText === '') {
+    return true;
+  }
+
+  if (meta.name.indexOf(searchText) !== -1) {
+    return true;
+  }
+
+
+  for (let i = 0; i < meta.tags.length; i++) {
+    if (meta.tags[i].indexOf(searchText) !== -1) {
+      return true;
+    }
+  }
+
+  for (let i = 0; i < meta.aliases.length; i++) {
+    if (meta.aliases[i].indexOf(searchText) !== -1) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 export default Controller.extend({
-  selectedIcon: 'access-point',
-  size: '60',
+  selectedIcon: 'heart',
+  size: '120',
   spin: false,
   flipH: false,
   flipV: false,
@@ -81,5 +105,25 @@ export default Controller.extend({
     iconHbsCode += '}}';
 
     return iconHbsCode;
-  })
+  }),
+
+  actions: {
+    updateSearchText(text) {
+      const searchText = text.toLowerCase();
+
+      for (let i = 0; i < this.model.length; i++) {
+        const item = this.model[i];
+
+        set(item, 'isHidden', !checkIsShown(searchText, item));
+      }
+    },
+
+    updateSelectedItem(event) {
+      const iconWrapper = event.target.closest('.demo-icon');
+
+      if (iconWrapper && iconWrapper.dataset.name) {
+        this.set('selectedIcon', iconWrapper.dataset.name);
+      }
+    }
+  }
 });
