@@ -21,6 +21,12 @@ Compatibility
 
 ### [Demo](https://kaermorchen.github.io/ember-mdi/)
 
+<p align="center">
+  <a href="https://kaermorchen.github.io/ember-mdi/" alt="Demo">
+    <img src="https://github.com/kaermorchen/ember-mdi/raw/master/tests/dummy/public/assets/images/demo.png" alt="Demo">
+  </a>
+</p>
+
 ## Getting Started
 
 Install in ember-cli application
