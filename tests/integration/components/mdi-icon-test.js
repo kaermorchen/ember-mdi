@@ -77,6 +77,6 @@ module('Integration | Component | mdi icon', function(hooks) {
   test('should has title', async function(assert) {
     await render(hbs`{{mdi-icon "bug" title="I am a bug"}}`);
 
-    assert.equal(this.element.querySelector('title').textContent, 'I am a bug');
+    assert.dom(this.element.querySelector('title')).hasText('I am a bug');
   });
 });

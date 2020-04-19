@@ -1,85 +1,86 @@
-{{load-remover}}
+<LoadRemover />
 
 <aside>
   <header>
     <h1>Ember Material Design Icons</h1>
-    <p>Based by <a href="https://materialdesignicons.com/" title="Material Design Icons" target="_blank" rel="noopener">Material Design Icons</a></p>
+    <p>Based by <a href="https://materialdesignicons.com/" title="Material Design Icons" target="_blank" rel="noopener noreferrer">Material Design Icons</a></p>
   </header>
 
   <div class="demo-icon-code">
-    <code>{{iconHbsCode}}</code>
+    <code>{{this.iconHbsCode}}</code>
   </div>
 
   <div class="demo-icon-preview">
-    {{mdi-icon selectedIcon
-      size=size
-      spin=spin
-      flipH=flipH
-      flipV=flipV
-      rotate=rotate
-      fill=fill
-      stroke=stroke
-      strokeWidth=strokeWidth
-      strokeLinecap=strokeLinecap
-      strokeLinejoin=strokeLinejoin
-    }}
+    <MdiIcon
+      @icon={{this.selectedIcon}}
+      @size={{this.size}}
+      @spin={{this.spin}}
+      @flipH={{this.flipH}}
+      @flipV={{this.flipV}}
+      @rotate={{this.rotate}}
+      @fill={{this.fill}}
+      @stroke={{this.stroke}}
+      @strokeWidth={{this.strokeWidth}}
+      @strokeLinecap={{this.strokeLinecap}}
+      @strokeLinejoin={{this.strokeLinejoin}}
+    />
   </div>
 
   <div class="demo-icon-settings">
     <label class="label">Size:</label>
-    <div class="control">{{input type="range" value=size min=60 max=120}}</div>
+    <div class="control"><Input @type="range" @value={{this.size}} min="60" max="120" /></div>
 
     <label class="label">Rotate:</label>
-    <div class="control">{{input type="range" value=rotate min=0 max=359}}</div>
+    <div class="control"><Input @type="range" @value={{this.rotate}} min="0" max="359" /></div>
 
     <div class="label"></div>
-    <div class="control"><label>{{input type="checkbox" checked=spin}} Spin</label></div>
+    <div class="control"><label><Input @type="checkbox" @checked={{this.spin}} /> Spin</label></div>
 
     <div class="label"></div>
-    <div class="control"><label>{{input type="checkbox" checked=flipH}} Horizontal flip</label></div>
+    <div class="control"><label><Input @type="checkbox" @checked={{this.flipH}} /> Horizontal flip</label></div>
 
     <div class="label"></div>
-    <div class="control"><label>{{input type="checkbox" checked=flipV}} Vertical flip</label></div>
+    <div class="control"><label><Input @type="checkbox" @checked={{this.flipV}} /> Vertical flip</label></div>
 
     <label class="label">Fill:</label>
-    <div class="control">{{input type="color" value=fill onChange=(action (mut fill))}}</div>
+    <div class="control"><Input @type="color" @value={{this.fill}} /></div>
 
     <label class="label">Stroke:</label>
-    <div class="control">{{input type="color" value=stroke onChange=(action (mut stroke))}}</div>
+    <div class="control"><Input @type="color" @value={{this.stroke}} /></div>
 
     <label class="label">Stroke width:</label>
-    <div class="control">{{input type="range" class="form-control-range" value=strokeWidth min=0 max=3}}</div>
+    <div class="control"><Input @type="range" class="form-control-range" @value={{this.strokeWidth}} min="0" max="3" /></div>
 
     <label class="label">Stroke linecap:</label>
     <div class="control">
-      <select onchange={{action (mut strokeLinecap) value="target.value"}} class="form-control">
-        {{#each strokeLinecapOptions as |item|}}
-          <option value={{item}} selected={{eq item strokeLinecap}}>{{item}}</option>
+      <select class="form-control" {{on "change" this.updateStrokeLinecap}}>
+        {{#each this.strokeLinecapOptions as |item|}}
+          <option value={{item}} selected={{eq item this.strokeLinecap}}>{{item}}</option>
         {{/each}}
       </select>
     </div>
 
     <label class="label">Stroke linejoin:</label>
     <div class="control">
-      <select onchange={{action (mut strokeLinejoin) value="target.value"}} class="form-control">
-        {{#each strokeLinejoinOptions as |item|}}
-          <option value={{item}} selected={{eq item strokeLinejoin}}>{{item}}</option>
+      <select class="form-control" {{on "change" this.updateStrokeLinejoin}}>
+        {{#each this.strokeLinejoinOptions as |item|}}
+          <option value={{item}} selected={{eq item this.strokeLinejoin}}>{{item}}</option>
         {{/each}}
       </select>
     </div>
   </div>
 
-  <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Material Design Icons" class="github-btn">{{mdi-icon "github-circle" fill="white"}}View on Github</a>
+  <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Material Design Icons" class="github-btn"><MdiIcon @icon="github-circle" @fill="white" />View on Github</a>
 </aside>
 
 <main>
-  {{input placeholder="Search" autofocus=true key-up=(action "updateSearchText") class="search-field"}}
+  <Input placeholder="Search" autofocus={{true}} class="search-field" {{on "input" this.updateSearchText}}/>
 
   {{! template-lint-disable no-invalid-interactive }}
-  <div class="demo-icons" onclick={{action "updateSelectedItem"}}>
-    {{#each model as |meta|}}
+  <div class="demo-icons" {{on "click" this.updateSelectedItem}}>
+    {{#each @model as |meta|}}
       <div class="demo-icon {{if meta.isHidden "d-none"}}" data-name={{meta.name}}>
-        {{mdi-icon meta.name title=meta.name size=34}}
+        <MdiIcon @icon={{meta.name}} @title={{meta.name}} @size={{34}} />
       </div>
     {{/each}}
   </div>

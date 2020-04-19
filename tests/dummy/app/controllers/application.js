@@ -1,5 +1,7 @@
 import Controller from '@ember/controller';
 import { computed, set } from '@ember/object';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 const defaultSize = '24';
 const defaultRotate = '0';
@@ -31,99 +33,98 @@ const checkIsShown = function(searchText, meta) {
   return false;
 }
 
-export default Controller.extend({
-  selectedIcon: 'heart',
-  size: '120',
-  spin: false,
-  flipH: false,
-  flipV: false,
-  rotate: defaultRotate,
-  fill: null,
-  searchText: '',
-  stroke: null,
-  strokeWidth: defaultStrokeWidth,
-  strokeLinecap: defaultStrokeLinecap,
-  strokeLinecapOptions: Object.freeze(['butt', 'round', 'square']),
-  strokeLinejoin: defaultStrokeLinejoin,
-  strokeLinejoinOptions: Object.freeze(['miter', 'round', 'bevel']),
+export default class IndeController extends Controller {
+  @tracked selectedIcon = 'heart';
+  @tracked size = '120';
+  @tracked spin = false;
+  @tracked flipH = false;
+  @tracked flipV = false;
+  @tracked rotate = defaultRotate;
+  @tracked fill = null;
+  @tracked searchText = '';
+  @tracked stroke = null;
+  @tracked strokeWidth = defaultStrokeWidth;
+  @tracked strokeLinecap = defaultStrokeLinecap;
+  @tracked strokeLinecapOptions = Object.freeze(['butt', 'round', 'square']);
+  @tracked strokeLinejoin = defaultStrokeLinejoin;
+  @tracked strokeLinejoinOptions = Object.freeze(['miter', 'round', 'bevel']);
 
-  iconHbsCode: computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', 'stroke', 'strokeWidth', 'strokeLinecap', 'strokeLinejoin', function () {
-    const selectedIcon = this.get('selectedIcon');
-    const size = this.get('size');
-    const spin = this.get('spin');
-    const flipH = this.get('flipH');
-    const flipV = this.get('flipV');
-    const rotate = this.get('rotate');
-    const fill = this.get('fill');
-    const stroke = this.get('stroke');
-    const strokeWidth = this.get('strokeWidth');
-    const strokeLinecap = this.get('strokeLinecap');
-    const strokeLinejoin = this.get('strokeLinejoin');
+  @computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', 'stroke', 'strokeWidth', 'strokeLinecap', 'strokeLinejoin')
+  get iconHbsCode() {
+    let iconHbsCode = `{{mdi-icon "${this.selectedIcon}"`;
 
-    let iconHbsCode = `{{mdi-icon "${selectedIcon}"`;
-
-    if (size !== defaultSize) {
-      iconHbsCode += ` size=${size}`;
+    if (this.size !== defaultSize) {
+      iconHbsCode += ` size=${this.size}`;
     }
 
-    if (spin) {
-      iconHbsCode += ` spin=${spin}`;
+    if (this.spin) {
+      iconHbsCode += ` spin=${this.spin}`;
     }
 
-    if (flipH) {
-      iconHbsCode += ` flipH=${flipH}`;
+    if (this.flipH) {
+      iconHbsCode += ` flipH=${this.flipH}`;
     }
 
-    if (flipV) {
-      iconHbsCode += ` flipH=${flipV}`;
+    if (this.flipV) {
+      iconHbsCode += ` flipH=${this.flipV}`;
     }
 
-    if (rotate !== defaultRotate) {
-      iconHbsCode += ` rotate=${rotate}`;
+    if (this.rotate !== defaultRotate) {
+      iconHbsCode += ` rotate=${this.rotate}`;
     }
 
-    if (fill) {
-      iconHbsCode += ` fill="${fill}"`;
+    if (this.fill) {
+      iconHbsCode += ` fill="${this.fill}"`;
     }
 
-    if (stroke) {
-      iconHbsCode += ` stroke="${stroke}"`;
+    if (this.stroke) {
+      iconHbsCode += ` stroke="${this.stroke}"`;
     }
 
-    if (strokeWidth !== defaultStrokeWidth) {
-      iconHbsCode += ` strokeWidth="${strokeWidth}"`;
+    if (this.strokeWidth !== defaultStrokeWidth) {
+      iconHbsCode += ` strokeWidth="${this.strokeWidth}"`;
     }
 
-    if (strokeLinecap !== defaultStrokeLinecap) {
-      iconHbsCode += ` strokeLinecap="${strokeLinecap}"`;
+    if (this.strokeLinecap !== defaultStrokeLinecap) {
+      iconHbsCode += ` strokeLinecap="${this.strokeLinecap}"`;
     }
 
-    if (strokeLinejoin !== defaultStrokeLinejoin) {
-      iconHbsCode += ` strokeLinejoin="${strokeLinejoin}"`;
+    if (this.strokeLinejoin !== defaultStrokeLinejoin) {
+      iconHbsCode += ` strokeLinejoin="${this.strokeLinejoin}"`;
     }
 
     iconHbsCode += '}}';
 
     return iconHbsCode;
-  }),
+  }
 
-  actions: {
-    updateSearchText(text) {
-      const searchText = text.toLowerCase();
+  @action
+  updateStrokeLinecap(event) {
+    this.strokeLinecap = event.target.value;
+  }
 
-      for (let i = 0; i < this.model.length; i++) {
-        const item = this.model[i];
+  @action
+  updateStrokeLinejoin(event) {
+    this.strokeLinejoin = event.target.value;
+  }
 
-        set(item, 'isHidden', !checkIsShown(searchText, item));
-      }
-    },
+  @action
+  updateSearchText(event) {
+    const searchText = event.target.value.toLowerCase();
 
-    updateSelectedItem(event) {
-      const iconWrapper = event.target.closest('.demo-icon');
+    for (let i = 0; i < this.model.length; i++) {
+      const item = this.model[i];
 
-      if (iconWrapper && iconWrapper.dataset.name) {
-        this.set('selectedIcon', iconWrapper.dataset.name);
-      }
+      set(item, 'isHidden', !checkIsShown(searchText, item));
     }
   }
-});
+
+  @action
+  updateSelectedItem(event) {
+    const iconWrapper = event.target.closest('.demo-icon');
+
+    if (iconWrapper && iconWrapper.dataset.name) {
+      this.selectedIcon = iconWrapper.dataset.name;
+    }
+  }
+};
