@@ -44,37 +44,36 @@ Then include the following in your app.scss file:
 ## Usage
 
 ```mustache
-{{mdi-icon "alert"}}
+<MdIcon @icon="alert"/>
 ```
 
 We get follow html:
 
 ```html
-<svg class="mdi-icon mdi-icon-alert" width="24" height="24" viewBox="0 0 24 24" role="img">
+<svg class="md-icon md-icon-alert" width="24" height="24" viewBox="0 0 24 24" role="img">
   <path d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" />
 </svg>
 ```
 
-Component mdi-icon has some options with default values: 
+Component md-icon has some options with default values: 
 
-```mustache
-{{mdi-icon "alert" 
-  size=24
-  title=null
-  fill=null
-  role="img"
-  spin=false 
-  flipH=false 
-  flipV=false 
-  rotate=null
-  stroke=null,
-  strokeWidth=null,
-  strokeLinecap=null,
-  strokeLinejoin=null,
-  strokeDasharray=null,
-  strokeDashoffset=null,
-  strokeOpacity=null}}
-```
+| Name              | Value |
+|-------------------|-------|
+| @size             | 24    |
+| @title            | null  |
+| @fill             | null  |
+| @role             | "img" |
+| @spin             | false |
+| @flipH            | false |
+| @flipV            | false |
+| @rotate           | null  |
+| @stroke           | null  |
+| @strokeWidth      | null  |
+| @strokeLinecap    | null  |
+| @strokeLinejoin   | null  |
+| @strokeDasharray  | null  |
+| @strokeDashoffset | null  |
+| @strokeOpacity    | null  |
 
 ## Configuration
 By default ember-mdi stores **all** icons. And it has the size about 750KB. If you don't need all icons, use the option `icons` for limit their. And ember-mdi will store only your specific icons. Don't forget restart `ember serve`.
@@ -94,16 +93,16 @@ module.exports = function(defaults) {
 ```
 
 ## System-wide config
-If you want to apply some options to all your icons, you need create the `mdi-icon` component and apply they inside it:
+If you want to apply some options to all your icons, you need create the `md-icon` component and apply they inside it:
 
 ```js
-import mdiIcon from 'ember-mdi/components/mdi-icon';
+import MdIcon from 'ember-mdi/components/md-icon';
 
-export default mdiIcon.extend({
+export default class extends MdIcon {
   // Place here your preferences
-  size: 28,
-  fill: 'blue'
-});
+  size = 28
+  fill = 'blue'
+}
 ```
 
 ## Contributing
