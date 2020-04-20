@@ -1,24 +1,24 @@
 <svg
-  class="md-icon md-icon-{{@icon}}"
-  {{!-- width={{this.size}}
+  class="md-icon md-icon-{{@icon}} {{if @spin "md-icon-animation-spin"}}"
+  width={{this.size}}
   height={{this.size}}
-  transform={{this.transform}}
   viewBox="0 0 24 24"
-  role={{@role}}
-  ...attributes --}}
+  transform={{this.transform}}
+  role={{this.role}}
+  ...attributes
   >
-  {{!-- {{#if @title}}
+  {{#if @title}}
     <title>{{@title}}</title>
-  {{/if}} --}}
+  {{/if}}
   <path
     d={{this.d}}
-    {{!-- fill={{@fill}}
+    fill={{@fill}}
     stroke={{@stroke}}
     stroke-width={{@strokeWidth}}
     stroke-linecap={{@strokeLinecap}}
     stroke-linejoin={{@strokeLinejoin}}
     stroke-dasharray={{@strokeDasharray}}
     stroke-dashoffset={{@strokeDashoffset}}
-    stroke-opacity={{@strokeOpacity}} --}}
+    stroke-opacity={{@strokeOpacity}}
   />
 </svg>
