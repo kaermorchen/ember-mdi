@@ -125,4 +125,4 @@ export default class ApplicationController extends Controller {
       this.selectedIcon = iconWrapper.dataset.name;
     }
   }
-};
+}
