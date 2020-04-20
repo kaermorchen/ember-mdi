@@ -70,19 +70,15 @@
     </div>
   </div>
 
-  <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Material Design Icons" class="github-btn"><MdiIcon @icon="github-circle" @fill="white" />View on Github</a>
+  <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Material Design Icons" class="github-btn"><MdIcon @icon="github-circle" @fill="white" />View on Github</a>
 </aside>
 
 <main>
   <Input placeholder="Search" autofocus={{true}} class="search-field" {{on "input" this.updateSearchText}}/>
 
-  {{! template-lint-disable no-invalid-interactive }}
-  <div class="demo-icons" {{on "click" this.updateSelectedItem}}>
+  <div class="demo-icons" {{on "click" this.updateSelectedItem}} {{! template-lint-disable no-invalid-interactive }}>
     {{#each @model as |meta|}}
-      {{!-- <div class="demo-icon {{if meta.isHidden "d-none"}}" data-name={{meta.name}}> --}}
-        <MdIcon @icon={{meta.name}} @title={{meta.name}} @size={{34}} />
-      {{!-- </div> --}}
+      <MdIcon @icon={{meta.name}} @title={{meta.name}} @size={{34}} data-name={{meta.name}} class="demo-icon {{if meta.isHidden "d-none"}}"/>
     {{/each}}
   </div>
-  {{! template-lint-enable no-invalid-interactive }}
 </main>

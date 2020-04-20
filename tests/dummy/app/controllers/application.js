@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { computed, set } from '@ember/object';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
@@ -33,7 +32,7 @@ const checkIsShown = function(searchText, meta) {
   return false;
 }
 
-export default class IndeController extends Controller {
+export default class ApplicationController extends Controller {
   @tracked selectedIcon = 'heart';
   @tracked size = '120';
   @tracked spin = false;
@@ -49,9 +48,8 @@ export default class IndeController extends Controller {
   @tracked strokeLinejoin = defaultStrokeLinejoin;
   @tracked strokeLinejoinOptions = Object.freeze(['miter', 'round', 'bevel']);
 
-  @computed('selectedIcon', 'size', 'spin', 'flipH', 'flipV', 'rotate', 'fill', 'stroke', 'strokeWidth', 'strokeLinecap', 'strokeLinejoin')
   get iconHbsCode() {
-    let iconHbsCode = `<MdIcon "${this.selectedIcon}"`;
+    let iconHbsCode = `<MdIcon @icon="${this.selectedIcon}"`;
 
     if (this.size !== defaultSize) {
       iconHbsCode += ` @size=${this.size}`;
