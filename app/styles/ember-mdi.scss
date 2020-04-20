@@ -1,5 +1,6 @@
 // Variables
 $ember-mdi-css-class: "md-icon" !default;
+$ember-mdi-animation-class: #{$ember-mdi-css-class}-animation-spin !default;
 $ember-mdi-spin-delay: 0.65s !default;
 $ember-mdi-spin-iteration-count: infinite !default;
 $ember-mdi-spin-timing-function: linear !default;
@@ -11,11 +12,11 @@ $ember-mdi-spin-timing-function: linear !default;
 }
 
 // Animation
-.#{$ember-mdi-css-class}-spin {
-  animation: #{$ember-mdi-css-class}-spin $ember-mdi-spin-delay $ember-mdi-spin-iteration-count $ember-mdi-spin-timing-function;
+.#{$ember-mdi-animation-class} {
+  animation: $ember-mdi-animation-class $ember-mdi-spin-delay $ember-mdi-spin-iteration-count $ember-mdi-spin-timing-function;
 }
 
-@keyframes #{$ember-mdi-css-class}-animation-spin {
+@keyframes #{$ember-mdi-animation-class} {
   0% {
     transform: rotate(0deg);
   }
