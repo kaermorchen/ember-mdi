@@ -79,9 +79,9 @@
   {{! template-lint-disable no-invalid-interactive }}
   <div class="demo-icons" {{on "click" this.updateSelectedItem}}>
     {{#each @model as |meta|}}
-      <div class="demo-icon {{if meta.isHidden "d-none"}}" data-name={{meta.name}}>
-        <MdiIcon @icon={{meta.name}} @title={{meta.name}} @size={{34}} />
-      </div>
+      {{!-- <div class="demo-icon {{if meta.isHidden "d-none"}}" data-name={{meta.name}}> --}}
+        <MdIcon @icon={{meta.name}} @title={{meta.name}} @size={{34}} />
+      {{!-- </div> --}}
     {{/each}}
   </div>
   {{! template-lint-enable no-invalid-interactive }}
