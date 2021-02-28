@@ -2,7 +2,15 @@ import Route from '@ember/routing/route';
 import fetch from 'fetch';
 
 export default Route.extend({
-  model() {
-    return fetch('/ember-mdi/meta.json').then(response => response.json());
+  async model() {
+    const response = await fetch('/ember-mdi/meta.json');
+    const json = await response.json();
+
+    return json.map(({ name, tags, aliases }) => {
+      return {
+        name,
+        searchable: `${name} ${tags.join('')} ${aliases.join('')}`
+      }
+    });
   }
 });

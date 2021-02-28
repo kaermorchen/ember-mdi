@@ -70,15 +70,29 @@
     </div>
   </div>
 
-  <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Material Design Icons" class="github-btn"><MdIcon @icon="github-circle" @fill="white" />View on Github</a>
+  <a href="https://github.com/kaermorchen/ember-mdi" title="Ember Material Design Icons" class="github-btn">
+    <MdIcon @icon="github" @fill="white" />View on Github
+  </a>
 </aside>
 
 <main>
-  <Input placeholder="Search" autofocus={{true}} class="search-field" {{on "input" this.updateSearchText}}/>
+  <input
+    value={{this.search}}
+    placeholder="Search over {{@model.length}} icons"
+    autofocus={{true}}
+    class="search-field"
+    {{on "input" (perform this.debouncedUpdate value="target.value")}}
+  />
 
   <div class="demo-icons" {{on "click" this.updateSelectedItem}} {{! template-lint-disable no-invalid-interactive }}>
     {{#each @model as |meta|}}
       <MdIcon @icon={{meta.name}} @title={{meta.name}} @size={{34}} data-name={{meta.name}} class="demo-icon {{if meta.isHidden "d-none"}}"/>
     {{/each}}
   </div>
+
+  {{#if this.emptyResults}}
+    <p>
+      Your query <b>{{this.search}}</b> returned no results, try another terms!
+    </p>
+  {{/if}}
 </main>
