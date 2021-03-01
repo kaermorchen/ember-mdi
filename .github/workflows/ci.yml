@@ -13,13 +13,11 @@ on:
 env:
   NODE_VERSION: 12.21
 
-defaults:
-  runs-on: ubuntu-latest
-  timeout-minutes: 5
-
 jobs:
   lint:
     name: Linting
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -43,6 +41,8 @@ jobs:
 
   test:
     name: Basic test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     needs: lint
     steps:
       - uses: actions/checkout@v2
