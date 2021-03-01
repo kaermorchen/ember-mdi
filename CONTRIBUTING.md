@@ -2,8 +2,8 @@
 
 ## Installation
 
-* `git clone <repository-url>`
-* `cd my-addon`
+* `git clone https://github.com/kaermorchen/ember-mdi.git`
+* `cd ember-mdi`
 * `npm install`
 
 ## Linting
@@ -21,6 +21,6 @@
 ## Running the dummy application
 
 * `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+* Visit the dummy application at [http://localhost:4200/ember-mdi/](http://localhost:4200/ember-mdi/).
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
