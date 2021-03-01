@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { timeout, restartableTask } from "ember-concurrency";
 
 const defaultSize = '24';
 const defaultRotate = '0';
@@ -12,21 +13,8 @@ const checkIsShown = function(searchText, meta) {
     return true;
   }
 
-  if (meta.name.indexOf(searchText) !== -1) {
+  if (meta.searchable.indexOf(searchText) !== -1) {
     return true;
-  }
-
-
-  for (let i = 0; i < meta.tags.length; i++) {
-    if (meta.tags[i].indexOf(searchText) !== -1) {
-      return true;
-    }
-  }
-
-  for (let i = 0; i < meta.aliases.length; i++) {
-    if (meta.aliases[i].indexOf(searchText) !== -1) {
-      return true;
-    }
   }
 
   return false;
@@ -47,6 +35,9 @@ export default class ApplicationController extends Controller {
   @tracked strokeLinecapOptions = Object.freeze(['butt', 'round', 'square']);
   @tracked strokeLinejoin = defaultStrokeLinejoin;
   @tracked strokeLinejoinOptions = Object.freeze(['miter', 'round', 'bevel']);
+
+  @tracked search;
+  @tracked emptyResults = false;
 
   get iconHbsCode() {
     let iconHbsCode = `<MdIcon @icon="${this.selectedIcon}"`;
@@ -107,14 +98,23 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  updateSearchText(event) {
-    const searchText = event.target.value.toLowerCase();
+  updateSearchText(value) {
+    this.search = value;
+    const lowcased = value.toLowerCase();
 
     for (let i = 0; i < this.model.length; i++) {
       const item = this.model[i];
 
-      set(item, 'isHidden', !checkIsShown(searchText, item));
+      set(item, 'isHidden', !checkIsShown(lowcased, item));
     }
+
+    this.emptyResults = this.model.every(({ isHidden }) => isHidden);
+  }
+
+  @restartableTask *debouncedUpdate(value) {
+    yield timeout(190);
+
+    this.updateSearchText(value);
   }
 
   @action
