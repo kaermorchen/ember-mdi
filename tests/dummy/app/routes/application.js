@@ -9,8 +9,8 @@ export default Route.extend({
     return json.map(({ name, tags, aliases }) => {
       return {
         name,
-        searchable: `${name} ${tags.join('')} ${aliases.join('')}`
-      }
+        searchable: `${name} ${tags.join('')} ${aliases.join('')}`,
+      };
     });
-  }
+  },
 });
