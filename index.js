@@ -6,7 +6,7 @@ const BroccoliMergeTrees = require('broccoli-merge-trees');
 const writeFile = require('broccoli-file-creator');
 const resolve = require('resolve');
 const defaultOptions = {
-  icons: null
+  icons: null,
 };
 
 module.exports = {
@@ -28,10 +28,15 @@ module.exports = {
       trees.push(vendorTree);
     }
 
-    const svgsPath = path.join(this.resolvePackagePath(path.join('@mdi', 'svg')), 'svg');
+    const svgsPath = path.join(
+      this.resolvePackagePath(path.join('@mdi', 'svg')),
+      'svg'
+    );
     const host = this._findHost();
     const options = Object.assign({}, defaultOptions, host.options[this.name]);
-    const list = Array.isArray(options.icons) ? options.icons : fs.readdirSync(svgsPath).map(item => item.slice(0, -4));
+    const list = Array.isArray(options.icons)
+      ? options.icons
+      : fs.readdirSync(svgsPath).map((item) => item.slice(0, -4));
     const icons = {};
 
     list.forEach(function (item) {
@@ -40,8 +45,12 @@ module.exports = {
       icons[item] = /<path d="(.+)" \/>/.exec(data)[1]; //TODO: find a more simple way
     });
 
-    const babelAddon = this.addons.find(addon => addon.name === 'ember-cli-babel');
-    const iconsTree = babelAddon.transpileTree(writeFile('ember-mdi/icons.js', `export default ${JSON.stringify(icons)}`));
+    const babelAddon = this.addons.find(
+      (addon) => addon.name === 'ember-cli-babel'
+    );
+    const iconsTree = babelAddon.transpileTree(
+      writeFile('ember-mdi/icons.js', `export default ${JSON.stringify(icons)}`)
+    );
 
     trees.push(iconsTree);
 
@@ -51,7 +60,11 @@ module.exports = {
   resolvePackagePath(packageName) {
     let host = this._findHost();
 
-    return path.dirname(resolve.sync(`${packageName}/package.json`, { basedir: host.project.root }));
+    return path.dirname(
+      resolve.sync(`${packageName}/package.json`, {
+        basedir: host.project.root,
+      })
+    );
   },
 
   _ensureFindHost() {
@@ -67,5 +80,5 @@ module.exports = {
         return app;
       };
     }
-  }
+  },
 };

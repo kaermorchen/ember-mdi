@@ -1,14 +1,14 @@
 import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { timeout, restartableTask } from "ember-concurrency";
+import { timeout, restartableTask } from 'ember-concurrency';
 
 const defaultSize = '24';
 const defaultRotate = '0';
 const defaultStrokeWidth = '0';
 const defaultStrokeLinecap = 'butt';
 const defaultStrokeLinejoin = 'miter';
-const checkIsShown = function(searchText, meta) {
+const checkIsShown = function (searchText, meta) {
   if (searchText === '') {
     return true;
   }
@@ -18,7 +18,7 @@ const checkIsShown = function(searchText, meta) {
   }
 
   return false;
-}
+};
 
 export default class ApplicationController extends Controller {
   @tracked selectedIcon = 'heart';
