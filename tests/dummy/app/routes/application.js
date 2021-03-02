@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import fetch from 'fetch';
 
-export default Route.extend({
+export default class ApplicationRoute extends Route {
   async model() {
     const response = await fetch('/ember-mdi/meta.json');
     const json = await response.json();
@@ -12,5 +12,5 @@ export default Route.extend({
         searchable: `${name} ${tags.join('')} ${aliases.join('')}`,
       };
     });
-  },
-});
+  }
+}

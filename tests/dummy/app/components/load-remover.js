@@ -1,15 +1,13 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  tagName: '',
-
-  didInsertElement() {
-    this._super(...arguments);
+export default class LoadRemoverComponent extends Component {
+  constructor() {
+    super(...arguments);
 
     const el = document.querySelector('.loading-indicator');
 
     if (el) {
       el.parentNode.removeChild(el);
     }
-  },
-});
+  }
+}
