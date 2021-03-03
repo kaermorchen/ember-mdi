@@ -28,14 +28,11 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install Dependencies
-        run: npm install
+      - run: npm ci
       - name: Linting
         run: npm run lint
 
-  test:
+  basic_test:
     name: Basic test
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -50,9 +47,25 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install Dependencies
-        run: npm install
+      - run: npm ci
       - name: Test
         run: npm run test:ember
+
+  compatibility_tests:
+    name: Compatibility tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: basic_test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/cache@v2
+        id: npm-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - run: npm ci
+      - name: Tests
+        run: npm run test:ember-compatibility
