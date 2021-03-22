@@ -3,7 +3,6 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/ember-mdi"><img src="https://img.shields.io/npm/v/ember-mdi.svg?style=flat-square&colorB=44cc11" alt="npm version"></a>
   <a href="https://www.npmjs.com/package/ember-mdi"><img src="https://img.shields.io/npm/dm/ember-mdi.svg?style=flat-square" alt="npm monthly downloads"></a>  
-  <a href="https://travis-ci.org/kaermorchen/ember-mdi"><img src="https://img.shields.io/travis/kaermorchen/ember-mdi.svg?style=flat-square" alt="Build Status"></a>
   <a href="https://emberobserver.com/addons/ember-mdi"><img src="https://emberobserver.com/badges/ember-mdi.svg" alt="Ember Observer Score"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"></a>
 </p>
