@@ -7,5 +7,6 @@ module.exports = function (defaults) {
 
   app.import('node_modules/@mdi/svg/meta.json', { destDir: '' });
 
-  return app.toTree();
+  const { maybeEmbroider } = require('@embroider/test-setup');
+  return maybeEmbroider(app);
 };
