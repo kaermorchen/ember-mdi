@@ -3,7 +3,7 @@
 <aside>
   <header>
     <h1>Ember Material Design Icons</h1>
-    <p>Based by <a href="https://materialdesignicons.com/" title="Material Design Icons" target="_blank" rel="noopener noreferrer">Material Design Icons</a></p>
+    <p>Based by <a href="https://materialdesignicons.com/" title="View all the Material Design icons and more from the community" target="_blank" rel="noopener noreferrer">Material Design Icons</a></p>
   </header>
 
   <div class="demo-icon-code">
@@ -27,11 +27,11 @@
   </div>
 
   <div class="demo-icon-settings">
-    <label class="label">Size:</label>
-    <div class="control"><Input @type="range" @value={{this.size}} min="60" max="120" /></div>
+    <label class="label" for="size">Size:</label>
+    <div class="control"><Input id="size" @type="range" @value={{this.size}} min="60" max="120" /></div>
 
-    <label class="label">Rotate:</label>
-    <div class="control"><Input @type="range" @value={{this.rotate}} min="0" max="359" /></div>
+    <label class="label" for="rotate">Rotate:</label>
+    <div class="control"><Input id="rotate" @type="range" @value={{this.rotate}} min="0" max="359" /></div>
 
     <div class="label"></div>
     <div class="control"><label><Input @type="checkbox" @checked={{this.spin}} /> Spin</label></div>
@@ -42,27 +42,27 @@
     <div class="label"></div>
     <div class="control"><label><Input @type="checkbox" @checked={{this.flipV}} /> Vertical flip</label></div>
 
-    <label class="label">Fill:</label>
-    <div class="control"><Input @type="color" @value={{this.fill}} /></div>
+    <label class="label" for="fill">Fill:</label>
+    <div class="control"><Input id="fill" @type="color" @value={{this.fill}} /></div>
 
-    <label class="label">Stroke:</label>
-    <div class="control"><Input @type="color" @value={{this.stroke}} /></div>
+    <label class="label" for="stroke">Stroke:</label>
+    <div class="control"><Input id="stroke" @type="color" @value={{this.stroke}} /></div>
 
-    <label class="label">Stroke width:</label>
-    <div class="control"><Input @type="range" class="form-control-range" @value={{this.strokeWidth}} min="0" max="3" /></div>
+    <label class="label" for="stroke-width">Stroke width:</label>
+    <div class="control"><Input id="stroke-width" @type="range" class="form-control-range" @value={{this.strokeWidth}} min="0" max="3" /></div>
 
-    <label class="label">Stroke linecap:</label>
+    <label class="label" for="stroke-linecap">Stroke linecap:</label>
     <div class="control">
-      <select class="form-control" {{on "change" this.updateStrokeLinecap}}>
+      <select id="stroke-linecap" class="form-control" {{on "change" this.updateStrokeLinecap}}>
         {{#each this.strokeLinecapOptions as |item|}}
           <option value={{item}} selected={{eq item this.strokeLinecap}}>{{item}}</option>
         {{/each}}
       </select>
     </div>
 
-    <label class="label">Stroke linejoin:</label>
+    <label class="label" for="stroke-linejoin">Stroke linejoin:</label>
     <div class="control">
-      <select class="form-control" {{on "change" this.updateStrokeLinejoin}}>
+      <select id="stroke-linejoin" class="form-control" {{on "change" this.updateStrokeLinejoin}}>
         {{#each this.strokeLinejoinOptions as |item|}}
           <option value={{item}} selected={{eq item this.strokeLinejoin}}>{{item}}</option>
         {{/each}}
@@ -76,13 +76,15 @@
 </aside>
 
 <main>
-  <input
-    value={{this.search}}
-    placeholder="Search over {{@model.length}} icons"
-    autofocus={{true}}
-    class="search-field"
-    {{on "input" (perform this.debouncedUpdate value="target.value")}}
-  />
+  <label>
+    <input
+      value={{this.search}}
+      placeholder="Search over {{@model.length}} icons"
+      autofocus={{true}}
+      class="search-field"
+      {{on "input" (perform this.debouncedUpdate value="target.value")}}
+    />
+  </label>
 
   <div class="demo-icons" {{on "click" this.updateSelectedItem}} {{! template-lint-disable no-invalid-interactive }}>
     {{#each @model as |meta|}}
