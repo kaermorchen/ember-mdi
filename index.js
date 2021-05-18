@@ -14,26 +14,38 @@ module.exports = {
 
   treeForAddon() {
     const addonTree = this._super.treeForAddon.apply(this, arguments);
-    const svgsPath = path.join(this.resolvePackagePath(path.join('@mdi', 'svg')), 'svg');
+    const svgsPath = path.join(
+      this.resolvePackagePath(path.join('@mdi', 'svg')),
+      'svg'
+    );
     const host = this._findHost();
     const options = Object.assign({}, defaultOptions, host.options[this.name]);
-    const list = Array.isArray(options.icons) ? options.icons : fs.readdirSync(svgsPath).map(item => path.basename(item, '.svg'));
+    const list = Array.isArray(options.icons)
+      ? options.icons
+      : fs.readdirSync(svgsPath).map((item) => path.basename(item, '.svg'));
     const getDRegExp = /<path d="(.+)" \/>/;
     const icons = {};
 
-    list.forEach(item => {
+    list.forEach((item) => {
       let data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
 
       icons[item] = getDRegExp.exec(data)[1]; //TODO: find a more simple way
     });
 
-    const babelAddon = this.addons.find(addon => addon.name === 'ember-cli-babel');
+    const babelAddon = this.addons.find(
+      (addon) => addon.name === 'ember-cli-babel'
+    );
 
-    const iconsFile = writeFile('ember-mdi/icons.js', `export default ${JSON.stringify(icons)}`);
+    const iconsFile = writeFile(
+      'ember-mdi/icons.js',
+      `export default ${JSON.stringify(icons)}`
+    );
 
-    const iconsTree = babelAddon.transpileTree(iconsFile, { destDir: 'modules' });
+    const iconsTree = babelAddon.transpileTree(iconsFile, {
+      destDir: 'modules',
+    });
 
-    return mergeTrees([ addonTree, iconsTree ]);
+    return mergeTrees([addonTree, iconsTree]);
   },
 
   resolvePackagePath(packageName) {
