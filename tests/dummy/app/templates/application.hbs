@@ -82,7 +82,7 @@
       placeholder="Search over {{@model.length}} icons"
       autofocus={{true}}
       class="search-field"
-      {{on "input" (perform this.debouncedUpdate value="target.value")}}
+      {{on "input" this.debouncedUpdate}}
     />
   </label>
 
