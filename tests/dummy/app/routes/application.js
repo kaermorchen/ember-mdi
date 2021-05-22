@@ -3,7 +3,7 @@ import fetch from 'fetch';
 
 export default class ApplicationRoute extends Route {
   async model() {
-    const response = await fetch('/ember-mdi/meta.json');
+    const response = await fetch('/meta.json');
     const json = await response.json();
 
     return json.map(({ name, tags, aliases }) => {
