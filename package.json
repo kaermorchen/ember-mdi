@@ -40,7 +40,6 @@
   "dependencies": {
     "@mdi/svg": "^5.0.0",
     "broccoli-file-creator": "^2.1.1",
-    "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^3.0.2",
     "ember-cli-babel": "^7.26.3",
     "ember-cli-htmlbars": "^5.7.1",
@@ -74,7 +73,7 @@
     "ember-source": "~3.26.1",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^3.2.0",
-    "ember-truth-helpers": "^2.1.0",
+    "ember-truth-helpers": "^3.0.0",
     "ember-try": "^1.4.0",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
