@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const BroccoliMergeTrees = require('broccoli-merge-trees');
+const mergeTrees = require('broccoli-merge-trees');
 const writeFile = require('broccoli-file-creator');
 const resolve = require('resolve');
 const defaultOptions = {
@@ -12,22 +12,8 @@ const defaultOptions = {
 module.exports = {
   name: require('./package').name,
 
-  included() {
-    this._super.included.apply(this, arguments);
-    this._ensureFindHost();
-
-    const host = this._findHost();
-
-    host.import('vendor/ember-mdi/icons.js');
-  },
-
-  treeForVendor(vendorTree) {
-    let trees = [];
-
-    if (vendorTree) {
-      trees.push(vendorTree);
-    }
-
+  treeForAddon() {
+    const addonTree = this._super.treeForAddon.apply(this, arguments);
     const svgsPath = path.join(
       this.resolvePackagePath(path.join('@mdi', 'svg')),
       'svg'
@@ -36,25 +22,30 @@ module.exports = {
     const options = Object.assign({}, defaultOptions, host.options[this.name]);
     const list = Array.isArray(options.icons)
       ? options.icons
-      : fs.readdirSync(svgsPath).map((item) => item.slice(0, -4));
+      : fs.readdirSync(svgsPath).map((item) => path.basename(item, '.svg'));
+    const getDRegExp = /<path d="(.+)" \/>/;
     const icons = {};
 
-    list.forEach(function (item) {
-      const data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
+    list.forEach((item) => {
+      let data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
 
-      icons[item] = /<path d="(.+)" \/>/.exec(data)[1]; //TODO: find a more simple way
+      icons[item] = getDRegExp.exec(data)[1]; //TODO: find a more simple way
     });
 
     const babelAddon = this.addons.find(
       (addon) => addon.name === 'ember-cli-babel'
     );
-    const iconsTree = babelAddon.transpileTree(
-      writeFile('ember-mdi/icons.js', `export default ${JSON.stringify(icons)}`)
+
+    const iconsFile = writeFile(
+      'ember-mdi/icons.js',
+      `export default ${JSON.stringify(icons)}`
     );
 
-    trees.push(iconsTree);
+    const iconsTree = babelAddon.transpileTree(iconsFile, {
+      destDir: 'modules',
+    });
 
-    return new BroccoliMergeTrees(trees);
+    return mergeTrees([addonTree, iconsTree]);
   },
 
   resolvePackagePath(packageName) {
@@ -65,20 +56,5 @@ module.exports = {
         basedir: host.project.root,
       })
     );
-  },
-
-  _ensureFindHost() {
-    if (!this._findHost) {
-      this._findHost = function findHostShim() {
-        let current = this;
-        let app;
-
-        do {
-          app = current.app || app;
-        } while (current.parent.parent && (current = current.parent));
-
-        return app;
-      };
-    }
   },
 };
