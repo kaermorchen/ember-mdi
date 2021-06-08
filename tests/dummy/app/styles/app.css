@@ -1,5 +1,4 @@
-@import "modern-normalize";
-@import "ember-mdi";
+@import "./modern-normalize.css";
 
 .loading-indicator {
   margin: auto;
@@ -9,23 +8,23 @@ body {
   height: 100vh;
   color: #4c4962;
   display: flex;
+}
 
-  & > aside {
-    background-color: #f2f2f2;
-    padding: 1rem;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    width: 320px;
-  }
+body > aside {
+  background-color: #f2f2f2;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
 
-  & > main {
-    flex: 1;
-    padding: 1rem;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+body > main {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -47,10 +46,10 @@ a {
   padding: 0.5rem;
   text-decoration: none;
   margin-top: auto;
+}
 
-  .md-icon {
-    margin-right: 0.5rem;
-  }
+.github-btn .md-icon {
+  margin-right: 0.5rem;
 }
 
 .d-none {
@@ -66,10 +65,10 @@ a {
   grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
   grid-gap: 2vw;
   margin-bottom: 1rem;
+}
 
-  .demo-icon {
-    cursor: pointer;
-  }
+.demo-icons .demo-icon {
+  cursor: pointer;
 }
 
 .search-field {
@@ -116,16 +115,16 @@ input[type="range"] {
   grid-template-columns: [labels] auto [controls] 1fr;
   grid-auto-flow: row;
   grid-gap: 0.5rem;
+}
 
-  & > .label {
-    grid-column: labels;
-    grid-row: auto;
-    margin-bottom: 0.5rem;
-  }
+.demo-icon-settings > .label {
+  grid-column: labels;
+  grid-row: auto;
+  margin-bottom: 0.5rem;
+}
 
-  & > .control {
-    grid-column: controls;
-    grid-row: auto;
-    margin-bottom: 0.5rem;
-  }
+.demo-icon-settings > .control {
+  grid-column: controls;
+  grid-row: auto;
+  margin-bottom: 0.5rem;
 }
