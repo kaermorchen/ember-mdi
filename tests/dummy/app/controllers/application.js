@@ -98,7 +98,7 @@ export default class ApplicationController extends Controller {
 
   @action
   async updateSearchText(value, signal) {
-    await new Promise(resolve => setTimeout(resolve, 190));
+    await new Promise((resolve) => setTimeout(resolve, 190));
 
     if (signal.aborted) {
       return;
