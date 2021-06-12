@@ -2,12 +2,12 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/ember-mdi"><img src="https://img.shields.io/npm/v/ember-mdi.svg?style=flat-square&colorB=44cc11" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/ember-mdi"><img src="https://img.shields.io/npm/dm/ember-mdi.svg?style=flat-square" alt="npm monthly downloads"></a>  
+  <a href="https://www.npmjs.com/package/ember-mdi"><img src="https://img.shields.io/npm/dm/ember-mdi.svg?style=flat-square" alt="npm monthly downloads"></a>
   <a href="https://emberobserver.com/addons/ember-mdi"><img src="https://emberobserver.com/badges/ember-mdi.svg" alt="Ember Observer Score"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License: MIT"></a>
 </p>
 
-An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications. 
+An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications.
 
 All icons are stored in the file `vendor.js`.
 
@@ -34,11 +34,6 @@ Install in ember-cli application
 ember install ember-mdi
 ```
 
-Then include the following in your app.scss file:
-
-```scss
-@import "ember-mdi";
-```
 
 ## Usage
 
@@ -54,7 +49,7 @@ We get follow html:
 </svg>
 ```
 
-Component md-icon has some options with default values: 
+Component md-icon has some options with default values:
 
 | Name              | Value |
 |-------------------|-------|

@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { timeout, restartableTask } from 'ember-concurrency';
 
 const defaultSize = '24';
 const defaultRotate = '0';
@@ -98,7 +97,13 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  updateSearchText(value) {
+  async updateSearchText(value, signal) {
+    await new Promise((resolve) => setTimeout(resolve, 190));
+
+    if (signal.aborted) {
+      return;
+    }
+
     this.search = value;
     const lowcased = value.toLowerCase();
 
@@ -111,10 +116,15 @@ export default class ApplicationController extends Controller {
     this.emptyResults = this.model.every(({ isHidden }) => isHidden);
   }
 
-  @restartableTask *debouncedUpdate(value) {
-    yield timeout(190);
+  @action
+  debouncedUpdate(event) {
+    if (this.ctrl) {
+      this.ctrl.abort();
+    }
 
-    this.updateSearchText(value);
+    this.ctrl = new AbortController();
+
+    this.updateSearchText(event.target.value, this.ctrl.signal);
   }
 
   @action
