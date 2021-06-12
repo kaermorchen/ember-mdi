@@ -1,4 +1,7 @@
 # Changelog
+### Master
+- [BREAKING] Refactored styles from sass to css (with variables)
+- Bump Ember to v3.26
 
 ### v0.8 (April 20, 2020)
 
