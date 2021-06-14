@@ -4,3 +4,11 @@ declare module 'ember-mdi/templates/*' {
   const tmpl: TemplateFactory;
   export default tmpl;
 }
+
+declare module 'ember-mdi/icons' {
+  interface Icons {
+    [key: string]: string;
+  }
+  const icons: Icons;
+  export default icons;
+}
