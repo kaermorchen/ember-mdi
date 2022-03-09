@@ -78,7 +78,7 @@ By default ember-mdi stores **all** icons. And it has the size about 750KB. If y
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     'ember-mdi': {
-      icons: ['face', 'bug'],
+      icons: ['heart', 'bug'],
     }
   });
 

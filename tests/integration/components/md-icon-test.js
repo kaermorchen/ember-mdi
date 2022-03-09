@@ -8,12 +8,12 @@ module('Integration | Component | md-icon', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    this.set('icon', 'face');
+    this.set('icon', 'heart');
 
     await render(hbs`<MdIcon @icon={{this.icon}}/>`);
 
     assert.dom('svg').hasClass('md-icon');
-    assert.dom('path').hasAttribute('d', icons['face']);
+    assert.dom('path').hasAttribute('d', icons['heart']);
 
     this.set('icon', 'bug');
     assert.dom('path').hasAttribute('d', icons['bug']);
