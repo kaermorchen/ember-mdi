@@ -5,7 +5,6 @@ const path = require('path');
 const mergeTrees = require('broccoli-merge-trees');
 const writeFile = require('broccoli-file-creator');
 const resolve = require('resolve');
-const buildAstTransform = require('./lib/ast-transform');
 const defaultOptions = {
   icons: null,
 };
@@ -14,7 +13,6 @@ module.exports = {
   name: require('./package').name,
 
   treeForAddon() {
-    console.log('treeForAddon');
     const addonTree = this._super.treeForAddon.apply(this, arguments);
     const svgsPath = path.join(
       this.resolvePackagePath(path.join('@mdi', 'svg')),
@@ -50,22 +48,27 @@ module.exports = {
     return mergeTrees([addonTree, iconsTree]);
   },
 
-  setupPreprocessorRegistry(type, registry) {
-    // Skip if we're setting up this addon's own registry
-    if (type !== 'parent') {
-      return;
-    }
+  setupPreprocessorRegistry(_type, registry) {
+    let pluginObj = this._buildPlugin();
+    pluginObj.parallelBabel = {
+      requireFile: __filename,
+      buildUsing: '_buildPlugin',
+      params: {},
+    };
+    registry.add('htmlbars-ast-plugin', pluginObj);
+  },
 
-    registry.add('htmlbars-ast-plugin', {
+  _buildPlugin() {
+    return {
       name: 'ember-mdi',
-      plugin: buildAstTransform(this),
+      plugin: require('./lib/ast-transform')(this),
       baseDir() {
         return __dirname;
       },
-      cacheKey() {
-        return 'ember-mdi';
-      },
-    });
+      // cacheKey() {
+      //   return 'ember-mdi';
+      // },
+    };
   },
 
   resolvePackagePath(packageName) {
