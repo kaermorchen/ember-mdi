@@ -3,10 +3,7 @@
     "packages/*"
   ],
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:kaermorchen/ember-mdi.git"
-  },
+  "repository": "https://github.com/kaermorchen/ember-mdi",
   "license": "MIT",
   "author": "Stanislav Romanov <kaermorchen@gmail.com>",
   "scripts": {},

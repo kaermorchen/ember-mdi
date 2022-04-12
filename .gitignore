@@ -1,0 +1,16 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+dist/
+
+# dependencies
+node_modules/
+
+# misc
+.eslintcache
+testem.log
+yarn-error.log
+
+# ember-try
+.node_modules.ember-try/
+package.json.ember-try
