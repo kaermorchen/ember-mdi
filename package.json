@@ -1,0 +1,14 @@
+{
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kaermorchen/ember-mdi.git"
+  },
+  "license": "MIT",
+  "author": "Stanislav Romanov <kaermorchen@gmail.com>",
+  "scripts": {},
+  "version": "0.10.0"
+}
