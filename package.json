@@ -6,6 +6,20 @@
   "repository": "https://github.com/kaermorchen/ember-mdi",
   "license": "MIT",
   "author": "Stanislav Romanov <kaermorchen@gmail.com>",
-  "scripts": {},
+  "scripts": {
+    "prepare": "npm workspace ember-mdi run prepare",
+    "start": "npm-run-all --parallel start:*",
+    "start:addon": "npm run start -w ember-mdi",
+    "start:test-app": "npm run start -w test-app",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
+    "lint:addon": "npm run lint -w ember-mdi",
+    "lint:test-app": "npm run lint -w test-app",
+    "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:fix:*",
+    "lint:fix:addon": "npm run lint:fix -w ember-mdi",
+    "lint:fix:test-app": "npm run lint:fix -w test-app",
+    "test": "npm-run-all --aggregate-output --continue-on-error --parallel test:*",
+    "test:addon": "npm run test -w ember-mdi",
+    "test:test-app": "npm run test -w test-app"
+  },
   "version": "0.10.0"
 }
