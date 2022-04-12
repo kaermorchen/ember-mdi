@@ -65,7 +65,9 @@
     "version": 2,
     "type": "addon",
     "main": "addon-main.js",
-    "app-js": {}
+    "app-js": {
+      "./components/md-icon.js": "./dist/_app_/components/md-icon.js"
+    }
   },
   "exports": {
     "./*": "./dist/*",
