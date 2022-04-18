@@ -35,7 +35,8 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.6.0",
     "@glimmer/component": "^1.1.2",
-    "@mdi/svg": "^6.6.96"
+    "@mdi/svg": "^6.6.96",
+    "resolve": "^1.22.0"
   },
   "devDependencies": {
     "@babel/core": "7.17.9",
