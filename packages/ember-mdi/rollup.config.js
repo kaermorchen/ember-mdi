@@ -93,7 +93,7 @@ function generateEmberMdiIconsPlugin() {
 
         fs.writeFileSync(
           filePath,
-          `import MdIconComponent from "../md-icon";\nexport default class ${className}Component extends MdIconComponent {get d(){return '${d}'}}`
+          `import MdIconComponent from "ember-mdi/components/md-icon";\nexport default class ${className}Component extends MdIconComponent {get d(){return '${d}'}}`
         );
       }
     },
