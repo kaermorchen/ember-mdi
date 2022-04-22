@@ -1,10 +1,21 @@
 import Component from '@glimmer/component';
-// import icons from 'ember-mdi/icons';
 
-export default class MdIconComponent extends Component {
-  // get d() {
-  //   return icons[this.args.icon];
-  // }
+function toKebabCase(str) {
+  let newStr = str[0].toLowerCase();
+  for (let i = 1, l = str.length, ch = str[i]; i < l; i++, ch = str[i]) {
+    if (ch.charCodeAt() >= 65 && ch.charCodeAt() <= 90) {
+      newStr += `-${ch.toLowerCase()}`;
+    } else {
+      newStr += ch;
+    }
+  }
+  return newStr;
+}
+
+export default class MdIcon extends Component {
+  get icon() {
+    return toKebabCase(this.constructor.name);
+  }
 
   get size() {
     return this.args.size || 24;

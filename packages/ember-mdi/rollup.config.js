@@ -10,13 +10,6 @@ const addon = new Addon({
 });
 
 export default {
-  // Disabling FSEvents may eliminate the problem: Error: "EMFILE: too many open files"
-  // watch: {
-  //   chokidar: {
-  //     useFsEvents: false,
-  //   },
-  // },
-
   // This provides defaults that work well alongside `publicEntrypoints` below.
   // You can augment this if yсou need to.
   output: addon.output(),
@@ -69,18 +62,6 @@ function generateEmberMdiIconsPlugin() {
 
   return {
     name: 'generate-ember-mdi-icons',
-    // resolveId(source) {
-    //   if (source === 'ember-mdi/icons') {
-    //     return source;
-    //   }
-    //   return null;
-    // },
-    // load(id) {
-    //   if (id === 'ember-mdi/icons') {
-    //     return `export default ${JSON.stringify(icons)}`;
-    //   }
-    //   return null;
-    // },
     buildStart() {
       for (const name in icons) {
         const d = icons[name];
@@ -93,40 +74,9 @@ function generateEmberMdiIconsPlugin() {
 
         fs.writeFileSync(
           filePath,
-          `import MdIconComponent from "ember-mdi/components/md-icon";\nexport default class ${className}Component extends MdIconComponent {get d(){return '${d}'}}`
+          `import MdIcon from "ember-mdi/components/md-icon";\nexport default class ${className} extends MdIcon {get d(){return '${d}'}}`
         );
       }
     },
-    // buildStart() {
-    //   for (const name in icons) {
-    //     const fileName = `${name}.js`;
-    //     const filePath = `${filePathPrefix}${fileName}`;
-
-    //     this.emitFile({
-    //       type: 'chunk',
-    //       id: filePath,
-    //       fileName: filePath,
-    //     });
-    //   }
-    // },
-    // resolveId(source) {
-    //   if (source.startsWith(filePathPrefix)) {
-    //     return source;
-    //   }
-    //   return null;
-    // },
-    // load(id) {
-    //   if (id.startsWith(filePathPrefix)) {
-    //     const name = path.basename(id, '.js');
-    //     const d = icons[name];
-    //     const className = name
-    //       .split('-')
-    //       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    //       .join('');
-    //     return `import MdIconComponent from "ember-mdi/components/md-icon";\nexport default class ${className}Component extends MdIconComponent {d='${d}'}`;
-    //   }
-
-    //   return null;
-    // },
   };
 }
