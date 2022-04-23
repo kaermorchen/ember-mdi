@@ -13,8 +13,8 @@ function toKebabCase(str) {
 }
 
 export default class MdIcon extends Component {
-  get icon() {
-    return toKebabCase(this.constructor.name);
+  get subClass() {
+    return `md-icon-${toKebabCase(this.constructor.name)}`;
   }
 
   get size() {
