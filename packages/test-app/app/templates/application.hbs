@@ -1,8 +1,182 @@
-<h2 id="title">Welcome to Ember</h2>
-
-<MdIcon::Heart />
-<MdIcon::Account />
-<MdIcon::Axe />
-<MdIcon::AccountBox />
-
-{{outlet}}
+<LoadRemover />
+<aside>
+  <header>
+    <h1>
+      Ember Material Design Icons
+    </h1>
+    <p>
+      Based by
+      <a
+        href="https://materialdesignicons.com/"
+        title="View all the Material Design icons and more from the community"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Material Design Icons
+      </a>
+    </p>
+  </header>
+  <div class="demo-icon-code">
+    <code>
+      {{this.iconHbsCode}}
+    </code>
+  </div>
+  <div class="demo-icon-preview">
+    {{#let (component (concat 'md-icon/' this.selectedIcon)) as |Icon|}}
+      <Icon
+        @size={{this.size}}
+        @spin={{this.spin}}
+        @flipH={{this.flipH}}
+        @flipV={{this.flipV}}
+        @rotate={{this.rotate}}
+        @fill={{this.fill}}
+        @stroke={{this.stroke}}
+        @strokeWidth={{this.strokeWidth}}
+        @strokeLinecap={{this.strokeLinecap}}
+        @strokeLinejoin={{this.strokeLinejoin}}
+      />
+    {{/let}}
+  </div>
+  <div class="demo-icon-settings">
+    <label class="label" for="size">
+      Size:
+    </label>
+    <div class="control">
+      <Input id="size" @type="range" @value={{this.size}} min="60" max="120" />
+    </div>
+    <label class="label" for="rotate">
+      Rotate:
+    </label>
+    <div class="control">
+      <Input
+        id="rotate"
+        @type="range"
+        @value={{this.rotate}}
+        min="0"
+        max="359"
+      />
+    </div>
+    <div class="label"></div>
+    <div class="control">
+      <label>
+        <Input @type="checkbox" @checked={{this.spin}} />
+        Spin
+      </label>
+    </div>
+    <div class="label"></div>
+    <div class="control">
+      <label>
+        <Input @type="checkbox" @checked={{this.flipH}} />
+        Horizontal flip
+      </label>
+    </div>
+    <div class="label"></div>
+    <div class="control">
+      <label>
+        <Input @type="checkbox" @checked={{this.flipV}} />
+        Vertical flip
+      </label>
+    </div>
+    <label class="label" for="fill">
+      Fill:
+    </label>
+    <div class="control">
+      <Input id="fill" @type="color" @value={{this.fill}} />
+    </div>
+    <label class="label" for="stroke">
+      Stroke:
+    </label>
+    <div class="control">
+      <Input id="stroke" @type="color" @value={{this.stroke}} />
+    </div>
+    <label class="label" for="stroke-width">
+      Stroke width:
+    </label>
+    <div class="control">
+      <Input
+        id="stroke-width"
+        @type="range"
+        class="form-control-range"
+        @value={{this.strokeWidth}}
+        min="0"
+        max="3"
+      />
+    </div>
+    <label class="label" for="stroke-linecap">
+      Stroke linecap:
+    </label>
+    <div class="control">
+      <select
+        id="stroke-linecap"
+        class="form-control"
+        {{on 'change' this.updateStrokeLinecap}}
+      >
+        {{#each this.strokeLinecapOptions as |item|}}
+          <option value={{item}} selected={{eq item this.strokeLinecap}}>
+            {{item}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+    <label class="label" for="stroke-linejoin">
+      Stroke linejoin:
+    </label>
+    <div class="control">
+      <select
+        id="stroke-linejoin"
+        class="form-control"
+        {{on 'change' this.updateStrokeLinejoin}}
+      >
+        {{#each this.strokeLinejoinOptions as |item|}}
+          <option value={{item}} selected={{eq item this.strokeLinejoin}}>
+            {{item}}
+          </option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+  <a
+    href="https://github.com/kaermorchen/ember-mdi"
+    title="Ember Material Design Icons"
+    class="github-btn"
+  >
+    <MdIcon::Github @fill="white" />
+    View on Github
+  </a>
+</aside>
+<main>
+  <label>
+    <input
+      value={{this.search}}
+      placeholder="Search over {{@model.length}} icons"
+      autofocus={{true}}
+      class="search-field"
+      {{on 'input' this.debouncedUpdate}}
+    />
+  </label>
+  <div
+    class="demo-icons"
+    {{on 'click' this.updateSelectedItem}}
+    {{! template-lint-disable no-invalid-interactive }}
+  >
+    {{#each @model as |meta|}}
+      {{#let (component (concat 'md-icon/' meta.name)) as |Icon|}}
+        <Icon
+          @title={{meta.name}}
+          @size={{34}}
+          data-name={{meta.name}}
+          class="demo-icon {{if meta.isHidden 'd-none'}}"
+        />
+      {{/let}}
+    {{/each}}
+  </div>
+  {{#if this.emptyResults}}
+    <p>
+      Your query
+      <b>
+        {{this.search}}
+      </b>
+      returned no results, try another terms!
+    </p>
+  {{/if}}
+</main>
