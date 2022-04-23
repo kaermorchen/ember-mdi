@@ -11,7 +11,7 @@ const addon = new Addon({
 
 export default {
   // This provides defaults that work well alongside `publicEntrypoints` below.
-  // You can augment this if you need to.
+  // You can augment this if yсou need to.
   output: addon.output(),
 
   plugins: [
@@ -58,20 +58,25 @@ function generateEmberMdiIconsPlugin() {
     let data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
     icons[item] = getDRegExp.exec(data)[1]; //TODO: find a more simple way
   });
+  const filePathPrefix = 'src/components/md-icon/';
 
   return {
     name: 'generate-ember-mdi-icons',
-    resolveId(source) {
-      if (source === 'ember-mdi/icons') {
-        return source;
+    buildStart() {
+      for (const name in icons) {
+        const d = icons[name];
+        const fileName = `${name}.js`;
+        const filePath = `${filePathPrefix}${fileName}`;
+        const className = name
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join('');
+
+        fs.writeFileSync(
+          filePath,
+          `import MdIcon from "ember-mdi/components/md-icon";\nexport default class ${className} extends MdIcon {get d(){return '${d}'}}`
+        );
       }
-      return null;
-    },
-    load(id) {
-      if (id === 'ember-mdi/icons') {
-        return `export default ${JSON.stringify(icons)}`;
-      }
-      return null;
     },
   };
 }
