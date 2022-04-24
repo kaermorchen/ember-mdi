@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import '../styles/addon.css';
 
 function toKebabCase(str) {
   let newStr = str[0].toLowerCase();
