@@ -30,7 +30,7 @@
     "lint:js:fix": "eslint . --fix",
     "start": "rollup --config --watch",
     "test": "echo 'Addon does not have tests, run tests in test-app'",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.6.0",

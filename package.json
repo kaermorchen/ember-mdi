@@ -7,7 +7,7 @@
   "license": "MIT",
   "author": "Stanislav Romanov <kaermorchen@gmail.com>",
   "scripts": {
-    "prepare": "npm run prepare -w ember-mdi",
+    "prepublishOnly": "npm run prepublishOnly -w ember-mdi",
     "start": "npm-run-all --parallel start:*",
     "start:addon": "npm run start -w ember-mdi",
     "start:test-app": "npm run start -w test-app",
