@@ -290,6 +290,16 @@ summary {
 
 .loading-indicator {
   margin: auto;
+  animation: loading-indicator-animation-spin .65s infinite linear;
+}
+
+@keyframes loading-indicator-animation-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
 
 body {
@@ -305,7 +315,7 @@ body > aside {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  width: 420px;
+  width: 360px;
 }
 
 body > main {
