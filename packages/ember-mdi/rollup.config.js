@@ -19,7 +19,7 @@ export default {
 
     // These are the modules that users should be able to import from your
     // addon. Anything not listed here may get optimized away.
-    addon.publicEntrypoints(['components/**/*.js']),
+    addon.publicEntrypoints(['components/**/*.js', 'icons/index.js']),
 
     // These are the modules that should get reexported into the traditional
     // "app" tree. Things in here should also be in publicEntrypoints above, but
@@ -63,6 +63,8 @@ function generateEmberMdiIconsPlugin() {
   return {
     name: 'generate-ember-mdi-icons',
     buildStart() {
+      const indexExports = [];
+
       for (const name in icons) {
         const d = icons[name];
         const fileName = `${name}.js`;
@@ -76,7 +78,13 @@ function generateEmberMdiIconsPlugin() {
           filePath,
           `import MdIcon from 'ember-mdi/components/md-icon';\nexport default class ${className} extends MdIcon {get d(){return '${d}'}}`
         );
+
+        indexExports.push(
+          `export { default as ${className} } from '../components/md-icon/${fileName}';`
+        );
       }
+
+      fs.writeFileSync(`src/icons/index.js`, indexExports.join('\n'));
     },
   };
 }
