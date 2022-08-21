@@ -7,11 +7,11 @@
   role={{this.role}}
   ...attributes
 >
-  {{#if @title}}
+  {{#if @title~}}
     <title>
-      {{@title}}
+      {{~@title~}}
     </title>
-  {{/if}}
+  {{~/if}}
   <path
     d={{this.d}}
     fill={{@fill}}
