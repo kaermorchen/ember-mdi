@@ -16,6 +16,7 @@
     "addon-main.js",
     "dist"
   ],
+  "main": "dist/index.js",
   "scripts": {
     "build": "rollup --config",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
@@ -30,7 +31,8 @@
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.0.0",
-    "@glimmer/component": "^1.1.2"
+    "@glimmer/component": "^1.1.2",
+    "@mdi/svg": "^7.0.96"
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
