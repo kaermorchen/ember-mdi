@@ -5848,6 +5848,11 @@ ember-maybe-import-regenerator@^0.1.6:
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
 
+ember-mdi@^0.0.0:
+  version "1.0.0"
+  dependencies:
+    "@embroider/addon-shim" "^1.0.0"
+
 ember-page-title@^6.2.1:
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/ember-page-title/-/ember-page-title-6.2.2.tgz#980838c44e96cba1d00f42435d707936af627324"
