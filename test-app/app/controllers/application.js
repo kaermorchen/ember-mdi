@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { classify } from '@ember/string';
 
 const defaultSize = '24';
 const defaultRotate = '0';
@@ -20,7 +21,7 @@ const checkIsShown = function (searchText, meta) {
 };
 
 export default class ApplicationController extends Controller {
-  @tracked selectedIcon = 'heart';
+  @tracked selectedIcon;
   @tracked size = '120';
   @tracked spin = false;
   @tracked flipH = false;
@@ -39,7 +40,7 @@ export default class ApplicationController extends Controller {
   @tracked emptyResults = false;
 
   get iconHbsCode() {
-    let iconHbsCode = `<MdIcon @icon="${this.selectedIcon}"`;
+    let iconHbsCode = `<${this.selectedIcon.name}`;
 
     if (this.size !== defaultSize) {
       iconHbsCode += ` @size=${this.size}`;
@@ -132,7 +133,7 @@ export default class ApplicationController extends Controller {
     const iconWrapper = event.target.closest('.demo-icon');
 
     if (iconWrapper && iconWrapper.dataset.name) {
-      this.selectedIcon = iconWrapper.dataset.name;
+      this.selectedIcon = this.model.icons[classify(iconWrapper.dataset.name)];
     }
   }
 }

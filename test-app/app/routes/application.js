@@ -20,4 +20,10 @@ export default class ApplicationRoute extends Route {
       icons,
     };
   }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+
+    controller.selectedIcon = model.icons.Heart;
+  }
 }

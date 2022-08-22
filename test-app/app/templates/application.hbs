@@ -19,9 +19,7 @@
   </div>
 
   <div class='demo-icon-preview'>
-    {{!-- <MdIcon
-      @icon={{this.selectedIcon}}
-      @icon={{this.selectedIcon}}
+    <this.selectedIcon
       @size={{this.size}}
       @spin={{this.spin}}
       @flipH={{this.flipH}}
@@ -32,7 +30,7 @@
       @strokeWidth={{this.strokeWidth}}
       @strokeLinecap={{this.strokeLinecap}}
       @strokeLinejoin={{this.strokeLinejoin}}
-    /> --}}
+    />
   </div>
 
   <div class='demo-icon-settings'>
@@ -68,12 +66,14 @@
         />
         Horizontal flip</label></div>
 
-    <div class='label'></div>
-    <div class='control'><label><Input
-          @type='checkbox'
-          @checked={{this.flipV}}
-        />
-        Vertical flip</label></div>
+    <div class='label'>
+    </div>
+    <div class='control'>
+      <label>
+        <Input @type='checkbox' @checked={{this.flipV}} />
+        Vertical flip
+      </label>
+    </div>
 
     <label class='label' for='fill'>Fill:</label>
     <div class='control'><Input
@@ -146,7 +146,6 @@
     <input
       value={{this.search}}
       placeholder='Search over {{@model.meta.length}} icons'
-      autofocus={{true}}
       class='search-field'
       {{on 'input' this.debouncedUpdate}}
     />
@@ -157,7 +156,6 @@
     {{on 'click' this.updateSelectedItem}}
     {{! template-lint-disable no-invalid-interactive }}
   >
-
     {{#each @model.meta as |item|}}
       {{#let (get @model.icons (classify item.name)) as |Icon|}}
         <Icon
