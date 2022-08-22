@@ -137,7 +137,7 @@
     title='Ember Material Design Icons'
     class='github-btn'
   >
-    {{! <MdIcon @icon="github" @fill="white" />View on Github }}
+    <@model.icons.Github @fill='white' />View on Github
   </a>
 </aside>
 
@@ -145,7 +145,7 @@
   <label>
     <input
       value={{this.search}}
-      placeholder='Search over {{@model.length}} icons'
+      placeholder='Search over {{@model.meta.length}} icons'
       autofocus={{true}}
       class='search-field'
       {{on 'input' this.debouncedUpdate}}
@@ -157,8 +157,16 @@
     {{on 'click' this.updateSelectedItem}}
     {{! template-lint-disable no-invalid-interactive }}
   >
-    {{#each @model as |meta|}}
-      {{!-- <MdIcon @icon={{meta.name}} @title={{meta.name}} @size={{34}} data-name={{meta.name}} class="demo-icon {{if meta.isHidden "d-none"}}"/> --}}
+
+    {{#each @model.meta as |item|}}
+      {{#let (get @model.icons (classify item.name)) as |Icon|}}
+        <Icon
+          @title={{item.name}}
+          @size={{34}}
+          data-name={{item.name}}
+          class='demo-icon {{if item.isHidden "d-none"}}'
+        />
+      {{/let}}
     {{/each}}
   </div>
 

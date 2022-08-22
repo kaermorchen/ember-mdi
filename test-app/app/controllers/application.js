@@ -107,13 +107,13 @@ export default class ApplicationController extends Controller {
     this.search = value;
     const lowcased = value.toLowerCase();
 
-    for (let i = 0; i < this.model.length; i++) {
-      const item = this.model[i];
+    for (let i = 0; i < this.model.meta.length; i++) {
+      const item = this.model.meta[i];
 
       set(item, 'isHidden', !checkIsShown(lowcased, item));
     }
 
-    this.emptyResults = this.model.every(({ isHidden }) => isHidden);
+    this.emptyResults = this.model.meta.every(({ isHidden }) => isHidden);
   }
 
   @action
