@@ -2,6 +2,16 @@
 
 .loading-indicator {
   margin: auto;
+  animation: loading-indicator .65s infinite linear;
+}
+
+@keyframes loading-indicator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
 
 body {
