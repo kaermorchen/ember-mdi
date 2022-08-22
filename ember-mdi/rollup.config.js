@@ -71,7 +71,7 @@ function generateEmberMdiIconsPlugin() {
 
       list.forEach((item) => {
         let data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
-        const d = getDRegExp.exec(data)[1]; //TODO: find a more simple way
+        const d = getDRegExp.exec(data)[1];
         const fileName = `${item}.js`;
         const filePath = `${filePathPrefix}${fileName}`;
         const className = item
