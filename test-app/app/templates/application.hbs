@@ -11,7 +11,10 @@
         title='View all the Material Design icons and more from the community'
         target='_blank'
         rel='noopener noreferrer'
-      >Material Design Icons</a></p>
+      >
+        Material Design Icons
+      </a>
+    </p>
   </header>
 
   <div class='demo-icon-code'>
@@ -35,39 +38,38 @@
 
   <div class='demo-icon-settings'>
     <label class='label' for='size'>Size:</label>
-    <div class='control'><Input
-        id='size'
-        @type='range'
-        @value={{this.size}}
-        min='60'
-        max='120'
-      /></div>
+    <div class='control'>
+      <Input id='size' @type='range' @value={{this.size}} min='60' max='120' />
+    </div>
 
     <label class='label' for='rotate'>Rotate:</label>
-    <div class='control'><Input
+    <div class='control'>
+      <Input
         id='rotate'
         @type='range'
         @value={{this.rotate}}
         min='0'
         max='359'
-      /></div>
-
-    <div class='label'></div>
-    <div class='control'><label><Input
-          @type='checkbox'
-          @checked={{this.spin}}
-        />
-        Spin</label></div>
-
-    <div class='label'></div>
-    <div class='control'><label><Input
-          @type='checkbox'
-          @checked={{this.flipH}}
-        />
-        Horizontal flip</label></div>
-
-    <div class='label'>
+      />
     </div>
+
+    <div class='label'></div>
+    <div class='control'>
+      <label>
+        <Input @type='checkbox' @checked={{this.spin}} />
+        Spin
+      </label>
+    </div>
+
+    <div class='label'></div>
+    <div class='control'>
+      <label>
+        <Input @type='checkbox' @checked={{this.flipH}} />
+        Horizontal flip
+      </label>
+    </div>
+
+    <div class='label'></div>
     <div class='control'>
       <label>
         <Input @type='checkbox' @checked={{this.flipV}} />
@@ -76,28 +78,26 @@
     </div>
 
     <label class='label' for='fill'>Fill:</label>
-    <div class='control'><Input
-        id='fill'
-        @type='color'
-        @value={{this.fill}}
-      /></div>
+    <div class='control'>
+      <Input id='fill' @type='color' @value={{this.fill}} />
+    </div>
 
     <label class='label' for='stroke'>Stroke:</label>
-    <div class='control'><Input
-        id='stroke'
-        @type='color'
-        @value={{this.stroke}}
-      /></div>
+    <div class='control'>
+      <Input id='stroke' @type='color' @value={{this.stroke}} />
+    </div>
 
     <label class='label' for='stroke-width'>Stroke width:</label>
-    <div class='control'><Input
+    <div class='control'>
+      <Input
         id='stroke-width'
         @type='range'
         class='form-control-range'
         @value={{this.strokeWidth}}
         min='0'
         max='3'
-      /></div>
+      />
+    </div>
 
     <label class='label' for='stroke-linecap'>Stroke linecap:</label>
     <div class='control'>
