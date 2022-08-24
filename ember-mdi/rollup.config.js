@@ -81,7 +81,7 @@ function generateEmberMdiIconsPlugin() {
 
         fs.writeFileSync(
           filePath,
-          `import MdIcon from './md-icon';\nexport const d = '${d}';\nexport default class ${className} extends MdIcon {get d(){return d}}`
+          `import MdIcon from './md-icon';\nexport const d = '${d}';\nexport default class ${className} extends MdIcon {get d(){return d}get name(){return "${item}"}}`
         );
 
         indexExports.push(

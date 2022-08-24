@@ -1,25 +1,9 @@
 import Component from '@glimmer/component';
 import './styles.css';
 
-function toKebabCase(str) {
-  let newStr = str[0].toLowerCase();
-  for (let i = 1, l = str.length, ch = str[i]; i < l; i++, ch = str[i]) {
-    if (ch.charCodeAt() >= 65 && ch.charCodeAt() <= 90) {
-      newStr += `-${ch.toLowerCase()}`;
-    } else {
-      newStr += ch;
-    }
-  }
-  return newStr;
-}
-
 export default class MdIcon extends Component {
-  get subClass() {
-    return `md-icon-${toKebabCase(this.className)}`;
-  }
-
-  get className() {
-    return this.constructor.name;
+  get name() {
+    return 'md-icon';
   }
 
   get size() {
