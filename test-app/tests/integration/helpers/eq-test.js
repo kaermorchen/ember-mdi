@@ -6,12 +6,19 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Helper | eq', function (hooks) {
   setupRenderingTest(hooks);
 
-  // TODO: Replace this with your real tests.
   test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+    this.set('val1', '1');
+    this.set('val2', '1');
 
-    await render(hbs`{{eq this.inputValue}}`);
+    await render(hbs`{{eq this.val1 this.val2}}`);
 
-    assert.dom(this.element).hasText('1234');
+    assert.dom(this.element).hasText('true');
+
+    this.set('val1', '1');
+    this.set('val2', '2');
+
+    await render(hbs`{{eq this.val1 this.val2}}`);
+
+    assert.dom(this.element).hasText('false');
   });
 });

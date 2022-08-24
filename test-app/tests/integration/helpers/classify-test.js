@@ -6,12 +6,17 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Helper | classify', function (hooks) {
   setupRenderingTest(hooks);
 
-  // TODO: Replace this with your real tests.
   test('it renders', async function (assert) {
-    this.set('inputValue', '1234');
+    this.set('value', 'text_one');
+    await render(hbs`{{classify this.value}}`);
+    assert.dom(this.element).hasText('TextOne');
 
-    await render(hbs`{{classify this.inputValue}}`);
+    this.set('value', 'text-two');
+    await render(hbs`{{classify this.value}}`);
+    assert.dom(this.element).hasText('TextTwo');
 
-    assert.dom(this.element).hasText('1234');
+    this.set('value', 'textThree');
+    await render(hbs`{{classify this.value}}`);
+    assert.dom(this.element).hasText('TextThree');
   });
 });
