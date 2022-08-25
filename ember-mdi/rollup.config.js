@@ -47,10 +47,10 @@ export default {
     // to leave alone and keep in the published output.
     addon.keepAssets(['**/*.css']),
 
-    generateEmberMdiIconsPlugin(),
-
     // Remove leftover build artifacts when starting a new build.
     addon.clean(),
+
+    generateEmberMdiIconsPlugin(),
   ],
 };
 
@@ -68,6 +68,8 @@ function generateEmberMdiIconsPlugin() {
       const list = fs
         .readdirSync(svgsPath)
         .map((item) => path.basename(item, '.svg'));
+
+      fs.mkdirSync(filePathPrefix, { recursive: true });
 
       list.forEach((item) => {
         let data = fs.readFileSync(path.join(svgsPath, `${item}.svg`));
