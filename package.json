@@ -1,9 +1,5 @@
 {
-  "version": "1.0.0",
   "private": true,
-  "repository": "https://github.com/kaermorchen/ember-mdi",
-  "license": "MIT",
-  "author": "Stanislav Romanov <kaermorchen@gmail.com>",
   "workspaces": [
     "ember-mdi",
     "test-app"
