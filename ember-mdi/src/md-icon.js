@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import './styles.css';
 
 export default class MdIcon extends Component {
   get name() {
