@@ -66,10 +66,6 @@ a {
   display: none;
 }
 
-.md-icon {
-  fill: #4c4962;
-}
-
 .demo-icons {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
