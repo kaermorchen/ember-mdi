@@ -1070,7 +1070,7 @@
     walk-sync "^3.0.0"
     yargs "^17.0.1"
 
-"@embroider/addon-shim@^1.0.0":
+"@embroider/addon-shim@^1.0.0", "@embroider/addon-shim@^1.6.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@embroider/addon-shim/-/addon-shim-1.8.3.tgz#2368510b8ce42d50d02cb3289c32e260dfa34bd9"
   integrity sha512-7pyHwzT6ESXc3nZsB8rfnirLkUhQWdvj6CkYH+0MUPN74mX4rslf7pnBqZE/KZkW3uBIaBYvU8fxi0hcKC/Paw==
@@ -5293,6 +5293,15 @@ ember-load-initializers@^2.1.2:
   dependencies:
     ember-cli-babel "^7.13.0"
     ember-cli-typescript "^2.0.2"
+
+ember-modifier@4.0.0-beta.1:
+  version "4.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/ember-modifier/-/ember-modifier-4.0.0-beta.1.tgz#12b791ab744beb6a6caab3b7730f7eeb52a48509"
+  integrity sha512-Mg4NRDCbydlF9hXUzmR9B89GcImA/oDFSK3nFNmy/nQLn5B30zDx8OlL132g9vnnbH/DavlxXwsuv3rDs9g13A==
+  dependencies:
+    "@embroider/addon-shim" "^1.6.0"
+    ember-cli-normalize-entity-name "^1.0.0"
+    ember-cli-string-utils "^1.1.0"
 
 ember-qunit@^5.1.5:
   version "5.1.5"
