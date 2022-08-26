@@ -8,13 +8,13 @@ module('Integration | Component | md-icon/heart', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<MdIcon::Heart />`);
+    await render(hbs`<Icons::Heart />`);
 
     assert.dom('path').hasAttribute('d', heartPath);
   });
 
   test('should has subclass', async function (assert) {
-    await render(hbs`<MdIcon::Heart />`);
+    await render(hbs`<Icons::Heart />`);
 
     assert.dom('svg').hasClass('md-icon-heart');
   });

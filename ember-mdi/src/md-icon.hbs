@@ -5,6 +5,7 @@
   viewBox="0 0 24 24"
   transform={{this.transform}}
   role={{this.role}}
+  fill={{this.fill}}
   ...attributes
 >
   {{#if @title~}}
@@ -14,7 +15,6 @@
   {{~/if}}
   <path
     d={{this.d}}
-    fill={{@fill}}
     stroke={{@stroke}}
     stroke-width={{@strokeWidth}}
     stroke-linecap={{@strokeLinecap}}
