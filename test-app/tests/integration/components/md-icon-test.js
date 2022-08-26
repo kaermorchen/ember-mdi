@@ -25,10 +25,24 @@ module('Integration | Component | md-icon', function (hooks) {
     assert.dom('svg').hasClass('btn');
   });
 
-  test('should has spin class', async function (assert) {
-    await render(hbs`<MdIcon @spin={{true}} />`);
+  test('should has spin animation', async function (assert) {
+    this.set('spin', true);
 
-    assert.dom('svg').hasClass('md-icon-animation-spin');
+    await render(hbs`<MdIcon @spin={{this.spin}} />`);
+
+    assert.strictEqual(
+      this.element.querySelector('svg').getAnimations()[0].id,
+      'spin',
+      'Has animation spin'
+    );
+
+    this.set('spin', false);
+
+    assert.strictEqual(
+      this.element.querySelector('svg').getAnimations().length,
+      0,
+      "Hasn't animation spin"
+    );
   });
 
   test('should has rotate attribute', async function (assert) {
