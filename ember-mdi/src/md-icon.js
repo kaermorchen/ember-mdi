@@ -1,6 +1,31 @@
 import Component from '@glimmer/component';
+import { modifier } from 'ember-modifier';
 
 export default class MdIcon extends Component {
+  animateSpin = modifier((element, [spin]) => {
+    const currentAnimations = element.getAnimations();
+    const spinAnimation = currentAnimations.find((item) => item.id === 'spin');
+
+    if (spin) {
+      if (spinAnimation) {
+        return;
+      }
+
+      const animation = element.animate([{ transform: 'rotate(360deg)' }], {
+        duration: this.spinDuration,
+        iterations: this.spinIterations,
+      });
+
+      animation.id = 'spin';
+
+      return () => {
+        animation.cancel();
+      };
+    } else if (!spin && spinAnimation) {
+      spinAnimation.cancel();
+    }
+  });
+
   get name() {
     return 'md-icon';
   }
@@ -40,5 +65,13 @@ export default class MdIcon extends Component {
     }
 
     return transform;
+  }
+
+  get spinDuration() {
+    return this.args.spinDuration || 650;
+  }
+
+  get spinIterations() {
+    return this.args.spinIterations || Infinity;
   }
 }
