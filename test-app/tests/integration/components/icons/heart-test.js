@@ -4,7 +4,7 @@ import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { d as heartPath } from 'ember-mdi/heart';
 
-module('Integration | Component | md-icon/heart', function (hooks) {
+module('Integration | Component | icons/heart', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
