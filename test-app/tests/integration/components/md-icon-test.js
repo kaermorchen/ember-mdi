@@ -56,9 +56,15 @@ module('Integration | Component | md-icon', function (hooks) {
   });
 
   test('should has fill attribute', async function (assert) {
+    await render(hbs`<MdIcon />`);
+
+    assert.dom('svg').hasAttribute('fill', 'currentColor');
+  });
+
+  test('should change fill attribute', async function (assert) {
     await render(hbs`<MdIcon @fill="green" />`);
 
-    assert.dom('path').hasAttribute('fill', 'green');
+    assert.dom('svg').hasAttribute('fill', 'green');
   });
 
   test('should has title', async function (assert) {

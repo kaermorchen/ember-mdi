@@ -13,6 +13,10 @@ export default class MdIcon extends Component {
     return this.args.role || 'img';
   }
 
+  get fill() {
+    return this.args.fill || 'currentColor';
+  }
+
   get transform() {
     const rotate = this.args.rotate;
     const flipH = this.args.flipH;
