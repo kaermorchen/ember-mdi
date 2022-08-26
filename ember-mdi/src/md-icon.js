@@ -4,7 +4,7 @@ import { modifier } from 'ember-modifier';
 export default class MdIcon extends Component {
   animateSpin = modifier((element, [spin]) => {
     const currentAnimations = element.getAnimations();
-    const spinAnimation = currentAnimations.find(item => item.id === 'spin');
+    const spinAnimation = currentAnimations.find((item) => item.id === 'spin');
 
     if (spin) {
       if (spinAnimation) {
