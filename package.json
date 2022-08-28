@@ -6,7 +6,8 @@
   ],
   "repository": "https://github.com/kaermorchen/ember-mdi",
   "scripts": {
-    "prepare": "yarn workspace ember-mdi run prepare",
+    "prepare": "yarn workspace ember-mdi run build",
+    "release": "release-it",
     "start": "npm-run-all --parallel start:*",
     "start:addon": "yarn workspace ember-mdi run start",
     "start:test-app": "yarn workspace test-app run start",
