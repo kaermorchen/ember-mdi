@@ -1,6 +1,8 @@
 # Changelog
 
 
+## v2.0.0-beta.1 (2022-08-28)
+
 ## v2.0.0-beta.0 (2022-08-28)
 
 #### :boom: Breaking Change
