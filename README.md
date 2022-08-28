@@ -1,8 +1,11 @@
-ember-mdi
+Ember Material Design Icons
 ==============================================================================
 
-[Short description of the addon.]
+An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons](https://materialdesignicons.com/) in Ember applications.
 
+All icons are stored in the file `vendor.js`.
+
+### [Demo](https://kaermorchen.github.io/ember-mdi/)
 
 Compatibility
 ------------------------------------------------------------------------------
@@ -18,11 +21,38 @@ Installation
 ember install ember-mdi
 ```
 
-
 Usage
 ------------------------------------------------------------------------------
+Import an icon to your application
 
-[Longer description of how to use the addon in apps.]
+```js
+//app/components/icons/github.js
+export { Github as default } from 'ember-mdi';
+```
+
+```hbs
+<Icons::Github/>
+```
+
+All icons have some options with default values:
+
+| Name              | Value |
+|-------------------|-------|
+| @size             | 24    |
+| @title            | null  |
+| @fill             | null  |
+| @role             | "img" |
+| @spin             | false |
+| @flipH            | false |
+| @flipV            | false |
+| @rotate           | null  |
+| @stroke           | null  |
+| @strokeWidth      | null  |
+| @strokeLinecap    | null  |
+| @strokeLinejoin   | null  |
+| @strokeDasharray  | null  |
+| @strokeDashoffset | null  |
+| @strokeOpacity    | null  |
 
 
 Contributing
