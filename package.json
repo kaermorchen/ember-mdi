@@ -4,6 +4,7 @@
     "ember-mdi",
     "test-app"
   ],
+  "repository": "https://github.com/kaermorchen/ember-mdi",
   "scripts": {
     "prepare": "yarn workspace ember-mdi run prepare",
     "start": "npm-run-all --parallel start:*",
@@ -35,9 +36,18 @@
     "plugins": {
       "release-it-lerna-changelog": {
         "infile": "CHANGELOG.md",
-        "launchEditor": true
+        "launchEditor": false
       },
-      "release-it-yarn-workspaces": true
+      "release-it-yarn-workspaces": {
+        "workspaces": [
+          "ember-mdi"
+        ],
+        "additionalManifests": {
+          "dependencyUpdates": [
+            "test-app/package.json"
+          ]
+        }
+      }
     },
     "git": {
       "tagName": "v${version}"
