@@ -57,5 +57,6 @@
       "tokenRef": "GITHUB_AUTH"
     },
     "npm": false
-  }
+  },
+  "version": "2.0.0-beta.0"
 }

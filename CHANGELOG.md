@@ -1,5 +1,18 @@
 # Changelog
 
+
+## v2.0.0-beta.0 (2022-08-28)
+
+#### :boom: Breaking Change
+* [#52](https://github.com/kaermorchen/ember-mdi/pull/52) Remove styles ([@kaermorchen](https://github.com/kaermorchen))
+* [#49](https://github.com/kaermorchen/ember-mdi/pull/49) Move fill from css styles to svg attribute ([@kaermorchen](https://github.com/kaermorchen))
+
+#### :rocket: Enhancement
+* [#51](https://github.com/kaermorchen/ember-mdi/pull/51) Spin animation via Web Animations API ([@kaermorchen](https://github.com/kaermorchen))
+
+#### Committers: 1
+- Stanislav Romanov ([@kaermorchen](https://github.com/kaermorchen))
+
 ## v1.0.0 (2022-04-12)
 
 ## v0.10.0 (2022-03-11)
