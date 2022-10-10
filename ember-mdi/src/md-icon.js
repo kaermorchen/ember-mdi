@@ -1,31 +1,10 @@
 import Component from '@glimmer/component';
-import { modifier } from 'ember-modifier';
+import { precompileTemplate } from '@ember/template-compilation';
+import { setComponentTemplate } from '@ember/component';
+import { array, hash } from '@ember/helper';
+import animate from 'ember-animation/modifiers/animate';
 
-export default class MdIcon extends Component {
-  animateSpin = modifier((element, [spin]) => {
-    const currentAnimations = element.getAnimations();
-    const spinAnimation = currentAnimations.find((item) => item.id === 'spin');
-
-    if (spin) {
-      if (spinAnimation) {
-        return;
-      }
-
-      const animation = element.animate([{ transform: 'rotate(360deg)' }], {
-        duration: this.spinDuration,
-        iterations: this.spinIterations,
-      });
-
-      animation.id = 'spin';
-
-      return () => {
-        animation.cancel();
-      };
-    } else if (!spin && spinAnimation) {
-      spinAnimation.cancel();
-    }
-  });
-
+class MdIcon extends Component {
   get name() {
     return 'md-icon';
   }
@@ -70,8 +49,49 @@ export default class MdIcon extends Component {
   get spinDuration() {
     return this.args.spinDuration || 650;
   }
-
-  get spinIterations() {
-    return this.args.spinIterations || Infinity;
-  }
 }
+
+const TEMPLATE = precompileTemplate(
+  `<svg
+  class='md-icon md-icon-{{this.name}}'
+  width={{this.size}}
+  height={{this.size}}
+  viewBox='0 0 24 24'
+  transform={{this.transform}}
+  role={{this.role}}
+  fill={{this.fill}}
+  ...attributes
+  {{(if
+    @spin
+    (animate
+      (hash transform=(array 'rotate(0)' 'rotate(360deg)'))
+      (hash duration=this.spinDuration)
+    )
+  )}}
+  >
+  {{#if @title~}}
+    <title>
+      {{~@title~}}
+    </title>
+  {{~/if}}
+  <path
+    d={{this.d}}
+    stroke={{@stroke}}
+    stroke-width={{@strokeWidth}}
+    stroke-linecap={{@strokeLinecap}}
+    stroke-linejoin={{@strokeLinejoin}}
+    stroke-dasharray={{@strokeDasharray}}
+    stroke-dashoffset={{@strokeDashoffset}}
+    stroke-opacity={{@strokeOpacity}}
+  />
+</svg>
+`,
+  {
+    strictMode: true,
+    scope: () => ({ animate, hash, array }),
+  }
+);
+
+setComponentTemplate(TEMPLATE, MdIcon);
+
+export { MdIcon as default };
