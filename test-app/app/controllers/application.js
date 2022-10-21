@@ -43,43 +43,43 @@ export default class ApplicationController extends Controller {
     let iconHbsCode = `<${this.selectedIcon.name}`;
 
     if (this.size !== defaultSize) {
-      iconHbsCode += ` @size=${this.size}`;
+      iconHbsCode += ` @size={{${this.size}}}`;
     }
 
     if (this.spin) {
-      iconHbsCode += ` @spin=${this.spin}`;
+      iconHbsCode += ` @spin={{${this.spin}}}`;
     }
 
     if (this.flipH) {
-      iconHbsCode += ` @flipH=${this.flipH}`;
+      iconHbsCode += ` @flipH={{${this.flipH}}}`;
     }
 
     if (this.flipV) {
-      iconHbsCode += ` @flipH=${this.flipV}`;
+      iconHbsCode += ` @flipH={{${this.flipV}}}`;
     }
 
     if (this.rotate !== defaultRotate) {
-      iconHbsCode += ` @rotate=${this.rotate}`;
+      iconHbsCode += ` @rotate={{${this.rotate}}}`;
     }
 
     if (this.fill) {
-      iconHbsCode += ` @fill="${this.fill}"`;
+      iconHbsCode += ` @fill={{"${this.fill}"}}`;
     }
 
     if (this.stroke) {
-      iconHbsCode += ` @stroke="${this.stroke}"`;
+      iconHbsCode += ` @stroke={{"${this.stroke}"}}`;
     }
 
     if (this.strokeWidth !== defaultStrokeWidth) {
-      iconHbsCode += ` @strokeWidth="${this.strokeWidth}"`;
+      iconHbsCode += ` @strokeWidth={{"${this.strokeWidth}"}}`;
     }
 
     if (this.strokeLinecap !== defaultStrokeLinecap) {
-      iconHbsCode += ` @strokeLinecap="${this.strokeLinecap}"`;
+      iconHbsCode += ` @strokeLinecap={{"${this.strokeLinecap}"}}`;
     }
 
     if (this.strokeLinejoin !== defaultStrokeLinejoin) {
-      iconHbsCode += ` @strokeLinejoin="${this.strokeLinejoin}"`;
+      iconHbsCode += ` @strokeLinejoin={{"${this.strokeLinejoin}"}}`;
     }
 
     iconHbsCode += '/>';

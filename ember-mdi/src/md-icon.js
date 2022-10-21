@@ -31,15 +31,15 @@ export default class MdIcon extends Component {
   }
 
   get size() {
-    return this.args.size || 24;
+    return this.args.size ?? 24;
   }
 
   get role() {
-    return this.args.role || 'img';
+    return this.args.role ?? 'img';
   }
 
   get fill() {
-    return this.args.fill || 'currentColor';
+    return this.args.fill ?? 'currentColor';
   }
 
   get transform() {
@@ -68,10 +68,10 @@ export default class MdIcon extends Component {
   }
 
   get spinDuration() {
-    return this.args.spinDuration || 650;
+    return this.args.spinDuration ?? 650;
   }
 
   get spinIterations() {
-    return this.args.spinIterations || Infinity;
+    return this.args.spinIterations ?? Infinity;
   }
 }

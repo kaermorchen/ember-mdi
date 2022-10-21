@@ -152,6 +152,7 @@
   <div
     class='demo-icons'
     {{on 'click' this.updateSelectedItem}}
+    {{! we click event on the parent for performance issue }}
     {{! template-lint-disable no-invalid-interactive }}
   >
     {{#each @model.meta as |item|}}
