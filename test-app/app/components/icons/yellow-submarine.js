@@ -8,6 +8,4 @@ function Yellow(BaseClass) {
   };
 }
 
-class NormalSubmarine extends Submarine {}
-
-export default Yellow(NormalSubmarine);
+export default Yellow(Submarine);

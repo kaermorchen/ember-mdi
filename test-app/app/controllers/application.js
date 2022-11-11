@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { classify } from '@ember/string';
+import { Github } from 'ember-mdi';
 
 const defaultSize = '24';
 const defaultRotate = '0';
@@ -38,6 +39,8 @@ export default class ApplicationController extends Controller {
 
   @tracked search;
   @tracked emptyResults = false;
+
+  Github = Github;
 
   get iconHbsCode() {
     let iconHbsCode = `<${this.selectedIcon.name}`;
