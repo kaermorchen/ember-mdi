@@ -1,0 +1,27 @@
+<svg
+  class="md-icon md-icon-{{this.name}} {{if @spin 'md-icon-animation-spin'}}"
+  width={{this.size}}
+  height={{this.size}}
+  viewBox="0 0 24 24"
+  transform={{this.transform}}
+  role={{this.role}}
+  fill={{this.fill}}
+  ...attributes
+  {{this.animateSpin @spin}}
+>
+  {{#if @title~}}
+    <title>
+      {{~@title~}}
+    </title>
+  {{~/if}}
+  <path
+    d={{this.d}}
+    stroke={{@stroke}}
+    stroke-width={{@strokeWidth}}
+    stroke-linecap={{@strokeLinecap}}
+    stroke-linejoin={{@strokeLinejoin}}
+    stroke-dasharray={{@strokeDasharray}}
+    stroke-dashoffset={{@strokeDashoffset}}
+    stroke-opacity={{@strokeOpacity}}
+  ></path>
+</svg>
