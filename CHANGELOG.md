@@ -1,6 +1,18 @@
 # Changelog
 
 
+
+## v2.0.0-beta.2 (2022-11-28)
+
+#### :boom: Breaking Change
+* [#50](https://github.com/kaermorchen/ember-mdi/pull/50) Porting the addon to V2 ([@kaermorchen](https://github.com/kaermorchen))
+
+#### :rocket: Enhancement
+* [#53](https://github.com/kaermorchen/ember-mdi/pull/53) Add CI deploy ([@kaermorchen](https://github.com/kaermorchen))
+
+#### Committers: 1
+- Stanislav Romanov ([@kaermorchen](https://github.com/kaermorchen))
+
 ## v2.0.0-beta.1 (2022-08-28)
 
 ## v2.0.0-beta.0 (2022-08-28)
