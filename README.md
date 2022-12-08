@@ -87,7 +87,7 @@ function Yellow(BaseClass) {
   };
 }
 
-export default Yellow(NormalSubmarine);
+export default Yellow(Submarine);
 ```
 
 Contributing
