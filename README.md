@@ -5,6 +5,8 @@ An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons]
 
 ### [Demo](https://kaermorchen.github.io/ember-mdi/)
 
+![demo](https://user-images.githubusercontent.com/11972062/216624380-2441ee4c-5040-4ae2-9d48-e00ad42c653b.png)
+
 Compatibility
 ------------------------------------------------------------------------------
 
