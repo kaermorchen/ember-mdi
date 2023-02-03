@@ -10,7 +10,7 @@ An [ember-cli](http://www.ember-cli.com) addon for using [Material Design Icons]
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v3.24 or above
+* Ember.js v3.28 or above
 * Embroider or ember-auto-import v2
 
 
