@@ -2,6 +2,18 @@
 
 
 
+
+## v2.0.0 (2023-02-04)
+
+#### :boom: Breaking Change
+* [#69](https://github.com/kaermorchen/ember-mdi/pull/69) Updated compatibility ([@kaermorchen](https://github.com/kaermorchen))
+
+#### :memo: Documentation
+* [#69](https://github.com/kaermorchen/ember-mdi/pull/69) Updated compatibility ([@kaermorchen](https://github.com/kaermorchen))
+
+#### Committers: 1
+- Stanislav Romanov ([@kaermorchen](https://github.com/kaermorchen))
+
 ## v2.0.0-beta.2 (2022-11-28)
 
 #### :boom: Breaking Change

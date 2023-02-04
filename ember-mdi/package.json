@@ -1,6 +1,6 @@
 {
   "name": "ember-mdi",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0",
   "description": "An ember-cli addon for using Material Design Icons in Ember applications.",
   "keywords": [
     "material design icons",
