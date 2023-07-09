@@ -27,7 +27,11 @@ jobs:
       - name: Build
         run: yarn --cwd test-app build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          folder: test-app/dist
+          path: 'test-app/dist/'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
