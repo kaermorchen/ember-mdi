@@ -1450,10 +1450,10 @@
     tslib "^2.3.1"
     upath "^2.0.1"
 
-"@mdi/svg@^7.0.96":
-  version "7.0.96"
-  resolved "https://registry.yarnpkg.com/@mdi/svg/-/svg-7.0.96.tgz#c7275a318da8594337243368c6b4dca6a90154f6"
-  integrity sha512-5DC+w7Kl2C82j4aTWCUf6wtHzgY60WBf1gT1qrpkLaMNcH6Vj9FpYPAXdSmtdkmSMvVMs8i1Rtv9cXWcHFQYpw==
+"@mdi/svg@7.2.96":
+  version "7.2.96"
+  resolved "https://registry.yarnpkg.com/@mdi/svg/-/svg-7.2.96.tgz#6c182628ed722a85055c3795e7d4ca6d4f2f139c"
+  integrity sha512-rxzuSL2RSt/pWWnFnUFQi5GJArm2tHMhx20Gee3Ydn+xT2bqbR4syfgdPrq2b+j+n5LjC7C8Fb1QDM6LKeF0cA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
