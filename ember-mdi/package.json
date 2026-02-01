@@ -44,7 +44,7 @@
     "@mdi/svg": "7.2.96",
     "@rollup/plugin-babel": "^5.3.0",
     "ember-template-lint": "^4.0.0",
-    "eslint": "^7.32.0",
+    "eslint": "^9.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.5.8",
     "eslint-plugin-node": "^11.1.0",
